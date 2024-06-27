@@ -48,13 +48,37 @@
       >
         <div class="open-egg">
           <div class="progress">
-<!--            <span>Bronze</span>-->
+            <img
+              src="./assets/img/rank_bronze.png"
+              alt=""
+              class="rank-bronze"
+            />
+            <img
+                    src="./assets/img/rank_diamond.png"
+                    alt=""
+                    class="rank-diamond"
+            />
             <div class="bar">
               <div class="progress-value"></div>
             </div>
-<!--            <span>Diamond</span>-->
+            <div class="rank">
+              <img
+                      src="./assets/img/rank_silver.png"
+                      alt=""
+                      class="rank-silver"
+              />
+              <img
+                      src="./assets/img/rank_gold.png"
+                      alt=""
+                      class="rank-gold"
+              />
+              <img
+                      src="./assets/img/rank_platinum.png"
+                      alt=""
+                      class="rank-platinum"
+              />
+            </div>
           </div>
-
         <div id="player-container"></div>
           <div  class="open-egg-backdrop" style=""></div>
         </div>
@@ -451,13 +475,10 @@
     </div>
   </div>
     <script>
-      var jsonUrl = "assets/Dragon_Skin.json";
-      var atlasUrl = "assets/Dragon_Skin.atlas";
-      // var jsonUrl = "http://localhost:63342/dragon-wallet-1/assets/Dragon_Skin.json";
-      // var atlasUrl = "http://localhost:63342/dragon-wallet-1/assets/Dragon_Skin.atlas";
+      var jsonUrl = "assets/animation/Dragon_Skin.json";
+      var atlasUrl = "assets/animation/Dragon_Skin.atlas";
       var backgroundColor = "#00000000"
-      var skin = ["Dragon_1", "Dragon_2", "Dragon_3", "Dragon_4", "Dragon_5"]
-      var backgroundColorBar = ["#B87333", "#B87333", "#C0C0C0", "#FFD700", "#E5E4E2", "#B9F2FF"]
+      var skin = ["Dragon_1", "Dragon_2", "Dragon_3", "Dragon_4", "Dragon_5", "Dragon_6"]
       var player = new spine.SpinePlayer("player-container", {
         jsonUrl: jsonUrl,
         atlasUrl: atlasUrl,
@@ -519,10 +540,8 @@
         if(stepBloom < 5) {
         stepBloom +=1
           const progress = document.querySelector(".progress");
-          const value = Math.floor(stepBloom*20);
-          const bar = progress.querySelector('.bar');
-
-          progress.style.setProperty("--progress", `${value}%`);
+          const value = Math.floor(stepBloom*20000);
+          progress.style.setProperty("--progress", `${value*100/100000}%`);
         playAttackAnimation(stepBloom)
         }
       }

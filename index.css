@@ -851,35 +851,61 @@ img {
 .progress {
   --progress: 0%;
   position: absolute;
-  height: 30px;
-  border: 1px solid #fff;
-  padding: 6px;
+  height: 34px;
+  border: 3px solid #fff;
+  padding: 5px 6px;
   box-shadow: 0 0 10px #aaa;
   z-index: 100;
-  left: 6rem;
-  right: 6rem;
+  left: 3.5rem;
+  right: 3.5rem;
   margin-top: 4rem;
   border-radius: 20px;
-  & span {
-    color: #002e72;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 20px;
-    text-align: left;
-    position: absolute;
+  background-color: #00000080;
+  & img {
+    &.rank-bronze {
+      height: 28px;
+      top: 0;
+      left: -44px;
+      position: absolute;
+    }
+    &.rank-silver {
+      height: 28px;
+      top: 0;
+    }
+    &.rank-gold {
+      height: 28px;
+      top: 0;
+    }
+    &.rank-platinum {
+      height: 28px;
+      top: 0;
+    }
+    &.rank-diamond {
+      height: 28px;
+      top: 0;
+      right: -44px;
+      position: absolute;
+    }
+  }
+  & .rank {
+    display: flex;
+    justify-content: space-around;
+    margin-top: -23px;
   }
 }
 
 .progress .bar {
   width: var(--progress);
+  /*filter: drop-shadow(0 0 5px #fdeb8e);*/
   height: 100%;
-  /*background: linear-gradient(to right, #B87333 20%, #C0C0C0 40%, #FFD700 60%, #E5E4E2 80%, #B9F2FF 100%);*/
-  background: #fbad25;
-  box-shadow: 0 0 10px 0px orange;
+  /*background: #fbad25;*/
+  background: linear-gradient(#fff, transparent),
+  repeating-linear-gradient(135deg,
+          #9ed54f 0 7.5px, #67b934 0 15px);
+  /*box-shadow: 0 0 4px 0px #fdeb8e;*/
   animation:
-          shine 4s ease-in infinite,
-          end 1s ease-out 1;
-  transition: width 3s ease;
+          shine 10s linear infinite;
+  transition: width 2s ease;
   border-radius: 20px;
 }
 
@@ -892,10 +918,5 @@ img {
 
 @keyframes shine {
   0% { background-position: 0 0; }
-  100% { background-position: 0 50px; }
-}
-
-@keyframes end {
-  0%, 100% { box-shadow: 0 0 10px 0px orange; }
-  50% { box-shadow: 0 0 15px 5px orange; }
+  100% { background-position: calc(100vw - 7rem) 0; }
 }
