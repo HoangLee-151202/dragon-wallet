@@ -17,12 +17,14 @@
     --tg-viewport-height: 100vh;
     --tg-viewport-stable-height: 100vh;
   " class="mdl-js">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
   <title>Dragon Wallet</title>
   <link rel="stylesheet" href="index.css" />
+
 </head>
 
 <body style="background-color: var(--background) !important" data-new-gr-c-s-check-loaded="14.1174.0"
@@ -33,8 +35,10 @@
         <header class="header fixed z-[1]">
           <button class="relative p-4">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5" stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <path
+                d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </button>
           <div class="header-balance flex justify-center items-center">
             <p class="phrase">
@@ -42,8 +46,10 @@
           </div>
           <button class="relative p-4">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <path
+                d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </button>
         </header>
         <div class="block-home">
@@ -56,22 +62,28 @@
           <div class="block_balance">
             <div class="flex w-full justify-between items-center flex-col">
               <div class="mt-1 w-full flex justify-around items-center">
-                <button class="mt-auto mb-1 btn-action">
+                <button class="mt-auto mb-1 btn-action show-modal-deposit">
                   <div class="icon-btn icon-btn-deposit flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path d="M12.0703 22V2" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M5 8L10 2.84009C10.2571 2.5677 10.5671 2.35047 10.911 2.20215C11.2549 2.05383 11.6255 1.97754 12 1.97754C12.3745 1.97754 12.7451 2.05383 13.089 2.20215C13.4329 2.35047 13.7429 2.5677 14 2.84009L19 8" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                      <path d="M12.0703 22V2" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path
+                        d="M5 8L10 2.84009C10.2571 2.5677 10.5671 2.35047 10.911 2.20215C11.2549 2.05383 11.6255 1.97754 12 1.97754C12.3745 1.97754 12.7451 2.05383 13.089 2.20215C13.4329 2.35047 13.7429 2.5677 14 2.84009L19 8"
+                        stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                   </div>
                   <div class="btn-text">
                     Deposit</div>
                 </button>
-                <button class="mt-auto mb-1 btn-action">
+                <button class="mt-auto mb-1 btn-action show-modal-withdraw">
                   <div class="icon-btn icon-btn-withdraw flex items-center">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.9297 2V22" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M19 16L14 21.1599C13.7437 21.4336 13.434 21.6519 13.0899 21.801C12.7459 21.9502 12.375 22.0271 12 22.0271C11.625 22.0271 11.2541 21.9502 10.9101 21.801C10.566 21.6519 10.2563 21.4336 10 21.1599L5 16" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                      <path d="M11.9297 2V22" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path
+                        d="M19 16L14 21.1599C13.7437 21.4336 13.434 21.6519 13.0899 21.801C12.7459 21.9502 12.375 22.0271 12 22.0271C11.625 22.0271 11.2541 21.9502 10.9101 21.801C10.566 21.6519 10.2563 21.4336 10 21.1599L5 16"
+                        stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                   </div>
                   <div class="btn-text">
                     Withdraw</div>
@@ -79,11 +91,18 @@
                 <button class="mt-auto mb-1 btn-action">
                   <div class="icon-btn icon-btn-history flex items-center">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.07 22H7C5.93913 22 4.92178 21.5785 4.17163 20.8284C3.42149 20.0782 3 19.0609 3 18V6C3 4.93913 3.42149 3.92165 4.17163 3.17151C4.92178 2.42136 5.93913 2 7 2H17C18.0609 2 19.0783 2.42136 19.8284 3.17151C20.5786 3.92165 21 4.93913 21 6V12.53" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M12.17 17H9.85004C9.29329 16.9992 8.74772 16.8436 8.27441 16.5504C7.8011 16.2572 7.41873 15.8381 7.17004 15.34L6.83002 14.6599C6.58134 14.1618 6.19896 13.7428 5.72565 13.4496C5.25234 13.1564 4.70677 13.0008 4.15002 13H3" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M18.44 21.88C20.3399 21.88 21.88 20.3399 21.88 18.44C21.88 16.5401 20.3399 15 18.44 15C16.5401 15 15 16.5401 15 18.44C15 20.3399 16.5401 21.88 18.44 21.88Z" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M23.0009 23L20.8809 20.88" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                      <path
+                        d="M13.07 22H7C5.93913 22 4.92178 21.5785 4.17163 20.8284C3.42149 20.0782 3 19.0609 3 18V6C3 4.93913 3.42149 3.92165 4.17163 3.17151C4.92178 2.42136 5.93913 2 7 2H17C18.0609 2 19.0783 2.42136 19.8284 3.17151C20.5786 3.92165 21 4.93913 21 6V12.53"
+                        stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                      <path
+                        d="M12.17 17H9.85004C9.29329 16.9992 8.74772 16.8436 8.27441 16.5504C7.8011 16.2572 7.41873 15.8381 7.17004 15.34L6.83002 14.6599C6.58134 14.1618 6.19896 13.7428 5.72565 13.4496C5.25234 13.1564 4.70677 13.0008 4.15002 13H3"
+                        stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                      <path
+                        d="M18.44 21.88C20.3399 21.88 21.88 20.3399 21.88 18.44C21.88 16.5401 20.3399 15 18.44 15C16.5401 15 15 16.5401 15 18.44C15 20.3399 16.5401 21.88 18.44 21.88Z"
+                        stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M23.0009 23L20.8809 20.88" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
                   </div>
                   <div class="btn-text">
                     History</div>
@@ -91,11 +110,17 @@
                 <button class="mt-auto mb-1 btn-action">
                   <div class="icon-btn icon-btn-order flex items-center">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.00001 4.10999C6.14022 4.33198 5.37874 4.83376 4.83558 5.53625C4.29241 6.23875 3.99845 7.10201 4.00001 7.98999V17.99C4.00001 19.0509 4.42149 20.0682 5.17164 20.8184C5.92178 21.5685 6.93914 21.99 8.00001 21.99H16C17.0609 21.99 18.0783 21.5685 18.8284 20.8184C19.5786 20.0682 20 19.0509 20 17.99V7.98999C19.9993 7.10372 19.7044 6.24269 19.1614 5.54224C18.6184 4.84178 17.8581 4.34156 17 4.12" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M9 5.98999C8.46957 5.98999 7.96089 5.77925 7.58582 5.40417C7.21074 5.0291 7 4.52042 7 3.98999C7 3.45956 7.21074 2.95088 7.58582 2.57581C7.96089 2.20073 8.46957 1.98999 9 1.98999H15C15.5304 1.98999 16.0392 2.20073 16.4142 2.57581C16.7893 2.95088 17 3.45956 17 3.98999C17 4.52042 16.7893 5.0291 16.4142 5.40417C16.0392 5.77925 15.5304 5.98999 15 5.98999H9Z" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M8 16H14" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M8 12H16" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
+                      <path
+                        d="M7.00001 4.10999C6.14022 4.33198 5.37874 4.83376 4.83558 5.53625C4.29241 6.23875 3.99845 7.10201 4.00001 7.98999V17.99C4.00001 19.0509 4.42149 20.0682 5.17164 20.8184C5.92178 21.5685 6.93914 21.99 8.00001 21.99H16C17.0609 21.99 18.0783 21.5685 18.8284 20.8184C19.5786 20.0682 20 19.0509 20 17.99V7.98999C19.9993 7.10372 19.7044 6.24269 19.1614 5.54224C18.6184 4.84178 17.8581 4.34156 17 4.12"
+                        stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                      <path
+                        d="M9 5.98999C8.46957 5.98999 7.96089 5.77925 7.58582 5.40417C7.21074 5.0291 7 4.52042 7 3.98999C7 3.45956 7.21074 2.95088 7.58582 2.57581C7.96089 2.20073 8.46957 1.98999 9 1.98999H15C15.5304 1.98999 16.0392 2.20073 16.4142 2.57581C16.7893 2.95088 17 3.45956 17 3.98999C17 4.52042 16.7893 5.0291 16.4142 5.40417C16.0392 5.77925 15.5304 5.98999 15 5.98999H9Z"
+                        stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M8 16H14" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M8 12H16" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
                   </div>
                   <div class="btn-text">
                     Order</div>
@@ -104,93 +129,87 @@
             </div>
           </div>
           <div class="block-tab-menu block_balance mb-4">
-            <div  class="block-title flex flex-row justify-between items-center">
-              <p  class="portfolio">
+            <div class="block-title flex flex-row justify-between items-center">
+              <p class="portfolio">
                 Tokens</p>
             </div>
-            <div  class="portfolio_block">
-              <div  class="wave cursor-pointer">
-                <img  src="./assets/img/gem.png"
-                  class="mr-2 icon-wave" alt="">
-                <div  class="flex flex-row justify-between items-center flex-1">
-                  <div  class="">
-                    <p  class="label_wave font-bold">
+            <div class="portfolio_block">
+              <div class="wave cursor-pointer">
+                <img src="./assets/img/gem.png" class="mr-2 icon-wave" alt="">
+                <div class="flex flex-row justify-between items-center flex-1">
+                  <div class="">
+                    <p class="label_wave font-bold">
                       DGEM</p>
-                    <p  class="wave_number">
+                    <p class="wave_number">
                       0 - $1
                     </p>
                   </div>
-                  <div  class=""></div>
+                  <div class=""></div>
                 </div>
               </div>
-              <div  class="wave cursor-pointer">
-                <img  src="./assets/img/coin-bnb.png"
-                  class="mr-2 icon-wave" alt="">
-                <div  class="flex flex-row justify-between items-center flex-1">
-                  <div  class="">
-                    <p  class="label_wave font-bold">
+              <div class="wave cursor-pointer">
+                <img src="./assets/img/coin-bnb.png" class="mr-2 icon-wave" alt="">
+                <div class="flex flex-row justify-between items-center flex-1">
+                  <div class="">
+                    <p class="label_wave font-bold">
                       WBNB</p>
-                    <p  class="wave_number">
+                    <p class="wave_number">
                       0 - $525.39
                     </p>
                   </div>
-                  <div  class=""></div>
+                  <div class=""></div>
                 </div>
               </div>
-              <div  class="wave cursor-pointer">
-                <img  src="./assets/img/coin-usdt.png"
-                  class="mr-2 icon-wave" alt="">
-                <div  class="flex flex-row justify-between items-center flex-1">
-                  <div  class="">
-                    <p  class="label_wave font-bold">
+              <div class="wave cursor-pointer">
+                <img src="./assets/img/coin-usdt.png" class="mr-2 icon-wave" alt="">
+                <div class="flex flex-row justify-between items-center flex-1">
+                  <div class="">
+                    <p class="label_wave font-bold">
                       USDT</p>
-                    <p  class="wave_number">
+                    <p class="wave_number">
                       0 - $0.978108
                     </p>
                   </div>
-                  <div  class=""></div>
+                  <div class=""></div>
                 </div>
               </div>
-              <div  class="wave cursor-pointer">
-                <img  src="./assets/img/coin-busd.png"
-                  class="mr-2 icon-wave" alt="">
-                <div  class="flex flex-row justify-between items-center flex-1">
-                  <div  class="">
-                    <p  class="label_wave font-bold">
+              <div class="wave cursor-pointer">
+                <img src="./assets/img/coin-busd.png" class="mr-2 icon-wave" alt="">
+                <div class="flex flex-row justify-between items-center flex-1">
+                  <div class="">
+                    <p class="label_wave font-bold">
                       BUSD</p>
-                    <p  class="wave_number">
+                    <p class="wave_number">
                       0 - $0.994094
                     </p>
                   </div>
-                  <div  class=""></div>
+                  <div class=""></div>
                 </div>
               </div>
-              <div  class="wave cursor-pointer">
-                <img  src="./assets/img/coin-trx.png"
-                  class="mr-2 icon-wave" alt="">
-                <div  class="flex flex-row justify-between items-center flex-1">
-                  <div  class="">
-                    <p  class="label_wave font-bold">
+              <div class="wave cursor-pointer">
+                <img src="./assets/img/coin-trx.png" class="mr-2 icon-wave" alt="">
+                <div class="flex flex-row justify-between items-center flex-1">
+                  <div class="">
+                    <p class="label_wave font-bold">
                       TRX</p>
-                    <p  class="wave_number">
+                    <p class="wave_number">
                       0 - $0.060463
                     </p>
                   </div>
-                  <div  class=""></div>
+                  <div class=""></div>
                 </div>
               </div>
-              <div  class="wave cursor-pointer">
-                <img  src="./assets/img/coin-ton.png"
-                  class="mr-2 icon-wave" alt="">
-                <div  class="flex flex-row justify-between items-center flex-1">
-                  <div  class="">
-                    <p  class="label_wave font-bold">
+              <div class="wave cursor-pointer">
+                <img src="./assets/img/coin-ton.png" class="mr-2 icon-wave" alt="">
+                <div class="flex flex-row justify-between items-center flex-1">
+                  <div class="">
+                    <p class="label_wave font-bold">
                       TON</p>
-                    <p  class="wave_number">
+                    <p class="wave_number">
                       0 - $3107.52
                     </p>
                   </div>
-                  <div  class=""></div>
+                  <div class=""></div>
                 </div>
               </div>
             </div>
@@ -198,7 +217,180 @@
         </div>
       </div>
     </section>
+    <section id="section-deposit">
+      <div class="bottom-sheet">
+        <div class="sheet-overlay"></div>
+        <div class="content">
+          <div class="header">
+            <div class="drag-icon"><span></span></div>
+          </div>
+          <div class="body">
+            <div class="background">
+              <img width="200px" height="200px" src="./assets/img/qrcode.png" />
+            </div>
+            <div class="mt-2">Scan the QR code to deposit</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="section-withdraw">
+      <div class="bottom-sheet">
+        <div class="content">
+          <section id="section-wallet" class="main-wrapper" style="--16b6b170: 73px; --01be8219: 300px">
+            <div class="body w-full">
+              <header class="header fixed z-[1]">
+                <button class="relative p-4 btn-close">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                      stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="header-balance flex justify-center items-center">
+                  <p class="phrase">
+                    Withdraw</p>
+                </div>
+                <button class="relative p-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </header>
+              <div class="block-home">
+                <div>Select token to withdraw</div>
+                <div class="balance w-full">
+                  <div class="flex gap-2 flex-wrap">
+                    <div class="flex items-center w-full gap-2">
+                      <div
+                        class="balance-content__select items-center justify-between border-common rounded grow-0 show-modal-tokens">
+                        <div class="flex gap-2 items-center cursor-pointer fz-16">
+                          <img src="./assets/img/gem.png" class="img-icon"><span class="">SUI</span>
+                        </div>
+                      </div>
+                      <div class="balance-content border-common rounded flex-wrap gap-2 grow">
+                        <div class="w-full items-center relative"><input type="text" inputmode="decimal" lang="en-US"
+                            enterkeyhint="done" placeholder="0"
+                            class="balance-content__input background-input text-left w-full" autocapitalize="off"
+                            autocomplete="off"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex justify-between total">
+                    <div>Balance: </div>
+                    <div>~ 0 USD</div>
+                  </div>
+                  <div class="flex justify-between total">
+                    <div>Price impact: </div>
+                    <div>~ 0 USD</div>
+                  </div>
+                  <div class="flex justify-between total">
+                    <div>Minium Received: </div>
+                    <div>~ 0 USD</div>
+                  </div>
+                  <div class="flex justify-between total">
+                    <div>Total: </div>
+                    <div>~ 0 USD</div>
+                  </div>
+                  <div class="footer-button">
+                    <button class="btn-withdraw">Withdraw</button>
+                    <button class="btn-cancel">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+    <section id="section-tokens">
+      <div class="bottom-sheet">
+        <div class="sheet-overlay"></div>
+        <div class="content">
+          <div class="header">
+            <div class="drag-icon"><span></span></div>
+            <div class="text-3xl font-bold pb-2">
+              Tokens
+            </div>
+          </div>
+          <div class="body">
+            <main class="bottom-sheet__main w-full"
+              style="touch-action: pan-x; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+              <div class="modal-content">
+                <div class="flex flex-col gap-5">
+                  <div class="flex flex-col items-center gap-2">
+                    <!-- <div 
+                      class="w-full input-search border-common rounded flex items-center justify-between"><input
+                        placeholder="Search Tokens" enterkeyhint="done" autocapitalize="off"
+                        autocomplete="off"><svg width="20" height="20" viewBox="0 0 20 20"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path 
+                          d="M19.7558 18.5776L14.7817 13.6034C16.1372 11.9456 16.8037 9.83014 16.6432 7.6947C16.4828 5.55926 15.5077 3.56717 13.9197 2.1305C12.3316 0.693821 10.2522 -0.0775273 8.11137 -0.0240008C5.97058 0.0295257 3.93225 0.903832 2.41801 2.41807C0.903771 3.93232 0.0294646 5.97064 -0.0240619 8.11143C-0.0775884 10.2522 0.69376 12.3317 2.13044 13.9197C3.56711 15.5077 5.55919 16.4828 7.69464 16.6433C9.83008 16.8037 11.9455 16.1372 13.6033 14.7817L18.5775 19.7559C18.7347 19.9077 18.9452 19.9917 19.1637 19.9898C19.3822 19.9879 19.5912 19.9003 19.7457 19.7457C19.9002 19.5912 19.9878 19.3822 19.9897 19.1637C19.9916 18.9452 19.9076 18.7347 19.7558 18.5776ZM8.33333 15.0001C7.01479 15.0001 5.72586 14.6091 4.62953 13.8765C3.53321 13.144 2.67872 12.1028 2.17414 10.8846C1.66955 9.66644 1.53753 8.326 1.79477 7.03279C2.052 5.73959 2.68694 4.5517 3.61929 3.61935C4.55164 2.687 5.73953 2.05206 7.03273 1.79483C8.32594 1.53759 9.66638 1.66961 10.8846 2.1742C12.1027 2.67878 13.1439 3.53327 13.8765 4.62959C14.609 5.72592 15 7.01485 15 8.3334C14.998 10.1009 14.295 11.7954 13.0452 13.0452C11.7954 14.2951 10.1008 14.9981 8.33333 15.0001Z"
+                          fill="#98A7C5"></path>
+                      </svg></div> -->
+                    <div class="w-full flex-wrap select-option">
+                      <div class="select-option__content w-full justify-between">
+                        <div class="flex items-center gap-2"><img 
+                            src="./assets/img/gem.png" class="img-icon" alt=""> DGEM</div>
+                        <div class="flex gap-2 items-center text-sm">
+                          <div >~1</div>
+                          <div >USD</div>
+                        </div>
+                      </div>
+                      <div class="select-option__content w-full justify-between">
+                        <div class="flex items-center gap-2"><img 
+                            src="./assets/img/coin-bnb.png" class="img-icon" alt=""> WBNB</div>
+                        <div class="flex gap-2 items-center text-sm">
+                          <div >~525.39</div>
+                          <div >USD</div>
+                        </div>
+                      </div>
+                      <div class="select-option__content w-full justify-between">
+                        <div class="flex items-center gap-2"><img 
+                            src="./assets/img/coin-usdt.png" class="img-icon" alt=""> USDT</div>
+                        <div class="flex gap-2 items-center text-sm">
+                          <div >~0.978108</div>
+                          <div >USD</div>
+                        </div>
+                      </div>
+                      <div class="select-option__content w-full justify-between">
+                        <div class="flex items-center gap-2"><img 
+                            src="./assets/img/coin-busd.png" class="img-icon" alt=""> BUSD</div>
+                        <div class="flex gap-2 items-center text-sm">
+                          <div >~0.994094</div>
+                          <div >USD</div>
+                        </div>
+                      </div>
+                      <div class="select-option__content w-full justify-between">
+                        <div class="flex items-center gap-2"><img 
+                            src="./assets/img/coin-trx.png" class="img-icon" alt=""> TRX</div>
+                        <div class="flex gap-2 items-center text-sm">
+                          <div >~0.060463</div>
+                          <div >USD</div>
+                        </div>
+                      </div>
+                      <div class="select-option__content w-full justify-between">
+                        <div class="flex items-center gap-2"><img 
+                            src="./assets/img/coin-ton.png" class="img-icon" alt=""> TON</div>
+                        <div class="flex gap-2 items-center text-sm">
+                          <div >~3107.52</div>
+                          <div >USD</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="footer-button"><button 
+                        class="btn-cancel">Cancel</button></div>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-  </div>
+  <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>
