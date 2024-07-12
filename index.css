@@ -1073,7 +1073,6 @@ span.active {
   }
 
   & .card-history__content {
-    cursor: pointer;
     width: 100%;
     align-items: center;
     padding: 0.5rem 0;
