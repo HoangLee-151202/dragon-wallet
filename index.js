@@ -69,6 +69,7 @@ const showModalBtnWithdraw = document.querySelector(".show-modal-withdraw");
 const bottomSheetWithdraw = document.querySelector("#section-withdraw .bottom-sheet");
 const sheetContentWithdraw = bottomSheetWithdraw.querySelector("#section-withdraw .content");
 const closeModalBtnWithdraw = bottomSheetWithdraw.querySelector("#section-withdraw .btn-close");
+const cancelModalBtnWithdraw = bottomSheetWithdraw.querySelector("#section-withdraw .btn-cancel");
 
 // Biến toàn cục để theo dõi các sự kiện kéo
 let isDraggingWithdraw = false, startYWithdraw, startHeightWithdraw;
@@ -93,6 +94,7 @@ const hideBottomSheetWithdraw = () => {
 
 showModalBtnWithdraw.addEventListener("click", showBottomSheetWithdraw);
 closeModalBtnWithdraw.addEventListener("click", hideBottomSheetWithdraw);
+cancelModalBtnWithdraw.addEventListener("click", hideBottomSheetWithdraw);
 
 // ---------------------------- Handle Drag Bottom Sheet Select Token ---------------------------------
 // Chọn phần tử DOM
@@ -101,6 +103,7 @@ const bottomSheetTokens = document.querySelector("#section-tokens .bottom-sheet"
 const sheetOverlayTokens = bottomSheetTokens.querySelector("#section-tokens .sheet-overlay");
 const sheetContentTokens = bottomSheetTokens.querySelector("#section-tokens .content");
 const dragIconTokens = bottomSheetTokens.querySelector("#section-tokens .drag-icon");
+const closeModalBtnTokens = bottomSheetTokens.querySelector("#section-tokens .btn-cancel");
 
 // Biến toàn cục để theo dõi các sự kiện kéo
 let isDraggingTokens = false, startYTokens, startHeightTokens;
@@ -109,7 +112,7 @@ let isDraggingTokens = false, startYTokens, startHeightTokens;
 const showBottomSheetTokens = () => {
     bottomSheetTokens.classList.add("show");
     document.body.style.overflowY = "hidden";
-    updateSheetHeightTokens(85);
+    updateSheetHeightTokens(90);
 }
 
 const updateSheetHeightTokens = (height) => {
@@ -135,7 +138,7 @@ const draggingTokens = (e) => {
     if(!isDraggingTokens) return;
     const delta = startYTokens - (e.pageY || e.touches?.[0].pageY);
     const newHeight = startHeightTokens + delta / window.innerHeight * 100;
-    updateSheetHeightTokens(newHeight > 85 ? 85 : newHeight);
+    updateSheetHeightTokens(newHeight > 90 ? 90 : newHeight);
 }
 
 // Xác định xem nên ẩn hay đặt thành mặc định
@@ -144,7 +147,7 @@ const dragStopTokens = () => {
     isDraggingTokens = false;
     bottomSheetTokens.classList.remove("draggingTokens");
     const sheetHeight = parseInt(sheetContentTokens.style.height);
-    sheetHeight < 50 ? hideBottomSheetTokens() : updateSheetHeightTokens(85);
+    sheetHeight < 50 ? hideBottomSheetTokens() : updateSheetHeightTokens(90);
 }
 
 dragIconTokens.addEventListener("mousedown", dragStartTokens);
@@ -156,4 +159,20 @@ document.addEventListener("touchmove", draggingTokens);
 document.addEventListener("touchend", dragStopTokens);
 
 sheetOverlayTokens.addEventListener("click", hideBottomSheetTokens);
+closeModalBtnTokens.addEventListener("click", hideBottomSheetTokens);
 showModalBtnTokens.addEventListener("click", showBottomSheetTokens);
+
+//
+document.getElementById('withdraw-input').addEventListener('input', function (e) {
+  let input = e.target;
+  let value = input.value;
+  console.log('value: ', value)
+  // Xóa bỏ tất cả ký tự không phải số và dấu phẩy
+  let cleanedValue = value.replace(/[^0-9]/g, '');
+  console.log('cleanedValue: ', cleanedValue)
+  // Định dạng lại giá trị với dấu phẩy
+  let formattedValue = cleanedValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+  console.log('formattedValue: ', formattedValue)
+  // Cập nhật lại giá trị trong ô input
+  input.value = formattedValue;
+});
