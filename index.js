@@ -1,3 +1,5 @@
+import { ReactComponent as BackIcon } from './assets/svg/back.svg';
+
 // ---------------------------- Handle Drag Bottom Sheet Deposit ---------------------------------
 // Chọn phần tử DOM
 const showModalBtnDeposit = document.querySelector(".show-modal-deposit");
@@ -292,7 +294,6 @@ function toggleModal(text, callback) {
   var wrapper = document.createElement('div');
   wrapper.id = 'modal-wrapper';
   document.body.appendChild(wrapper);
-  console.log('document: ', document)
   var modal = document.createElement('div');
   modal.id = 'modal-confirmation';
   modal.innerHTML = '<div id="modal-header"><div class="title"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Confirm Approve</div><span data-confirm="0" class="modal-action" id="modal-close"><i class="fa fa-times" aria-hidden="true"></i></span></div><div id="modal-content"><div class="content">' + text + '</div></div><div id="modal-buttons"><button class="modal-action" data-confirm="0" id="modal-button-no">Refuse</button><button class="modal-action" data-confirm="1" id="modal-button-yes">Approve</button></div>';
@@ -328,3 +329,61 @@ function renderList(items, listId) {
 
 var items = ['galaxy', 'river', 'elephant', 'sunshine', 'quantum', 'velvet', 'horizon', 'whisper', 'dragon', 'mystic', 'labyrinth', 'eclipse', 'phoenix', 'crystal', 'nebula', 'harmony', 'voyage', 'ember', 'glacier', 'thunder'];
 renderList(items, 'listKey');
+
+// ----------------------------- Bottom sheet ------------------------------
+document.getElementById('btn-deposit').addEventListener('click', function(e) {
+  e.preventDefault(); 
+  
+  toggleBottomSheet({
+    header: {
+      left: <BackIcon/>,
+      title: 'Withdraw',
+    }, 
+  });
+});
+
+function toggleBottomSheet(props) {
+  var drawer = document.createElement('section');
+  drawer.id = 'section-setting';
+  modal.innerHTML = `<section id="section-deposit">
+      <div class="bottom-sheet">
+        <div class="sheet-overlay"></div>
+        <div class="content">
+          <div class="header">
+            <div class="drag-icon"><span></span></div>
+          </div>
+          <div class="body">
+            <div class="slippage flex justify-around w-full gap-2 mb-2 justify-end">
+              <div class="slippage__content cursor-pointer">BEP-20</div>
+              <div class="slippage__content cursor-pointer selected">TRC-20</div>
+              <div class="slippage__content cursor-pointer">TON</div>
+            </div>
+            <div class="mb-1 text-sm">Scan the QR code to deposit</div>
+            <div class="background">
+              <img width="160px" height="160px" src="./assets/img/qrcode.png" />
+            </div>
+            <div class="flex justify-between mt-6 w-full">
+              <div>
+                <div style="font-size: 12px;">Wallet address</div>
+                <div class="font-size: 16px">1A1zxawaP...ivfNa</div>
+              </div>
+              <button class="px-8 btn-copy btn-common button-action no-underline mt-auto mb-1 cursor-pointer"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <g clip-path="url(#clip0_712_3570)">
+                    <path
+                      d="M17.6291 2.72667L15.7258 0.760833C15.492 0.520805 15.2127 0.329867 14.9042 0.199218C14.5957 0.0685687 14.2642 0.000838693 13.9291 0L9.99996 0C9.03979 0.0012121 8.10939 0.333408 7.36558 0.940598C6.62178 1.54779 6.11004 2.39284 5.91663 3.33333H5.83329C4.72863 3.33466 3.66959 3.77407 2.88848 4.55518C2.10736 5.3363 1.66795 6.39534 1.66663 7.5V15.8333C1.66795 16.938 2.10736 17.997 2.88848 18.7782C3.66959 19.5593 4.72863 19.9987 5.83329 20H10.8333C11.938 19.9987 12.997 19.5593 13.7781 18.7782C14.5592 17.997 14.9986 16.938 15 15.8333V15.75C15.9405 15.5566 16.7855 15.0449 17.3927 14.301C17.9999 13.5572 18.3321 12.6268 18.3333 11.6667V4.46667C18.3345 3.81701 18.0819 3.1926 17.6291 2.72667ZM10.8333 18.3333H5.83329C5.17025 18.3333 4.53437 18.0699 4.06553 17.6011C3.59669 17.1323 3.33329 16.4964 3.33329 15.8333V7.5C3.33329 6.83696 3.59669 6.20107 4.06553 5.73223C4.53437 5.26339 5.17025 5 5.83329 5V11.6667C5.83462 12.7713 6.27403 13.8304 7.05514 14.6115C7.83626 15.3926 8.8953 15.832 9.99996 15.8333H13.3333C13.3333 16.4964 13.0699 17.1323 12.6011 17.6011C12.1322 18.0699 11.4963 18.3333 10.8333 18.3333ZM14.1666 14.1667H9.99996C9.33692 14.1667 8.70103 13.9033 8.23219 13.4344C7.76335 12.9656 7.49996 12.3297 7.49996 11.6667V4.16667C7.49996 3.50363 7.76335 2.86774 8.23219 2.3989C8.70103 1.93006 9.33692 1.66667 9.99996 1.66667H13.3333V3.33333C13.3333 3.77536 13.5089 4.19928 13.8215 4.51184C14.134 4.82441 14.5579 5 15 5H16.6666V11.6667C16.6666 12.3297 16.4032 12.9656 15.9344 13.4344C15.4656 13.9033 14.8297 14.1667 14.1666 14.1667Z"
+                      fill="#ffffff"></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_712_3570">
+                      <rect width="20" height="20" fill="#ffffff"></rect>
+                    </clipPath>
+                  </defs>
+                </svg> Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>`;
+  document.body.appendChild(drawer);
+}
