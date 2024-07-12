@@ -89,7 +89,7 @@
                   <div class="btn-text">
                     Withdraw</div>
                 </button>
-                <button class="mt-auto mb-1 btn-action">
+                <button class="mt-auto mb-1 btn-action show-modal-history">
                   <div class="icon-btn icon-btn-history flex items-center">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -108,7 +108,7 @@
                   <div class="btn-text">
                     History</div>
                 </button>
-                <button class="mt-auto mb-1 btn-action">
+                <button class="mt-auto mb-1 btn-action show-modal-order">
                   <div class="icon-btn icon-btn-order flex items-center">
                     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -410,6 +410,339 @@
               </div>
             </main>
           </div>
+        </div>
+      </div>
+    </section>
+    <section id="section-history">
+      <div class="bottom-sheet">
+        <div class="content">
+          <section id="section-wallet" class="main-wrapper" style="--16b6b170: 73px; --01be8219: 300px">
+            <div class="body w-full">
+              <header class="header fixed z-[1]">
+                <button class="relative p-4 btn-close">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                      stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="header-balance flex justify-center items-center">
+                  <p class="phrase">
+                    History</p>
+                </div>
+                <button class="relative p-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </header>
+              <div class="block-home">
+                <div class="w-full flex-wrap card-history">
+                  <div class="card-history__content w-full justify-between">
+                    <div class="flex align-center justify-between">
+                      <div>11-07-204 20:27:33</div>
+                      <div class="flex items-center gap-1"><img src="./assets/img/coin-bnb.png" class="img-icon"
+                        alt=""> WBNB</div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Status
+                      </div>
+                      <div class="text-success">
+                        Success
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Balance
+                      </div>
+                      <div class="text-failed">
+                        -1.231 USD
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Approved
+                      </div>
+                      <div>
+                        3/5
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Expried
+                      </div>
+                      <div>
+                        12-07-204 20:27:33
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-history__content w-full justify-between">
+                    <div class="flex align-center justify-between">
+                      <div>12-07-204 21:22:33</div>
+                      <div class="flex items-center gap-1"><img src="./assets/img/coin-bnb.png" class="img-icon"
+                        alt=""> WBNB</div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Status
+                      </div>
+                      <div>
+                        Pending
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Balance
+                      </div>
+                      <div class="text-success">
+                        +5.021 USD
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Approved
+                      </div>
+                      <div>
+                        1/5
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Expried
+                      </div>
+                      <div>
+                        13-07-204 21:22:33
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-history__content w-full justify-between">
+                    <div class="flex align-center justify-between">
+                      <div>12-07-204 21:22:33</div>
+                      <div class="flex items-center gap-1"><img src="./assets/img/gem.png" class="img-icon"
+                        alt=""> DGEM</div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Status
+                      </div>
+                      <div class="text-failed">
+                        Refuse
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Balance
+                      </div>
+                      <div class="text-success">
+                        +5.021 USD
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Approved
+                      </div>
+                      <div>
+                        1/5
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Expried
+                      </div>
+                      <div>
+                        13-07-204 21:22:33
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-history__content w-full justify-between">
+                    <div class="flex align-center justify-between">
+                      <div>12-07-204 21:22:33</div>
+                      <div class="flex items-center gap-1"><img src="./assets/img/coin-bnb.png" class="img-icon"
+                        alt=""> WBNB</div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Status
+                      </div>
+                      <div>
+                        Pending
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Balance
+                      </div>
+                      <div class="text-success">
+                        +5.021 USD
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Approved
+                      </div>
+                      <div>
+                        1/5
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Expried
+                      </div>
+                      <div>
+                        13-07-204 21:22:33
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-history__content w-full justify-between">
+                    <div class="flex align-center justify-between">
+                      <div>12-07-204 21:22:33</div>
+                      <div class="flex items-center gap-1"><img src="./assets/img/coin-busd.png" class="img-icon"
+                        alt=""> BUSD</div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Status
+                      </div>
+                      <div>
+                        Pending
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Balance
+                      </div>
+                      <div class="text-success">
+                        +5.021 USD
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Approved
+                      </div>
+                      <div>
+                        1/5
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Expried
+                      </div>
+                      <div>
+                        13-07-204 21:22:33
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-history__content w-full justify-between">
+                    <div class="flex align-center justify-between">
+                      <div>12-07-204 21:22:33</div>
+                      <div class="flex items-center gap-1"><img src="./assets/img/coin-usdt.png" class="img-icon"
+                        alt=""> USDT</div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Status
+                      </div>
+                      <div>
+                        Pending
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Balance
+                      </div>
+                      <div class="text-failed">
+                        -5.021 USD
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Approved
+                      </div>
+                      <div>
+                        1/5
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Expried
+                      </div>
+                      <div>
+                        13-07-204 21:22:33
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+    <section id="section-order">
+      <div class="bottom-sheet">
+        <div class="content">
+          <section id="section-wallet" class="main-wrapper" style="--16b6b170: 73px; --01be8219: 300px">
+            <div class="body w-full">
+              <header class="header fixed z-[1]">
+                <button class="relative p-4 btn-close">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                      stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="header-balance flex justify-center items-center">
+                  <p class="phrase">
+                    Order</p>
+                </div>
+                <button class="relative p-4">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
+                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+              </header>
+              <div class="block-home">
+                <div class="w-full flex-wrap card-history">
+                  <div id="approved-order" class="card-history__content w-full justify-between">
+                    <div class="flex align-center justify-between">
+                      <div>11-07-204 20:27:33</div>
+                      <div class="flex items-center gap-1"><img src="./assets/img/coin-bnb.png" class="img-icon"
+                        alt=""> WBNB</div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Balance
+                      </div>
+                      <div class="text-failed">
+                        -1.231 USD
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Approved
+                      </div>
+                      <div id="approved">
+                        ---
+                      </div>
+                    </div>
+                    <div class="flex align-center justify-between">
+                      <div>
+                        Expried
+                      </div>
+                      <div>
+                        12-07-204 20:27:33
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

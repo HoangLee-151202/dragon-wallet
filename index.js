@@ -176,3 +176,109 @@ document.getElementById('withdraw-input').addEventListener('input', function (e)
   // Cập nhật lại giá trị trong ô input
   input.value = formattedValue;
 });
+
+// ---------------------------- Handle Drag Bottom Sheet History ---------------------------------
+
+// Chọn phần tử DOM
+const showModalBtnHistory = document.querySelector(".show-modal-history");
+const bottomSheetHistory = document.querySelector("#section-history .bottom-sheet");
+const sheetContentHistory = bottomSheetHistory.querySelector("#section-history .content");
+const closeModalBtnHistory = bottomSheetHistory.querySelector("#section-history .btn-close");
+
+// Biến toàn cục để theo dõi các sự kiện kéo
+let isDraggingHistory = false, startYHistory, startHeightHistory;
+
+// Hiển thị Bottom sheet, ẩn thanh cuộn dọc nội dung và gọi updateSheetHeightHistory
+const showBottomSheetHistory = () => {
+    bottomSheetHistory.classList.add("show");
+    document.body.style.overflowY = "hidden";
+    updateSheetHeightHistory(100);
+}
+
+const updateSheetHeightHistory = (height) => {
+    sheetContentHistory.style.height = `${height}vh`; // Cập nhật chiều cao của nội dung Bottom sheet
+}
+
+// Ẩn Bottom sheet và hiển thị thanh cuộn dọc nội dung
+const hideBottomSheetHistory = () => {
+    bottomSheetHistory.classList.remove("show");
+    document.body.style.overflowY = "auto";
+}
+
+
+showModalBtnHistory.addEventListener("click", showBottomSheetHistory);
+closeModalBtnHistory.addEventListener("click", hideBottomSheetHistory);
+
+// ---------------------------- Handle Drag Bottom Sheet Order ---------------------------------
+
+// Chọn phần tử DOM
+const showModalBtnOrder = document.querySelector(".show-modal-order");
+const bottomSheetOrder = document.querySelector("#section-order .bottom-sheet");
+const sheetContentOrder = bottomSheetOrder.querySelector("#section-order .content");
+const closeModalBtnOrder = bottomSheetOrder.querySelector("#section-order .btn-close");
+
+// Biến toàn cục để theo dõi các sự kiện kéo
+let isDraggingOrder = false, startYOrder, startHeightOrder;
+
+// Hiển thị Bottom sheet, ẩn thanh cuộn dọc nội dung và gọi updateSheetHeightOrder
+const showBottomSheetOrder = () => {
+    bottomSheetOrder.classList.add("show");
+    document.body.style.overflowY = "hidden";
+    updateSheetHeightOrder(100);
+}
+
+const updateSheetHeightOrder = (height) => {
+    sheetContentOrder.style.height = `${height}vh`; // Cập nhật chiều cao của nội dung Bottom sheet
+}
+
+// Ẩn Bottom sheet và hiển thị thanh cuộn dọc nội dung
+const hideBottomSheetOrder = () => {
+    bottomSheetOrder.classList.remove("show");
+    document.body.style.overflowY = "auto";
+}
+
+
+showModalBtnOrder.addEventListener("click", showBottomSheetOrder);
+closeModalBtnOrder.addEventListener("click", hideBottomSheetOrder);
+
+// ---------------------------- Handle Open popconfirm ---------------------------------
+
+document.getElementById('approved-order').addEventListener('click', function(e) {
+  e.preventDefault(); 
+  
+  var userResult = function(result) {
+      if (result === 1) {
+          document.getElementById('approved').textContent = 'Approved';
+      } else {
+          document.getElementById('approved').textContent = 'Refused';
+      }
+  };
+  
+  toggleModal('Do you want to approve this withdrawal order?', userResult);
+});
+
+function toggleModal(text, callback) {
+  var wrapper = document.createElement('div');
+  wrapper.id = 'modal-wrapper';
+  document.body.appendChild(wrapper);
+  console.log('document: ', document)
+  var modal = document.createElement('div');
+  modal.id = 'modal-confirmation';
+  modal.innerHTML = '<div id="modal-header"><div class="title"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Confirm Delete</div><span data-confirm="0" class="modal-action" id="modal-close"><i class="fa fa-times" aria-hidden="true"></i></span></div><div id="modal-content"><div class="content">' + text + '</div></div><div id="modal-buttons"><button class="modal-action" data-confirm="0" id="modal-button-no">Refuse</button><button class="modal-action" data-confirm="1" id="modal-button-yes">Approve</button></div>';
+  wrapper.appendChild(modal);
+  
+  setTimeout(function() {
+      wrapper.classList.add('active');
+  }, 100);
+  
+  Array.from(wrapper.getElementsByClassName('modal-action')).forEach(function(element) {
+      element.addEventListener('click', function() {
+          var result = this.getAttribute('data-confirm');
+          wrapper.classList.remove('active');
+          setTimeout(function() {
+              document.body.removeChild(wrapper);
+              callback(parseInt(result, 10));
+          }, 500);
+      });
+  });
+}
