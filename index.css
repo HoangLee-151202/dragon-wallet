@@ -420,7 +420,6 @@ span.active {
     display: flex;
     flex-direction: column;
         align-items: center;
-    margin-top: 0.5rem;
     height: 100%;
     overflow-y: auto;
     scrollbar-width: none;
@@ -429,8 +428,8 @@ span.active {
       display: flex;
       justify-content: center;
       background: #fff;
-      height: 220px;
-      width: 220px;
+      height: 200px;
+      width: 200px;
       align-items: center;
       border-radius: 1rem;
     }
@@ -452,6 +451,38 @@ span.active {
     margin-top: 20px;
     font-size: 1.05rem;
   }
+  & .btn-common {
+    background: var(--button-background);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    padding: 8px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  & .slippage {
+    padding: 5px 8px;
+    border-radius: 50px;
+    background: #ffffff1a;
+    margin-bottom: 0.5rem;
+}
+& .slippage__content {
+  flex-grow: 1;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 50px;
+  font-size: 14px;
+  width: calc(100% / 3);
+}
+& .selected {
+  background: var(--btn-select);
+  border: none;
+}
 }
 
 #section-withdraw {
@@ -559,7 +590,7 @@ span.active {
   }
 
   & .balance .balance-content__select {
-    padding: 12px 16px;
+    padding: 12px;
     width: 40%;
   }
 
@@ -631,6 +662,8 @@ span.active {
     outline: none;
     border: none;
     color: white;
+    font-size: 16px;
+        font-weight: 600;
   }
 
   & #section-wallet {
@@ -642,7 +675,7 @@ span.active {
   }
   & span {
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 0.4em;
     font-weight: 500;
   }
@@ -1012,7 +1045,9 @@ img {
 .mt-4 {
   margin-top: 1rem;
 }
-
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .mt-10 {
   margin-top: 2.5rem;
 }

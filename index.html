@@ -64,11 +64,11 @@
               <div class="mt-1 w-full flex justify-around items-center">
                 <button class="mt-auto mb-1 btn-action show-modal-deposit">
                   <div class="icon-btn icon-btn-deposit flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path d="M12.0703 22V2" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.9297 2V22" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
                         stroke-linejoin="round" />
                       <path
-                        d="M5 8L10 2.84009C10.2571 2.5677 10.5671 2.35047 10.911 2.20215C11.2549 2.05383 11.6255 1.97754 12 1.97754C12.3745 1.97754 12.7451 2.05383 13.089 2.20215C13.4329 2.35047 13.7429 2.5677 14 2.84009L19 8"
+                        d="M19 16L14 21.1599C13.7437 21.4336 13.434 21.6519 13.0899 21.801C12.7459 21.9502 12.375 22.0271 12 22.0271C11.625 22.0271 11.2541 21.9502 10.9101 21.801C10.566 21.6519 10.2563 21.4336 10 21.1599L5 16"
                         stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </div>
@@ -77,13 +77,14 @@
                 </button>
                 <button class="mt-auto mb-1 btn-action show-modal-withdraw">
                   <div class="icon-btn icon-btn-withdraw flex items-center">
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M11.9297 2V22" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path d="M12.0703 22V2" stroke="#EEEEEE" stroke-width="3" stroke-linecap="round"
                         stroke-linejoin="round" />
                       <path
-                        d="M19 16L14 21.1599C13.7437 21.4336 13.434 21.6519 13.0899 21.801C12.7459 21.9502 12.375 22.0271 12 22.0271C11.625 22.0271 11.2541 21.9502 10.9101 21.801C10.566 21.6519 10.2563 21.4336 10 21.1599L5 16"
+                        d="M5 8L10 2.84009C10.2571 2.5677 10.5671 2.35047 10.911 2.20215C11.2549 2.05383 11.6255 1.97754 12 1.97754C12.3745 1.97754 12.7451 2.05383 13.089 2.20215C13.4329 2.35047 13.7429 2.5677 14 2.84009L19 8"
                         stroke="#EEEEEE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
+
                   </div>
                   <div class="btn-text">
                     Withdraw</div>
@@ -225,10 +226,34 @@
             <div class="drag-icon"><span></span></div>
           </div>
           <div class="body">
-            <div class="background">
-              <img width="190px" height="190px" src="./assets/img/qrcode.png" />
+            <div class="slippage flex justify-around w-full gap-2 mb-2 justify-end">
+              <div class="slippage__content cursor-pointer">BEP-20</div>
+              <div class="slippage__content cursor-pointer selected">TRC-20</div>
+              <div class="slippage__content cursor-pointer">TON</div>
             </div>
-            <div class="mt-2">Scan the QR code to deposit</div>
+            <div class="mb-1 text-sm">Scan the QR code to deposit</div>
+            <div class="background">
+              <img width="160px" height="160px" src="./assets/img/qrcode.png" />
+            </div>
+            <div class="flex justify-between mt-6 w-full">
+              <div>
+                <div style="font-size: 12px;">Wallet address</div>
+                <div class="font-size: 16px">1A1zxawaP...ivfNa</div>
+              </div>
+              <button class="px-8 btn-copy btn-common button-action no-underline mt-auto mb-1"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <g clip-path="url(#clip0_712_3570)">
+                    <path
+                      d="M17.6291 2.72667L15.7258 0.760833C15.492 0.520805 15.2127 0.329867 14.9042 0.199218C14.5957 0.0685687 14.2642 0.000838693 13.9291 0L9.99996 0C9.03979 0.0012121 8.10939 0.333408 7.36558 0.940598C6.62178 1.54779 6.11004 2.39284 5.91663 3.33333H5.83329C4.72863 3.33466 3.66959 3.77407 2.88848 4.55518C2.10736 5.3363 1.66795 6.39534 1.66663 7.5V15.8333C1.66795 16.938 2.10736 17.997 2.88848 18.7782C3.66959 19.5593 4.72863 19.9987 5.83329 20H10.8333C11.938 19.9987 12.997 19.5593 13.7781 18.7782C14.5592 17.997 14.9986 16.938 15 15.8333V15.75C15.9405 15.5566 16.7855 15.0449 17.3927 14.301C17.9999 13.5572 18.3321 12.6268 18.3333 11.6667V4.46667C18.3345 3.81701 18.0819 3.1926 17.6291 2.72667ZM10.8333 18.3333H5.83329C5.17025 18.3333 4.53437 18.0699 4.06553 17.6011C3.59669 17.1323 3.33329 16.4964 3.33329 15.8333V7.5C3.33329 6.83696 3.59669 6.20107 4.06553 5.73223C4.53437 5.26339 5.17025 5 5.83329 5V11.6667C5.83462 12.7713 6.27403 13.8304 7.05514 14.6115C7.83626 15.3926 8.8953 15.832 9.99996 15.8333H13.3333C13.3333 16.4964 13.0699 17.1323 12.6011 17.6011C12.1322 18.0699 11.4963 18.3333 10.8333 18.3333ZM14.1666 14.1667H9.99996C9.33692 14.1667 8.70103 13.9033 8.23219 13.4344C7.76335 12.9656 7.49996 12.3297 7.49996 11.6667V4.16667C7.49996 3.50363 7.76335 2.86774 8.23219 2.3989C8.70103 1.93006 9.33692 1.66667 9.99996 1.66667H13.3333V3.33333C13.3333 3.77536 13.5089 4.19928 13.8215 4.51184C14.134 4.82441 14.5579 5 15 5H16.6666V11.6667C16.6666 12.3297 16.4032 12.9656 15.9344 13.4344C15.4656 13.9033 14.8297 14.1667 14.1666 14.1667Z"
+                      fill="#ffffff"></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_712_3570">
+                      <rect width="20" height="20" fill="#ffffff"></rect>
+                    </clipPath>
+                  </defs>
+                </svg> Copy</button>
+            </div>
           </div>
         </div>
       </div>
@@ -265,13 +290,13 @@
                     <div class="flex items-center w-full gap-2">
                       <div
                         class="balance-content__select items-center justify-between border-common rounded grow-0 show-modal-tokens">
-                        <div class="flex gap-2 items-center cursor-pointer fz-16">
-                          <img src="./assets/img/gem.png" class="img-icon"><span class="">SUI</span>
+                        <div class="flex gap-1 items-center cursor-pointer fz-16">
+                          <img src="./assets/img/gem.png" class="img-icon"><span class="">DGEM</span>
                         </div>
                       </div>
                       <div class="balance-content border-common rounded flex-wrap gap-2 grow">
-                        <div class="w-full items-center relative"><input type="text" id="withdraw-input" inputmode="decimal" lang="en-US"
-                            enterkeyhint="done" placeholder="0"
+                        <div class="w-full items-center relative"><input type="text" id="withdraw-input"
+                            inputmode="decimal" lang="en-US" enterkeyhint="done" placeholder="0"
                             class="balance-content__input background-input text-left w-full" autocapitalize="off"
                             autocomplete="off"></div>
                       </div>
@@ -331,56 +356,55 @@
                       </svg></div> -->
                     <div class="w-full flex-wrap select-option">
                       <div class="select-option__content w-full justify-between">
-                        <div class="flex items-center gap-2"><img 
-                            src="./assets/img/gem.png" class="img-icon" alt=""> DGEM</div>
+                        <div class="flex items-center gap-2"><img src="./assets/img/gem.png" class="img-icon" alt="">
+                          DGEM</div>
                         <div class="flex gap-2 items-center text-sm">
-                          <div >~1</div>
-                          <div >USD</div>
+                          <div>~1</div>
+                          <div>USD</div>
                         </div>
                       </div>
                       <div class="select-option__content w-full justify-between">
-                        <div class="flex items-center gap-2"><img 
-                            src="./assets/img/coin-bnb.png" class="img-icon" alt=""> WBNB</div>
+                        <div class="flex items-center gap-2"><img src="./assets/img/coin-bnb.png" class="img-icon"
+                            alt=""> WBNB</div>
                         <div class="flex gap-2 items-center text-sm">
-                          <div >~525.39</div>
-                          <div >USD</div>
+                          <div>~525.39</div>
+                          <div>USD</div>
                         </div>
                       </div>
                       <div class="select-option__content w-full justify-between">
-                        <div class="flex items-center gap-2"><img 
-                            src="./assets/img/coin-usdt.png" class="img-icon" alt=""> USDT</div>
+                        <div class="flex items-center gap-2"><img src="./assets/img/coin-usdt.png" class="img-icon"
+                            alt=""> USDT</div>
                         <div class="flex gap-2 items-center text-sm">
-                          <div >~0.978108</div>
-                          <div >USD</div>
+                          <div>~0.978108</div>
+                          <div>USD</div>
                         </div>
                       </div>
                       <div class="select-option__content w-full justify-between">
-                        <div class="flex items-center gap-2"><img 
-                            src="./assets/img/coin-busd.png" class="img-icon" alt=""> BUSD</div>
+                        <div class="flex items-center gap-2"><img src="./assets/img/coin-busd.png" class="img-icon"
+                            alt=""> BUSD</div>
                         <div class="flex gap-2 items-center text-sm">
-                          <div >~0.994094</div>
-                          <div >USD</div>
+                          <div>~0.994094</div>
+                          <div>USD</div>
                         </div>
                       </div>
                       <div class="select-option__content w-full justify-between">
-                        <div class="flex items-center gap-2"><img 
-                            src="./assets/img/coin-trx.png" class="img-icon" alt=""> TRX</div>
+                        <div class="flex items-center gap-2"><img src="./assets/img/coin-trx.png" class="img-icon"
+                            alt=""> TRX</div>
                         <div class="flex gap-2 items-center text-sm">
-                          <div >~0.060463</div>
-                          <div >USD</div>
+                          <div>~0.060463</div>
+                          <div>USD</div>
                         </div>
                       </div>
                       <div class="select-option__content w-full justify-between">
-                        <div class="flex items-center gap-2"><img 
-                            src="./assets/img/coin-ton.png" class="img-icon" alt=""> TON</div>
+                        <div class="flex items-center gap-2"><img src="./assets/img/coin-ton.png" class="img-icon"
+                            alt=""> TON</div>
                         <div class="flex gap-2 items-center text-sm">
-                          <div >~3107.52</div>
-                          <div >USD</div>
+                          <div>~3107.52</div>
+                          <div>USD</div>
                         </div>
                       </div>
                     </div>
-                    <div class="footer-button"><button 
-                        class="btn-cancel">Cancel</button></div>
+                    <div class="footer-button"><button class="btn-cancel">Cancel</button></div>
                   </div>
                 </div>
               </div>
