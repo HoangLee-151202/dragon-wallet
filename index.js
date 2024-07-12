@@ -13,7 +13,7 @@ let isDraggingDeposit = false, startYDeposit, startHeightDeposit;
 const showBottomSheetDeposit = () => {
     bottomSheetDeposit.classList.add("show");
     document.body.style.overflowY = "hidden";
-    updateSheetHeightDeposit(62);
+    updateSheetHeightDeposit(70);
 }
 
 const updateSheetHeightDeposit = (height) => {
@@ -39,7 +39,7 @@ const draggingDeposit = (e) => {
     if(!isDraggingDeposit) return;
     const delta = startYDeposit - (e.pageY || e.touches?.[0].pageY);
     const newHeight = startHeightDeposit + delta / window.innerHeight * 100;
-    updateSheetHeightDeposit(newHeight > 62 ? 62 : newHeight);
+    updateSheetHeightDeposit(newHeight > 70 ? 70 : newHeight);
 }
 
 // Xác định xem nên ẩn hay đặt thành mặc định
@@ -48,7 +48,7 @@ const dragStopDeposit = () => {
     isDraggingDeposit = false;
     bottomSheetDeposit.classList.remove("draggingDeposit");
     const sheetHeight = parseInt(sheetContentDeposit.style.height);
-    sheetHeight < 35 ? hideBottomSheetDeposit() : updateSheetHeightDeposit(62);
+    sheetHeight < 35 ? hideBottomSheetDeposit() : updateSheetHeightDeposit(70);
 }
 
 dragIconDeposit.addEventListener("mousedown", dragStartDeposit);
