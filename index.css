@@ -1533,10 +1533,6 @@ span.active {
     width: 14px;
     height: 14px;
   }
-
-  & .block-home>div {
-    padding-right: 6px;
-  }
 }
 
 .wave-icon-absolute {
