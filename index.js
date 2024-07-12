@@ -241,6 +241,37 @@ const hideBottomSheetOrder = () => {
 showModalBtnOrder.addEventListener("click", showBottomSheetOrder);
 closeModalBtnOrder.addEventListener("click", hideBottomSheetOrder);
 
+// ---------------------------- Handle Drag Bottom Sheet Setting ---------------------------------
+
+// Chọn phần tử DOM
+const showModalBtnSetting = document.querySelector(".show-modal-setting");
+const bottomSheetSetting = document.querySelector("#section-setting .bottom-sheet");
+const sheetContentSetting = bottomSheetSetting.querySelector("#section-setting .content");
+const closeModalBtnSetting = bottomSheetSetting.querySelector("#section-setting .btn-close");
+
+// Biến toàn cục để theo dõi các sự kiện kéo
+let isDraggingSetting = false, startYSetting, startHeightSetting;
+
+// Hiển thị Bottom sheet, ẩn thanh cuộn dọc nội dung và gọi updateSheetHeightSetting
+const showBottomSheetSetting = () => {
+    bottomSheetSetting.classList.add("show");
+    document.body.style.overflowY = "hidden";
+    updateSheetHeightSetting(100);
+}
+
+const updateSheetHeightSetting = (height) => {
+    sheetContentSetting.style.height = `${height}vh`; // Cập nhật chiều cao của nội dung Bottom sheet
+}
+
+// Ẩn Bottom sheet và hiển thị thanh cuộn dọc nội dung
+const hideBottomSheetSetting = () => {
+    bottomSheetSetting.classList.remove("show");
+    document.body.style.overflowY = "auto";
+}
+
+
+showModalBtnSetting.addEventListener("click", showBottomSheetSetting);
+closeModalBtnSetting.addEventListener("click", hideBottomSheetSetting);
 // ---------------------------- Handle Open popconfirm ---------------------------------
 
 document.getElementById('approved-order').addEventListener('click', function(e) {
@@ -264,7 +295,7 @@ function toggleModal(text, callback) {
   console.log('document: ', document)
   var modal = document.createElement('div');
   modal.id = 'modal-confirmation';
-  modal.innerHTML = '<div id="modal-header"><div class="title"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Confirm Delete</div><span data-confirm="0" class="modal-action" id="modal-close"><i class="fa fa-times" aria-hidden="true"></i></span></div><div id="modal-content"><div class="content">' + text + '</div></div><div id="modal-buttons"><button class="modal-action" data-confirm="0" id="modal-button-no">Refuse</button><button class="modal-action" data-confirm="1" id="modal-button-yes">Approve</button></div>';
+  modal.innerHTML = '<div id="modal-header"><div class="title"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Confirm Approve</div><span data-confirm="0" class="modal-action" id="modal-close"><i class="fa fa-times" aria-hidden="true"></i></span></div><div id="modal-content"><div class="content">' + text + '</div></div><div id="modal-buttons"><button class="modal-action" data-confirm="0" id="modal-button-no">Refuse</button><button class="modal-action" data-confirm="1" id="modal-button-yes">Approve</button></div>';
   wrapper.appendChild(modal);
   
   setTimeout(function() {
@@ -282,3 +313,18 @@ function toggleModal(text, callback) {
       });
   });
 }
+
+// -------------------------------- Render List In Setting -------------------------------------
+function renderList(items, listId) {
+  var list = document.getElementById(listId);
+  list.innerHTML = ''; // Xóa nội dung cũ nếu có
+
+  for (var i = 0; i < items.length; i++) {
+      var listItem = document.createElement('li');
+      listItem.textContent = `${i+1}. ${items[i]}`;
+      list.appendChild(listItem);
+  }
+}
+
+var items = ['galaxy', 'river', 'elephant', 'sunshine', 'quantum', 'velvet', 'horizon', 'whisper', 'dragon', 'mystic', 'labyrinth', 'eclipse', 'phoenix', 'crystal', 'nebula', 'harmony', 'voyage', 'ember', 'glacier', 'thunder'];
+renderList(items, 'listKey');
