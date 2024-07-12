@@ -2367,7 +2367,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  height: 60vh;
+  height: calc(100vh - 270px);
   overflow: auto;
 
   & li {
