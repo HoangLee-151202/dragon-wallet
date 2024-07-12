@@ -2369,9 +2369,11 @@ img {
   gap: 0.5rem;
   height: calc(100vh - 270px);
   overflow: auto;
-
+  &::-webkit-scrollbar {
+    display: none;
+}
   & li {
-    flex: 0 0 calc(50% - 0.5rem);
+    flex: 0 0 calc(50% - 0.25rem);
     box-sizing: border-box;
     padding: 10px 16px;
     background-color: #26272d;
