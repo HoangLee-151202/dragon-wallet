@@ -27,7 +27,7 @@ class TabSlip extends HTMLElement {
   
     renderOptions(options) {
       const slipDiv = this.shadowRoot.querySelector('.tab-slip');
-      slipDiv.innerHTML = ''; // Clear existing options
+      slipDiv.innerHTML = '';
   
       options.forEach((option, index) => {
         const div = document.createElement('div');
@@ -37,7 +37,6 @@ class TabSlip extends HTMLElement {
         }
         div.textContent = option.label;
   
-        // Add click event listener
         div.addEventListener('click', () => {
           this.updateSelected(index);
         });
@@ -53,7 +52,7 @@ class TabSlip extends HTMLElement {
       });
       this.options = options;
       this.dispatchEvent(new CustomEvent('option-changed', {
-        detail: { options }
+        detail: options[index]?.label
       }));
     }
   

@@ -1374,10 +1374,6 @@ span.active {
   left: -12px;
 }
 
-.overlay {
-  height: var(--01be8219);
-}
-
 .direction-tab {
   width: 100%;
 }
@@ -1767,117 +1763,6 @@ img {
   }
 }
 
-.bottom-sheet {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9999999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  overflow: hidden;
-  transition: visibility var(--79c8792a);
-  pointer-events: none;
-}
-
-.bottom-sheet {
-  box-sizing: border-box;
-}
-
-.bottom-sheet[aria-hidden="false"] {
-  visibility: visible;
-}
-
-.bottom-sheet[aria-hidden="true"] {
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.bottom-sheet__overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 5;
-}
-
-.bottom-sheet__content {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: var(--0d37f9ba);
-  height: var(--39d72767);
-  max-height: calc(100vh - 40px);
-  overflow-y: hidden;
-  border-radius: 16px 16px 0 0;
-  transform: translate3d(0, var(--f2369738), 0);
-  pointer-events: all;
-}
-
-.bottom-sheet__content--fullscreen {
-  border-radius: 0;
-}
-
-.bottom-sheet__content--bgtype1 {
-  background-image: url(./assets/img/bottom-sheet-popup-frame.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.bottom-sheet__content--bgtype1>header {
-  background-image: url(./assets/img/bottom-sheet-popup-header-frame.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-.bottom-sheet__content:not(.bottom-sheet__content--dragging) {
-  transition: var(--79c8792a) ease;
-}
-
-.bottom-sheet__draggable-area {
-  width: 100%;
-  margin: auto;
-  padding: 16px;
-  cursor: grab;
-}
-
-.bottom-sheet__main {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  overflow-y: scroll;
-  touch-action: auto !important;
-  -webkit-overflow-scrolling: touch;
-}
-
-.bottom-sheet__main::-webkit-scrollbar {
-  display: none;
-  width: 8px;
-  height: 8px;
-}
-
-.bottom-sheet__main::-webkit-scrollbar-corner {
-  display: none;
-}
-
-.bottom-sheet__main:hover::-webkit-scrollbar-thumb {
-  background-color: #0003;
-  border-radius: 8px;
-}
-
-.bottom-sheet__main::-webkit-scrollbar-thumb {
-  background-color: #0000;
-}
-
-.bottom-sheet__footer:empty {
-  display: none;
-}
-
 .pointer-events-auto {
   pointer-events: auto;
 }
@@ -2263,166 +2148,69 @@ img {
   margin-top: 0.25rem;
 }
 
-/* ---------------------- Css Component Bottom Sheet ---------------------- */
-
-.bottom-sheet {
+/* ---------------------- Css Component Drawer ------------------------ */
+.drawer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   display: flex;
-  opacity: 0;
+  width: 100vw;
+  background: #0D0F15;
+  transform: translateX(100%);
   pointer-events: none;
   align-items: center;
   flex-direction: column;
-  justify-content: flex-end;
   transition: 0.1s linear;
-  &.show {
-    opacity: 1;
-    pointer-events: auto;
-    & .content {
-      transform: translateY(0%);
-    }
-  }
-  & .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    background: #000;
-  }
-  & .content {
-    width: 100%;
-    position: relative;
-    background: #0D0F15;
-    max-height: 100vh;
-    height: 50vh;
-    max-width: 1150px;
-    padding: 25px 30px;
-    transform: translateY(100%);
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
-    transition: 0.3s ease;
-  }
-  &.dragging .content {
-    transition: none;
-  }
-  & .header {
+  z-index: 10;
+}
+
+.drawer.show {
+  pointer-events: auto;
+  transform: translateX(0%);
+}
+
+.drawer .header {
+  display: flex;
+}
+
+.drawer .body {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  & .background {
     display: flex;
     justify-content: center;
-    & .drag-icon {
-      cursor: grab;
-      user-select: none;
-      padding: 15px;
-      margin-top: -15px;
-      & span {
-        height: 4px;
-        width: 40px;
-        display: block;
-        background: #C7D0E1;
-        border-radius: 50px;
-      }
-    }
-  }
-  & .body {
-    display: flex;
-    flex-direction: column;
+    background: #fff;
+    height: 220px;
+    width: 220px;
     align-items: center;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-    & .background {
-      display: flex;
-      justify-content: center;
-      background: #fff;
-      height: 200px;
-      width: 200px;
-      align-items: center;
-      border-radius: 1rem;
-    }
-  
-    & img {
-      height: fit-content;
-    }
-    &::-webkit-scrollbar {
-      width: 0;
-    }
-    & h2 {
-      font-size: 1.8rem;
-    }
-    & p {
-      margin-top: 20px;
-      font-size: 1.05rem;
-    }
+    border-radius: 1rem;
   }
 }
 
-/* ---------------------- Css Component Drawer ------------------------ */
-  .drawer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    width: 100vw;
-    background: #0D0F15;
-    transform: translateX(100%);
-    pointer-events: none;
-    align-items: center;
-    flex-direction: column;
-    transition: 0.1s linear;
-    z-index: 10;
-  }
+& .drawer .body::-webkit-scrollbar {
+  width: 0;
+}
 
-  .drawer.show {
-    pointer-events: auto;
-    transform: translateX(0%);
-  }
+& .drawer .body h2 {
+  font-size: 1.8rem;
+}
 
-  .drawer .header {
-    display: flex;
-  }
-
-  .drawer .body {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.5rem;
-    height: 100%;
-    overflow-y: auto;
-    scrollbar-width: none;
-
-    & .background {
-      display: flex;
-      justify-content: center;
-      background: #fff;
-      height: 220px;
-      width: 220px;
-      align-items: center;
-      border-radius: 1rem;
-    }
-  }
-
-  & .drawer .body::-webkit-scrollbar {
-    width: 0;
-  }
-
-  & .drawer .body h2 {
-    font-size: 1.8rem;
-  }
-
-  & .drawer .body p {
-    font-size: 1.05rem;
-  }
+& .drawer .body p {
+  font-size: 1.05rem;
+}
 
 /* ---------------------- Css Component Tab Slip ---------------------- */
 #tab-slip {
   width: 100%;
 }
+
 .tab-slip {
   padding: 5px 8px;
   border-radius: 50px;
@@ -2432,6 +2220,7 @@ img {
   justify-content: space-around;
   width: 100%;
   display: flex;
+
   & .option {
     flex-grow: 1;
     text-align: center;
@@ -2441,6 +2230,7 @@ img {
     width: calc(100% / 3);
     cursor: pointer;
     transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+
     &.selected {
       background: var(--btn-select);
       border: none;
@@ -2461,4 +2251,162 @@ img {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+/* -------------------------------- Css Component Bottom Sheet -------------------------- */
+.bottom-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  bottom: -100%;
+  pointer-events: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: bottom 0.5s ease-in-out;
+  z-index: 10;
+  &.show {
+    bottom: 0;
+    pointer-events: auto;
+  }
+
+  &[aria-hidden="false"] {
+    visibility: visible;
+  }
+
+  &[aria-hidden="true"] {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  & .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    background: #000;
+  }
+
+  & .content {
+    width: 100%;
+    position: relative;
+    background: #0D0F15;
+    max-height: 100vh;
+    height: 50vh;
+    max-width: 1150px;
+    padding: 25px 30px;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+
+    & .header {
+      display: flex;
+      justify-content: center;
+      
+      & .drag-icon {
+        cursor: grab;
+        user-select: none;
+        padding: 15px;
+        margin-top: -15px;
+
+        & span {
+          height: 4px;
+          width: 40px;
+          display: block;
+          background: #C7D0E1;
+          border-radius: 50px;
+        }
+      }
+
+      & .title {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 700;
+        padding-bottom: .5rem;
+        &:empty {
+          display: none;
+        }
+      }
+    }
+
+    & .body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      overflow-y: scroll;
+      touch-action: auto !important;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      touch-action: pan-x;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      & .background {
+        display: flex;
+      justify-content: center;
+      background: #fff;
+      height: 220px;
+      width: 220px;
+      align-items: center;
+      border-radius: 1rem;
+      }
+      &::-webkit-scrollbar {
+        display: none;
+        width: 8px;
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-corner {
+        display: none;
+      }
+
+      &:hover::-webkit-scrollbar-thumb {
+        background-color: #0003;
+        border-radius: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #0000;
+      }
+    }
+
+    & .footer:empty {
+      display: none;
+    }
+  }
+}
+
+/* -------------------------------- Css Component Notification -------------------------- */
+
+.notification{  
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  &.show{
+    opacity: 1;
+    height:50px;
+    &[status="success"] {
+      background-color: var(--success-green);
+    }
+    & .label {
+      font-size: 14px;
+    }
+  }
 }

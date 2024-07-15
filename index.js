@@ -71,24 +71,30 @@ const qrOptions = [
   { label: 'TON', selected: false }
 ];
 
+const infoWallet = {
+  address: '1A1zxawaP...ivfNa'
+}
+
 // ---------------------------- Handle Drag Bottom Sheet Deposit ---------------------------------
 document.addEventListener('DOMContentLoaded', () => {
   const buttonDeposit = document.querySelector('#btn-deposit');
   buttonDeposit.addEventListener('button-click', (event) => {
-    toggleBottomSheet({
+    const bottomSheet = toggleBottomSheet({
       id: 'section-deposit',
-      slot: `
-          <tab-slip id="tab-slip"></tab-slip>
+      content: `
+          <tab-slip id="tab-slip" options=${JSON.stringify(qrOptions)}></tab-slip>
           <div class="mb-1 text-sm">Scan the QR code to deposit</div>
           <div class="background">
             <img width="160px" height="160px" src="./assets/img/qrcode.png" />
           </div>
-          <div class="flex justify-between mt-6 w-full">
+      `,
+      footer: `
+        <div class="flex justify-between mt-6 w-full">
           <div>
             <div style="font-size: 12px;">Wallet address</div>
-            <div class="font-size: 16px">1A1zxawaP...ivfNa</div>
+            <div class="font-size: 16px">${infoWallet.address}</div>
           </div>
-          <button class="px-8 btn-copy btn-common no-underline mt-auto mb-1 cursor-pointer">
+          <button class="px-8 btn-copy btn-common no-underline mt-auto mb-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <g clip-path="url(#clip0_712_3570)">
                 <path
@@ -104,16 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
             Copy
           </button>
         </div>
-  `
+      `
     });
+      const tabSlip = bottomSheet.shadowRoot.querySelector('#tab-slip');
+      if (tabSlip) {
+        tabSlip.options = qrOptions;
 
-    const tabSlip = document.querySelector('#tab-slip');
- 
-    tabSlip.options = qrOptions;
-
-    tabSlip.addEventListener('option-changed', (event) => {
-      console.log('Options after change:', event.detail.options);
-    });
+        tabSlip.addEventListener('option-changed', (event) => {
+          console.log('Change tabs:', event.detail);
+        });
+      }
+      
+      const copyButton = bottomSheet.shadowRoot.querySelector('.btn-copy');
+      copyButton.addEventListener('click', (event) => {
+        navigator.clipboard.writeText(infoWallet.address);
+        toggleNotification({
+          id: 'copy-wallet',
+          label: 'Copy successfull!',
+          status: 'success'
+        })
+      });
   });
 
   const buttonWithdraw = document.querySelector('#btn-withdraw');
@@ -123,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
       slot: `<div>123</div>`
     });
   });
+
+
 });
 // Chọn phần tử DOM
 // const showModalBtnDeposit = document.querySelector("#btn-deposit");
@@ -481,104 +499,18 @@ renderButtons(buttonsData);
 // ---------------------------- Handle Open Bottom Sheet ------------------------------ //
 
 function toggleBottomSheet({
-  id, 
-  slot
+  id,
+  title,
+  content,
+  footer
 }) {
-  // Tạo section
-  let section = document.createElement('section');
-  section.id = id;
-  document.body.appendChild(section);
-
-  // Tạo bottom-sheet
-  let bottomSheet = document.createElement('div');
-  bottomSheet.classList.add('bottom-sheet')
-
-  // Tạo overlay
-  let overlay = document.createElement('div');
-  overlay.classList.add('overlay')
-  bottomSheet.appendChild(overlay)
-
-  // Tạo content
-  let content = document.createElement('div');
-  content.classList.add('content')
-  bottomSheet.appendChild(content)
-
-  // Tạo content header
-  let contentHeader = document.createElement('div');
-  contentHeader.classList.add('header')
-  contentHeader.innerHTML = '<div class="drag-icon"><span></span></div>';
-  content.appendChild(contentHeader)
-
-  // Tạo content body
-  let contentBody = document.createElement('div');
-  contentBody.classList.add('body')
-  contentBody.innerHTML = slot;
-  content.appendChild(contentBody)
-
-  section.appendChild(bottomSheet);
-
-  setTimeout(function () {
-    showBottomSheet();
-  }, 100);
-
-  const sheetOverlay = bottomSheet.querySelector(".overlay");
-  const sheetContent = bottomSheet.querySelector(".content");
-  const dragIcon = bottomSheet.querySelector(".drag-icon");
-
-  // Biến toàn cục để theo dõi các sự kiện kéo
-  let isDragging = false, startY, startHeight;
-
-  // Hiển thị Bottom sheet, ẩn thanh cuộn dọc nội dung và gọi updateSheetHeight
-  const showBottomSheet = () => {
-    bottomSheet.classList.add("show");
-    document.body.style.overflowY = "hidden";
-    updateSheetHeight(70);
-  }
-
-  const updateSheetHeight = (height) => {
-    sheetContent.style.height = `${height}vh`; // Cập nhật chiều cao của nội dung Bottom sheet
-  }
-
-  // Ẩn Bottom sheet và hiển thị thanh cuộn dọc nội dung
-  const hideBottomSheet = () => {
-    bottomSheet.classList.remove("show");
-    document.body.style.overflowY = "auto";
-  }
-
-  // Đặt vị trí kéo ban đầu, chiều cao nội dung Bottom sheet và thêm class kéo vào Bottom sheet
-  const dragStart = (e) => {
-    isDragging = true;
-    startY = e.pageY || e.touches?.[0].pageY;
-    startHeight = parseInt(sheetContent.style.height);
-    bottomSheet.classList.add("dragging");
-  }
-
-  // Tính chiều cao mới cho nội dung Bottom sheet và gọi hàm updateSheetHeight
-  const dragging = (e) => {
-    if (!isDragging) return;
-    const delta = startY - (e.pageY || e.touches?.[0].pageY);
-    const newHeight = startHeight + delta / window.innerHeight * 100;
-    updateSheetHeight(newHeight > 70 ? 70 : newHeight);
-  }
-
-  // Xác định xem nên ẩn hay đặt thành mặc định
-  // Chiều cao dựa trên chiều cao hiện tại của nội dung Bottom sheet
-  const dragStop = () => {
-    isDragging = false;
-    bottomSheet.classList.remove("dragging");
-    const sheetHeight = parseInt(sheetContent.style.height);
-    sheetHeight < 35 ? hideBottomSheet() : updateSheetHeight(70);
-  }
-
-  dragIcon.addEventListener("mousedown", dragStart);
-  document.addEventListener("mousemove", dragging);
-  document.addEventListener("mouseup", dragStop);
-
-  dragIcon.addEventListener("touchstart", dragStart);
-  document.addEventListener("touchmove", dragging);
-  document.addEventListener("touchend", dragStop);
-
-  sheetOverlay.addEventListener("click", hideBottomSheet);
+  const bottomSheet = document.createElement('bottom-sheet');
+  bottomSheet.id = id;
+  title && bottomSheet.setTitle(title)
+  content && bottomSheet.setBody(content)
+  footer && bottomSheet.setFooter(footer)
+  document.body.appendChild(bottomSheet)
+  return bottomSheet
 }
 
 function toggleDrawer({
@@ -601,4 +533,23 @@ function toggleDrawer({
     document.body.style.overflowY = "auto";
   }
 
+}
+
+// ------------------------------------ Handle Open Notification ----------------------- //
+function toggleNotification({
+  id,
+  label = 'Thông báo',
+  status
+}) {
+  const notification = document.createElement('notification-popup');
+  notification.id = id;
+  notification.status = status;
+  notification.setLabel(label)
+  document.body.appendChild(notification)
+  return notification
+}
+
+// ------------------------------------ Handle Table Change ---------------------------- //
+const handleDepositTabChange = (value) => {
+  console.log('value: ', value)
 }
