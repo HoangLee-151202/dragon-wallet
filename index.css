@@ -1103,7 +1103,7 @@ img {
 }
 .select-option {
   display: grid;
-  height: calc(100vh - 230px);
+  height: calc(100vh - 240px);
 }
 .select-option__content {
   display: flex;
@@ -1243,7 +1243,7 @@ img {
     }
   }
   .footer {
-    gap: 0.5rem;
+    gap: 1rem;
     display: grid;
     position: absolute;
     bottom: 0;
@@ -1358,6 +1358,7 @@ img {
     }
   }
   & .content {
+    overflow: hidden;
     width: 100%;
     bottom: -100%;
     position: relative;
@@ -1412,7 +1413,6 @@ img {
       -webkit-user-drag: none;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       padding: 1rem;
-      /* height: calc(100vh - 200px); */
       & .background {
         display: flex;
         justify-content: center;
