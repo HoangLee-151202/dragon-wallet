@@ -29,6 +29,8 @@ class BottomSheet extends HTMLElement {
       const overlay = this.shadowRoot.querySelector(".overlay");
       const content = this.shadowRoot.querySelector(".content");
       const dragIcon = this.shadowRoot.querySelector(".drag-icon");
+      const maxHeight = this.getAttribute('max-height');
+
       if (this.id) {
         bottomSheet.setAttribute('id', this.id);
       }
@@ -37,10 +39,10 @@ class BottomSheet extends HTMLElement {
       let isDragging = false, startY, startHeight;
       
       // Hiển thị Bottom sheet, ẩn thanh cuộn dọc nội dung và gọi updateSheetHeight
-      const showBottomSheet = () => {
+      const show = () => {
         bottomSheet.classList.add("show");
         document.body.style.overflowY = "hidden";
-        updateSheetHeight(70);
+        updateSheetHeight(maxHeight);
       }
 
       const updateSheetHeight = (height) => {
@@ -48,10 +50,12 @@ class BottomSheet extends HTMLElement {
       }
 
       // Ẩn Bottom sheet và hiển thị thanh cuộn dọc nội dung
-      const hideBottomSheet = () => {
+      this.hide = () => {
         bottomSheet.classList.remove("show");
         document.body.style.overflowY = "auto";
-        this.remove();
+        setTimeout(() => {
+          this.remove();
+        }, 100)
       }
 
       // Đặt vị trí kéo ban đầu, chiều cao nội dung Bottom sheet và thêm class kéo vào Bottom sheet
@@ -59,7 +63,7 @@ class BottomSheet extends HTMLElement {
         isDragging = true;
         startY = e.pageY || e.touches?.[0].pageY;
         startHeight = parseInt(content.style.height);
-        shadow.classList.add("dragging");
+        bottomSheet.classList.add("dragging");
       }
 
       // Tính chiều cao mới cho nội dung Bottom sheet và gọi hàm updateSheetHeight
@@ -67,7 +71,7 @@ class BottomSheet extends HTMLElement {
         if (!isDragging) return;
         const delta = startY - (e.pageY || e.touches?.[0].pageY);
         const newHeight = startHeight + delta / window.innerHeight * 100;
-        updateSheetHeight(newHeight > 70 ? 70 : newHeight);
+        updateSheetHeight(newHeight > maxHeight ? maxHeight : newHeight);
       }
 
       // Xác định xem nên ẩn hay đặt thành mặc định
@@ -76,7 +80,7 @@ class BottomSheet extends HTMLElement {
         isDragging = false;
         dragIcon.classList.remove("dragging");
         const sheetHeight = parseInt(content.style.height);
-        sheetHeight < 35 ? hideBottomSheet() : updateSheetHeight(70);
+        sheetHeight < (maxHeight/2) ? this.hide() : updateSheetHeight(maxHeight);
       }
       
       dragIcon.addEventListener("mousedown", dragStart);
@@ -87,12 +91,15 @@ class BottomSheet extends HTMLElement {
       document.addEventListener("touchmove", dragging);
       document.addEventListener("touchend", dragStop);
 
-      overlay.addEventListener("click", hideBottomSheet);
+      overlay.addEventListener("click", this.hide);
       
-      showBottomSheet();
+      setTimeout(() => {
+        show()
+      }, 100)
     }
 
     setTitle(innerHTML) {
+      console.log('this.shadowRoot: ', this.shadowRoot)
       const title = this.shadowRoot.querySelector(".title");
       title.innerHTML = innerHTML;
     }

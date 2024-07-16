@@ -38,7 +38,7 @@ class Notification extends HTMLElement {
         notification.classList.add("show");
         setTimeout(() => {
           hideNoti()
-        }, 2000);
+        }, 3000);
       }
 
       // Ẩn Notification
@@ -47,7 +47,9 @@ class Notification extends HTMLElement {
         this.remove();
       }
 
-      showNoti()
+      setTimeout(() => {
+        showNoti()
+      }, 100)
     }
 
     setLabel(innerHTML) {
