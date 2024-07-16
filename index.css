@@ -1103,7 +1103,7 @@ img {
 }
 .select-option {
   display: grid;
-  height: calc(100vh - 240px);
+  height: calc(100vh - 220px);
 }
 .select-option__content {
   display: flex;
