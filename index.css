@@ -1201,6 +1201,7 @@ img {
   flex-direction: column;
   transition: 0.3s ease-in-out;
   z-index: 10;
+  overflow: hidden;
   &.show {
     pointer-events: auto;
     left: 0;
