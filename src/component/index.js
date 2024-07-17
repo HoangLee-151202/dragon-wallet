@@ -4,3 +4,4 @@ document.write('<script src="./src/component/drawer-modal.js"></script>');
 document.write('<script src="./src/component/bottom-sheet.js"></script>');
 document.write('<script src="./src/component/notification-popup.js"></script>');
 document.write('<script src="./src/component/confirm-popup.js"></script>');
+document.write('<script src="./src/component/otp-input.js"></script>');

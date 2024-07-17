@@ -60,7 +60,6 @@ class Drawer extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log('name: ', name)
     if (name === 'title') {
       this._title = newValue;
     } else if (name === 'body') {

@@ -18,7 +18,7 @@ class ConformPopup extends HTMLElement {
             <div class="body"></div>
             <div class="footer">
               <button class="btn-cancel"></button>
-              <button class="btn-ok"></button>
+              <button class="btn-ok btn-common"></button>
             </div>
           </div>
         </div>

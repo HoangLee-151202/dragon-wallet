@@ -71,6 +71,13 @@ const qrOptions = [
   { label: 'TON', selected: false }
 ];
 
+const withdrawPercentOptions = [
+{ label: '25%', selected: false },
+{ label: '50%', selected: false },
+{ label: '75%', selected: false },
+{ label: 'MAX', selected: false }
+];
+
 const infoWallet = {
   address: '1A1zxawaP...ivfNa'
 }
@@ -352,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleConfirmPopup({
               id: 'withdraw-confirm',
               title: 'Confirm withdraw',
-              content: `Want to place a withdrawal order of ${input.value} USD?`,
+              content: getContentConfirmWithdraw(input.value),
               textOk: 'Withdraw',
               textCancel: 'Cancel',
               callback: handleWithdraw
@@ -534,7 +541,7 @@ const handleWithdraw = (result) => {
 if (result) {
   console.log("Withdraw")
 } else {
-console.log("Cancel")
+  console.log("Cancel")
 };
 }
 
@@ -575,6 +582,10 @@ const buttonCancel = bottomSheet.shadowRoot.querySelector('.btn-cancel');
 buttonCancel.addEventListener('click', () => {
 bottomSheet.hide();
 })
+}
+
+const handleOtpWithdraw = (otp) => {
+console.log('otp: ', otp)
 }
 // ----------------------------------- Function Ultis -------------------------------- //
 const formattedNumber = (value) => {
@@ -633,6 +644,7 @@ return `
 const getContentWithdraw = (info, selected) => {
 return `
         <div class="text-md mb-1">Select token to withdraw</div>
+        <tab-slip id="tab-slip" options=${JSON.stringify(withdrawPercentOptions)}></tab-slip>
           <div class="balance w-full">
             <div class="flex gap-2 flex-wrap">
               <div class="flex items-center w-full gap-2">
@@ -762,4 +774,17 @@ return `
             }).join('')}
         </div>
       `
+}
+
+const getContentConfirmWithdraw = (value) => {
+const container = document.createElement('div');
+container.innerHTML = `
+  <div>Want to place a withdrawal order of ${value} USD?</div>
+  <otp-input/>
+`
+const otpInput = container.querySelector('otp-input');
+otpInput.id = 'otp-withdraw';
+otpInput.setCallback(handleOtpWithdraw)
+
+return container.innerHTML
 }
