@@ -52,7 +52,7 @@ class Drawer extends HTMLElement {
 
     setTimeout(() => {
       show();
-    }, 200)
+    }, 1000)
 
     btnBack.addEventListener('click', () => {
       this.hide();
