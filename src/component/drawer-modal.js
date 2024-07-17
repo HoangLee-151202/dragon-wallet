@@ -15,12 +15,8 @@ class Drawer extends HTMLElement {
             </svg>
           </button>
           <div class="title"></div>
-          <button class="relative p-4">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M14.9991 19L9.83911 14C9.56672 13.7429 9.34974 13.433 9.20142 13.0891C9.0531 12.7452 8.97656 12.3745 8.97656 12C8.97656 11.6255 9.0531 11.2548 9.20142 10.9109C9.34974 10.567 9.56672 10.2571 9.83911 10L14.9991 5"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+           <button class="relative p-4 btn-next">
+            <div class="btn-right flex"></div>
           </button>
         </div>
         <div class="body"></div>
@@ -37,6 +33,7 @@ class Drawer extends HTMLElement {
     // Hiển thị Bottom sheet, ẩn thanh cuộn dọc nội dung và gọi updateSheetHeight\
     const drawer = shadow.querySelector('.drawer')
     const btnBack = shadow.querySelector('.btn-back')
+    const btnNext = shadow.querySelector('.btn-next')
 
     const show = () => {
       drawer.classList.add("show");
@@ -56,6 +53,10 @@ class Drawer extends HTMLElement {
 
     btnBack.addEventListener('click', () => {
       this.hide();
+    });
+
+    btnNext.addEventListener('click', () => {
+      this.nextCallBack();
     });
   }
 
@@ -84,6 +85,15 @@ class Drawer extends HTMLElement {
   setFooter(innerHTML) {
     const footer = this.shadowRoot.querySelector(".footer");
     footer.innerHTML = innerHTML;
+  }
+
+  setBtnRight(innerHTML) {
+    const extraRight = this.shadowRoot.querySelector(".btn-right");
+    extraRight.innerHTML = innerHTML;
+  }
+
+  setCallBack(callback) {
+    this.nextCallBack = callback
   }
 }
 
