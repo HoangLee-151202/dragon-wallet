@@ -277,7 +277,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const drawer = toggleDrawer({
         id: 'section-wallet',
         title: 'Wallet',
-        content: getContentWallet()
+        content: getContentWallet(),
+        btnRight: `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#EEEEEE" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 12.8799V11.1199C2 10.0799 2.85 9.21994 3.9 9.21994C5.71 9.21994 6.45 7.93994 5.54 6.36994C5.02 5.46994 5.33 4.29994 6.24 3.77994L7.97 2.78994C8.76 2.31994 9.78 2.59994 10.25 3.38994L10.36 3.57994C11.26 5.14994 12.74 5.14994 13.65 3.57994L13.76 3.38994C14.23 2.59994 15.25 2.31994 16.04 2.78994L17.77 3.77994C18.68 4.29994 18.99 5.46994 18.47 6.36994C17.56 7.93994 18.3 9.21994 20.11 9.21994C21.15 9.21994 22.01 10.0699 22.01 11.1199V12.8799C22.01 13.9199 21.16 14.7799 20.11 14.7799C18.3 14.7799 17.56 16.0599 18.47 17.6299C18.99 18.5399 18.68 19.6999 17.77 20.2199L16.04 21.2099C15.25 21.6799 14.23 21.3999 13.76 20.6099L13.65 20.4199C12.75 18.8499 11.27 18.8499 10.36 20.4199L10.25 20.6099C9.78 21.3999 8.76 21.6799 7.97 21.2099L6.24 20.2199C5.33 19.6999 5.02 18.5299 5.54 17.6299C6.45 16.0599 5.71 14.7799 3.9 14.7799C2.85 14.7799 2 13.9199 2 12.8799Z" stroke="#EEEEEE" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        `,
+        nextCallback: handleOpenSetting
       });
 
       renderButtons(buttonsData, drawer.shadowRoot);
@@ -427,8 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // -------------------------------- Render List In Setting -------------------------------------
-function renderList(items, listId) {
-  var list = document.getElementById(listId);
+function renderList(items, element) {
+  var list = element.querySelector('#listKey');
   list.innerHTML = ''; // Xóa nội dung cũ nếu có
 
   for (var i = 0; i < items.length; i++) {
@@ -439,7 +446,7 @@ function renderList(items, listId) {
 }
 
 var items = ['galaxy', 'river', 'elephant', 'sunshine', 'quantum', 'velvet', 'horizon', 'whisper', 'dragon', 'mystic', 'labyrinth', 'eclipse', 'phoenix', 'crystal', 'nebula', 'harmony', 'voyage', 'ember', 'glacier', 'thunder'];
-// renderList(items, 'listKey');
+
 
 // --------------------------------- Render List Button Action ----------------------------------
 
@@ -507,13 +514,17 @@ function toggleDrawer({
                         id,
                         title,
                         content,
-                        footer
+                        footer,
+                        btnRight,
+                        nextCallback
                     }) {
   let drawer = document.createElement('drawer-modal');
   drawer.id = id;
   title && drawer.setTitle(title)
   content && drawer.setBody(content)
   footer && drawer.setFooter(footer)
+  btnRight && drawer.setBtnRight(btnRight)
+  nextCallback && drawer.setCallBack(nextCallback)
   document.body.appendChild(drawer);
   return drawer
 }
@@ -586,6 +597,20 @@ bottomSheet.hide();
 
 const handleOtpWithdraw = (otp) => {
 console.log('otp: ', otp)
+}
+
+const handleOpenSetting = () => {
+const drawer = toggleDrawer({
+  id: 'section-setting',
+  title: 'Setting',
+  content: getContentSetting(),
+  footer: `<button class="btn-withdraw">I recorded it</button>`
+});
+
+const buttonOk = drawer.shadowRoot.querySelector('.btn-withdraw');
+buttonOk.addEventListener('click', () => {
+            drawer.hide();
+          })
 }
 // ----------------------------------- Function Ultis -------------------------------- //
 const formattedNumber = (value) => {
@@ -786,5 +811,56 @@ const otpInput = container.querySelector('otp-input');
 otpInput.id = 'otp-withdraw';
 otpInput.setCallback(handleOtpWithdraw)
 
+return container.innerHTML
+}
+
+const getContentSetting = () => {
+const container = document.createElement('div');
+container.innerHTML = `
+              <div class="text-sm mb-1">You can save your private key</div>
+              <div class="private-key-bg mb-4">
+                <div class="private-key">4f5b0c95e8d2f42a6d01bc7360d0b0a1d75d423f6f2cf6b18d4174e80f4cf6f6</div>
+                <svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <g clip-path="url(#clip0_712_3570)">
+                  <path
+                    d="M17.6291 2.72667L15.7258 0.760833C15.492 0.520805 15.2127 0.329867 14.9042 0.199218C14.5957 0.0685687 14.2642 0.000838693 13.9291 0L9.99996 0C9.03979 0.0012121 8.10939 0.333408 7.36558 0.940598C6.62178 1.54779 6.11004 2.39284 5.91663 3.33333H5.83329C4.72863 3.33466 3.66959 3.77407 2.88848 4.55518C2.10736 5.3363 1.66795 6.39534 1.66663 7.5V15.8333C1.66795 16.938 2.10736 17.997 2.88848 18.7782C3.66959 19.5593 4.72863 19.9987 5.83329 20H10.8333C11.938 19.9987 12.997 19.5593 13.7781 18.7782C14.5592 17.997 14.9986 16.938 15 15.8333V15.75C15.9405 15.5566 16.7855 15.0449 17.3927 14.301C17.9999 13.5572 18.3321 12.6268 18.3333 11.6667V4.46667C18.3345 3.81701 18.0819 3.1926 17.6291 2.72667ZM10.8333 18.3333H5.83329C5.17025 18.3333 4.53437 18.0699 4.06553 17.6011C3.59669 17.1323 3.33329 16.4964 3.33329 15.8333V7.5C3.33329 6.83696 3.59669 6.20107 4.06553 5.73223C4.53437 5.26339 5.17025 5 5.83329 5V11.6667C5.83462 12.7713 6.27403 13.8304 7.05514 14.6115C7.83626 15.3926 8.8953 15.832 9.99996 15.8333H13.3333C13.3333 16.4964 13.0699 17.1323 12.6011 17.6011C12.1322 18.0699 11.4963 18.3333 10.8333 18.3333ZM14.1666 14.1667H9.99996C9.33692 14.1667 8.70103 13.9033 8.23219 13.4344C7.76335 12.9656 7.49996 12.3297 7.49996 11.6667V4.16667C7.49996 3.50363 7.76335 2.86774 8.23219 2.3989C8.70103 1.93006 9.33692 1.66667 9.99996 1.66667H13.3333V3.33333C13.3333 3.77536 13.5089 4.19928 13.8215 4.51184C14.134 4.82441 14.5579 5 15 5H16.6666V11.6667C16.6666 12.3297 16.4032 12.9656 15.9344 13.4344C15.4656 13.9033 14.8297 14.1667 14.1666 14.1667Z"
+                    fill="#ffffff"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_712_3570">
+                    <rect width="20" height="20" fill="#ffffff"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+              </div>
+              <div class="text-sm mb-1">Or write down these words in order and store them in a safe way</div>
+              <div class="icon-save-key">
+                <svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <g clip-path="url(#clip0_712_3570)">
+                  <path
+                    d="M17.6291 2.72667L15.7258 0.760833C15.492 0.520805 15.2127 0.329867 14.9042 0.199218C14.5957 0.0685687 14.2642 0.000838693 13.9291 0L9.99996 0C9.03979 0.0012121 8.10939 0.333408 7.36558 0.940598C6.62178 1.54779 6.11004 2.39284 5.91663 3.33333H5.83329C4.72863 3.33466 3.66959 3.77407 2.88848 4.55518C2.10736 5.3363 1.66795 6.39534 1.66663 7.5V15.8333C1.66795 16.938 2.10736 17.997 2.88848 18.7782C3.66959 19.5593 4.72863 19.9987 5.83329 20H10.8333C11.938 19.9987 12.997 19.5593 13.7781 18.7782C14.5592 17.997 14.9986 16.938 15 15.8333V15.75C15.9405 15.5566 16.7855 15.0449 17.3927 14.301C17.9999 13.5572 18.3321 12.6268 18.3333 11.6667V4.46667C18.3345 3.81701 18.0819 3.1926 17.6291 2.72667ZM10.8333 18.3333H5.83329C5.17025 18.3333 4.53437 18.0699 4.06553 17.6011C3.59669 17.1323 3.33329 16.4964 3.33329 15.8333V7.5C3.33329 6.83696 3.59669 6.20107 4.06553 5.73223C4.53437 5.26339 5.17025 5 5.83329 5V11.6667C5.83462 12.7713 6.27403 13.8304 7.05514 14.6115C7.83626 15.3926 8.8953 15.832 9.99996 15.8333H13.3333C13.3333 16.4964 13.0699 17.1323 12.6011 17.6011C12.1322 18.0699 11.4963 18.3333 10.8333 18.3333ZM14.1666 14.1667H9.99996C9.33692 14.1667 8.70103 13.9033 8.23219 13.4344C7.76335 12.9656 7.49996 12.3297 7.49996 11.6667V4.16667C7.49996 3.50363 7.76335 2.86774 8.23219 2.3989C8.70103 1.93006 9.33692 1.66667 9.99996 1.66667H13.3333V3.33333C13.3333 3.77536 13.5089 4.19928 13.8215 4.51184C14.134 4.82441 14.5579 5 15 5H16.6666V11.6667C16.6666 12.3297 16.4032 12.9656 15.9344 13.4344C15.4656 13.9033 14.8297 14.1667 14.1666 14.1667Z"
+                    fill="#ffffff"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_712_3570">
+                    <rect width="20" height="20" fill="#ffffff"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.2798 22H7.00977C5.9489 22 4.93148 21.5785 4.18134 20.8284C3.43119 20.0782 3.00977 19.0609 3.00977 18V14.89C3.00977 11.4713 4.36781 8.19273 6.78516 5.77539C9.2025 3.35805 12.4811 2 15.8998 2H17.0098C18.0706 2 19.0881 2.42142 19.8382 3.17157C20.5883 3.92172 21.0098 4.93913 21.0098 6V11.4399" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 15.06C3 9.9 8.50004 14.0599 11.73 10.8199C14.96 7.57995 10.83 2 15.98 2" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18.1895 15V23" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21.1895 20L18.1895 23" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15.1895 20L18.1895 23" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+              </div>
+              <ul id="listKey"></ul>
+            </div>
+`
+
+renderList(items, container);
 return container.innerHTML
 }
