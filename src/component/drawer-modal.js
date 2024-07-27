@@ -43,7 +43,7 @@ class Drawer extends HTMLElement {
       drawer.classList.remove("show");
       setTimeout(() => {
         this.remove()
-      }, 3000)
+      }, 500)
       
     }
 
@@ -53,6 +53,7 @@ class Drawer extends HTMLElement {
 
     btnBack.addEventListener('click', () => {
       this.hide();
+      this.backCallBack?.()
     });
 
     btnNext.addEventListener('click', () => {
@@ -95,6 +96,31 @@ class Drawer extends HTMLElement {
   setCallBack(callback) {
     this.nextCallBack = callback
   }
+
+  setBackCallBack(callback) {
+    this.backCallBack = callback
+  }
 }
 
 customElements.define('drawer-modal', Drawer);
+
+function toggleDrawer({
+  id,
+  title,
+  content,
+  footer,
+  btnRight,
+  nextCallback,
+  backCallback
+}) {
+  let drawer = document.createElement('drawer-modal');
+  drawer.id = id;
+  title && drawer.setTitle(title)
+  content && drawer.setBody(content)
+  footer && drawer.setFooter(footer)
+  btnRight && drawer.setBtnRight(btnRight)
+  nextCallback && drawer.setCallBack(nextCallback)
+  backCallback && drawer.setBackCallBack(backCallback)
+  document.body.appendChild(drawer);
+  return drawer
+}

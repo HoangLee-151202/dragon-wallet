@@ -30,11 +30,13 @@ class OtpInput extends HTMLElement {
         let fieldIndex = input.dataset.index;
         if (fieldIndex < inputs.length - 1 && isValidInput) {
             input.nextElementSibling.focus();
+            submit();
         }
         if (e.key === "Backspace" && fieldIndex > 0) {
             input.previousElementSibling.focus();
+            submit();
         }
-        if (fieldIndex == inputs.length - 1 && isValidInput) {
+        if (isValidInput) {
             submit();
         }
       }
@@ -51,7 +53,9 @@ class OtpInput extends HTMLElement {
         inputs.forEach((input) => {
             otp += input.value;
         });
-        if (this.callback) this.callback(otp);
+
+        const otpInput = this.shadowRoot.querySelector('.otp-field')
+        otpInput.setAttribute('value', otp)
       }
 
       const inputs = this.shadowRoot.querySelectorAll(".otp-field input");

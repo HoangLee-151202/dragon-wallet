@@ -1,17 +1,16 @@
-class ConformPopup extends HTMLElement {
+class ModalPopup extends HTMLElement {
     constructor() {
       super();
       const shadow = this.attachShadow({ mode: 'open' });
   
       const template = document.createElement('template');
       template.innerHTML = `
-        <div class="confirm-popup">
+        <div class="modal-popup">
           <div class="overlay"></div>
           <div class="content">
             <div class="title">
               <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
               Confirm Approve
-               <span data-confirm="0" class="modal-action" id="modal-close">
               <i class="fa fa-times" aria-hidden="true"></i>
             </span>
             </div>
@@ -32,35 +31,39 @@ class ConformPopup extends HTMLElement {
     }
 
      connectedCallback() {
-      const confirmPopup = this.shadowRoot.querySelector(".confirm-popup");
+      const modalPopup = this.shadowRoot.querySelector(".modal-popup");
       const overlay = this.shadowRoot.querySelector(".overlay");
       const btnCancel = this.shadowRoot.querySelector(".btn-cancel");
       const btnOk = this.shadowRoot.querySelector(".btn-ok");
 
+      const notification = this.shadowRoot.querySelector(".notification");
+      if (this.id) {
+        modalPopup.setAttribute('id', this.id);
+      }
+
       const show = () => {
-        confirmPopup.classList.add('active');
+        modalPopup.classList.add('active');
         document.body.style.overflowY = "hidden";
       }
-      const hide = () => {
-        confirmPopup.classList.remove("active");
+      this.hide = () => {
+        modalPopup.classList.remove("active");
         document.body.style.overflowY = "auto";
         this.remove();
       }
       
-      overlay.addEventListener("click", hide);
-      btnCancel.addEventListener("click", () => {
-      if (this.callback) this.callback(false, hide);
+      btnCancel?.addEventListener("click", () => {
+      if (this.callback) this.callback(false, this.hide);
     });
 
-    btnOk.addEventListener("click", () => {
+    btnOk?.addEventListener("click", () => {
       if (!btnOk.classList.contains('disabled')) {
-        if (this.callback) this.callback(true, hide);
+        if (this.callback) this.callback(true, this.hide);
       }
     });
 
       setTimeout(function () {
         show()
-      }, 100);
+      }, 0);
     }
 
     setTitle(innerHTML) {
@@ -73,6 +76,11 @@ class ConformPopup extends HTMLElement {
       body.innerHTML = innerHTML;
     }
   
+    setFooter(innerHTML) {
+      const footer = this.shadowRoot.querySelector(".footer");
+      footer.innerHTML = innerHTML;
+    }
+
     setTextOk(innerHTML) {
       const textOk = this.shadowRoot.querySelector(".btn-ok");
       textOk.innerHTML = innerHTML;
@@ -88,23 +96,25 @@ class ConformPopup extends HTMLElement {
     }
   }
   
-  customElements.define('confirm-popup', ConformPopup);
+  customElements.define('modal-popup', ModalPopup);
 
-  function toggleConfirmPopup({
+  function toggleModalPopup({
     id,
     title,
     content,
+    footer,
     textOk,
     textCancel,
     callback
   }) {
-    const confirmPopup = document.createElement('confirm-popup');
-    confirmPopup.id = id;
-    title && confirmPopup.setTitle(title)
-    content && confirmPopup.setBody(content)
-    textOk && confirmPopup.setTextOk(textOk)
-    textCancel && confirmPopup.setTextCancel(textCancel)
-    callback && confirmPopup.setCallback(callback)
-    document.body.appendChild(confirmPopup)
-    return confirmPopup
+    const modalPopup = document.createElement('modal-popup');
+    modalPopup.id = id;
+    modalPopup.setTitle(title ?? '')
+    modalPopup.setBody(content ?? '')
+    footer == '' ? modalPopup.setFooter('') : modalPopup.setFooter(footer)
+    textOk && modalPopup.setTextOk(textOk)
+    textCancel && modalPopup.setTextCancel(textCancel)
+    callback && modalPopup.setCallback(callback)
+    document.body.appendChild(modalPopup)
+    return modalPopup
   }

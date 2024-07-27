@@ -59,3 +59,16 @@ class Notification extends HTMLElement {
   }
   
   customElements.define('notification-popup', Notification);
+
+  function toggleNotification({
+    id,
+    label = 'Notification',
+    status
+  }) {
+    const notification = document.createElement('notification-popup');
+    notification.id = id;
+    notification.status = status;
+    notification.setLabel(label)
+    document.body.appendChild(notification)
+    return notification
+  }

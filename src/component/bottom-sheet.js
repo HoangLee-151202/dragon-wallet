@@ -98,8 +98,18 @@ class BottomSheet extends HTMLElement {
       }, 100)
     }
 
+    attributeChangedCallback(name, oldValue, newValue) {
+      if (name === 'title') {
+        this._title = newValue;
+      } else if (name === 'body') {
+        this._body = newValue;
+      } else if (name === 'footer') {
+        this._footer = newValue;
+      }
+      this._updateUI();
+    }
+
     setTitle(innerHTML) {
-      console.log('this.shadowRoot: ', this.shadowRoot)
       const title = this.shadowRoot.querySelector(".title");
       title.innerHTML = innerHTML;
     }
@@ -115,4 +125,23 @@ class BottomSheet extends HTMLElement {
     }
   }
   
-  customElements.define('bottom-sheet', BottomSheet);
+customElements.define('bottom-sheet', BottomSheet);
+
+function toggleBottomSheet({
+  id,
+  title,
+  content,
+  footer,
+  attrs: {
+    maxHeight
+  }
+}) {
+  const bottomSheet = document.createElement('bottom-sheet');
+  bottomSheet.id = id;
+  bottomSheet.setAttribute('max-height', maxHeight);
+  title && bottomSheet.setTitle(title)
+  content && bottomSheet.setBody(content)
+  footer && bottomSheet.setFooter(footer)
+  document.body.appendChild(bottomSheet)
+  return bottomSheet
+}
