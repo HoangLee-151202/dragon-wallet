@@ -2508,8 +2508,7 @@ img {
 #game-item-detail.modal-popup {
   & .content {
     top: 9%;
-    left: 5%;
-    right: 5%;
+    width: 90%;
 
     & .body {
       background-color: #00000000;
@@ -2579,7 +2578,7 @@ img {
       background-repeat: no-repeat;
       background-size: contain;
       text-align: center;
-      margin: 0.6rem 40%;
+      margin: 0.6rem 41%;
     }
     & .amount-of-money {
       text-align: center;
@@ -2592,7 +2591,7 @@ img {
   #game-item-detail.modal-popup {
     & .body {
         & .amount {
-            margin: 0.25rem 40%;
+            margin: 0.25rem 42%;
             font-size: 12px;
         }
     }
