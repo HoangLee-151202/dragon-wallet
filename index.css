@@ -2588,7 +2588,7 @@ img {
   }
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 400px) {
   #game-item-detail.modal-popup {
     & .body {
         & .amount {
