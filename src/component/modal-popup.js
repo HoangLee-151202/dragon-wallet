@@ -61,9 +61,7 @@ class ModalPopup extends HTMLElement {
       }
     });
 
-      setTimeout(function () {
-        show()
-      }, 0);
+    show()
     }
 
     setTitle(innerHTML) {
