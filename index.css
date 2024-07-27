@@ -2711,6 +2711,7 @@ img {
 #market-item-detail, #owner-item-detail, #transaction-item-detail {
   & .content {
     top: 9%;
+    width: 90%;
     background-color: #26272d;
     color: white;
     padding: 1rem;
