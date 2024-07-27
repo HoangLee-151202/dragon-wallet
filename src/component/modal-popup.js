@@ -67,28 +67,28 @@ class ModalPopup extends HTMLElement {
     }
 
     setTitle(innerHTML) {
-      const title = this.shadowRoot.querySelector(".title");
-      title.innerHTML = innerHTML;
+      // const title = this.shadowRoot.querySelector(".title");
+      // title.innerHTML = innerHTML;
     }
 
     setBody(innerHTML) {
-      const body = this.shadowRoot.querySelector(".body");
-      body.innerHTML = innerHTML;
+      // const body = this.shadowRoot.querySelector(".body");
+      // body.innerHTML = innerHTML;
     }
   
     setFooter(innerHTML) {
-      const footer = this.shadowRoot.querySelector(".footer");
-      footer.innerHTML = innerHTML;
+      // const footer = this.shadowRoot.querySelector(".footer");
+      // footer.innerHTML = innerHTML;
     }
 
     setTextOk(innerHTML) {
-      const textOk = this.shadowRoot.querySelector(".btn-ok");
-      textOk.innerHTML = innerHTML;
+      // const textOk = this.shadowRoot.querySelector(".btn-ok");
+      // textOk.innerHTML = innerHTML;
     }
 
     setTextCancel(innerHTML) {
-      const textCancel = this.shadowRoot.querySelector(".btn-cancel");
-      textCancel.innerHTML = innerHTML;
+      // const textCancel = this.shadowRoot.querySelector(".btn-cancel");
+      // textCancel.innerHTML = innerHTML;
     }
 
     setCallback(callback) {
