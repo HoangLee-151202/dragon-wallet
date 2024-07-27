@@ -1,7 +1,7 @@
 class ModalPopup extends HTMLElement {
     constructor() {
       super();
-      const shadow = this.attachShadow({ mode: 'closed' });
+      const shadow = this.attachShadow({ mode: 'open' });
   
       const template = document.createElement('template');
       template.innerHTML = `
