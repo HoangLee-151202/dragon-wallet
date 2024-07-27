@@ -1,7 +1,7 @@
 class ModalPopup extends HTMLElement {
     constructor() {
       super();
-      const shadow = this.attachShadow({ mode: 'open' });
+      const shadow = this.attachShadow({ mode: 'closed' });
   
       const template = document.createElement('template');
       template.innerHTML = `
@@ -61,34 +61,34 @@ class ModalPopup extends HTMLElement {
       }
     });
 
-      // setTimeout(function () {
-      //   show()
-      // }, 0);
+      setTimeout(function () {
+        show()
+      }, 0);
     }
 
     setTitle(innerHTML) {
-      // const title = this.shadowRoot.querySelector(".title");
-      // title.innerHTML = innerHTML;
+      const title = this.shadowRoot.querySelector(".title");
+      title.innerHTML = innerHTML;
     }
 
     setBody(innerHTML) {
-      // const body = this.shadowRoot.querySelector(".body");
-      // body.innerHTML = innerHTML;
+      const body = this.shadowRoot.querySelector(".body");
+      body.innerHTML = innerHTML;
     }
   
     setFooter(innerHTML) {
-      // const footer = this.shadowRoot.querySelector(".footer");
-      // footer.innerHTML = innerHTML;
+      const footer = this.shadowRoot.querySelector(".footer");
+      footer.innerHTML = innerHTML;
     }
 
     setTextOk(innerHTML) {
-      // const textOk = this.shadowRoot.querySelector(".btn-ok");
-      // textOk.innerHTML = innerHTML;
+      const textOk = this.shadowRoot.querySelector(".btn-ok");
+      textOk.innerHTML = innerHTML;
     }
 
     setTextCancel(innerHTML) {
-      // const textCancel = this.shadowRoot.querySelector(".btn-cancel");
-      // textCancel.innerHTML = innerHTML;
+      const textCancel = this.shadowRoot.querySelector(".btn-cancel");
+      textCancel.innerHTML = innerHTML;
     }
 
     setCallback(callback) {
