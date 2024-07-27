@@ -2583,13 +2583,24 @@ img {
       background-repeat: no-repeat;
       background-size: contain;
       text-align: center;
-      margin: 0.5rem 40%;
+      margin: 0.6rem 40%;
     }
     & .amount-of-money {
       text-align: center;
       font-weight: 900;
     }
   }
+}
+
+@media only screen and (max-width: 350px) {
+  #game-item-detail.modal-popup {
+    & .body {
+        & .amount {
+            margin: 0.25rem 40%;
+            font-size: 12px;
+        }
+    }
+}
 }
 
 #market.list-item, #owner.list-item, #transaction.list-item {
