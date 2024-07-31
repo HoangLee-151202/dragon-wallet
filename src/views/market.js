@@ -30,6 +30,71 @@ const initPurchaseInfo = {
   total: 0
 }
 
+const priceFilterMarket = [{
+  label: 'All',
+  value: 'all',
+  selected: true,
+}, {
+  label: 'Increase',
+  value: 'increase',
+  selected: false,
+}, {
+  label: 'Decrease',
+  value: 'decrease',
+  selected: false,
+}]
+
+const publisherFilterMarket = [{
+  label: 'All',
+  value: 'all',
+  selected: true,
+}, {
+  label: 'Owner',
+  value: 'owner',
+  selected: false,
+}]
+
+const typeFilterMarket = [{
+  label: 'All',
+  value: 'all',
+  selected: true,
+}, {
+  label: 'Egg',
+  value: 'egg',
+  selected: false,
+}, {
+  label: 'Dragon Metal',
+  value: 'dragon-metal',
+  selected: false,
+}, {
+  label: 'Dragon Wood',
+  value: 'dragon-wood',
+  selected: false,
+}, {
+  label: 'Dragon Water',
+  value: 'dragon-water',
+  selected: false,
+}, {
+  label: 'Dragon Fire',
+  value: 'dragon-fire',
+  selected: false,
+}, {
+  label: 'Dragon Earth',
+  value: 'dragon-earth',
+  selected: false,
+}, {
+  label: 'Dragon Vip',
+  value: 'dragon-vip',
+  selected: false,
+}]
+
+const initPurchaseOptions = [
+  { label: '25%', selected: false, value: 25 },
+  { label: '50%', selected: false, value: 50 },
+  { label: '75%', selected: false, value: 75 },
+  { label: 'MAX', selected: false, value: 100 }
+]
+
 var marketFilters = [{
   label: 'All',
   value: 'all',
@@ -47,30 +112,34 @@ var marketFilters = [{
 var marketTabs = [...initMarketTabs]
 var profileHistoryTabs = [...initProfileHistoryTab]
 
+var selectedToken = tokensData[0]
 var isLoading = false;
 
 document.addEventListener('DOMContentLoaded', () => {
   // Market Button Click 
   const btnMarket = document.querySelector('#btn-market');
+  
   btnMarket.addEventListener('click', (event) => {
     const modalMarket = openMarket()
     const btnBack = modalMarket.shadowRoot.querySelector('.btn-back')
+    const btnPurchaseGem = modalMarket.shadowRoot.querySelector('#market #btn-purchase-gem');
+    const marketTab = modalMarket.shadowRoot.querySelector('#tab-slip')
+
     btnBack?.addEventListener('click', (event) => {
       marketTabs = [...initMarketTabs]
     })
 
-    const marketTab = modalMarket.shadowRoot.querySelector('#tab-slip')
-    
     marketTab.addEventListener('option-changed', (event) => {
       marketTabs = event.detail.options
-      modalMarket.shadowRoot.querySelectorAll('.list-item').forEach(item => {
+     
+
+      modalMarket.shadowRoot.querySelectorAll('.container').forEach(item => {
         if (item.getAttribute('id') == event.detail.value) {
           item.classList.remove('hidden')
         } else {
           item.classList.add('hidden')
         }
       })
-      
       
     })
     modalMarket.shadowRoot.querySelectorAll('.item').forEach(item => {
@@ -175,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
       item.addEventListener('click', function () {
         const index = this.getAttribute('key');
         const dataClicked = ownersData?.[index];
-        console.log('dataClicked: ', dataClicked)
         isLoading = false;
         sellInfo = {
           ...sellInfo,
@@ -277,6 +345,15 @@ document.addEventListener('DOMContentLoaded', () => {
         })
       });
     });
+
+    btnPurchaseGem.addEventListener('click', (event) => {
+      const modalPurchaseGem = openPurchaseGem()
+      const btnClose = modalPurchaseGem?.shadowRoot?.querySelector('#btn-close')
+      btnClose?.addEventListener('click', (event) => {
+        modalPurchaseGem?.hide()
+        purchaseGemInfo = {...initPurchaseGemInfo}
+      })
+    })
   })
 
   const btnProfile = document.querySelector('#btn-profile');
@@ -310,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const index = this.getAttribute('key');
         const data = profileHistoryTabs.find((tab) => tab.selected)?.data
         const dataClicked = data?.[index];
-        const modalDetailItem = openDetailItem(dataClicked)
+        const modalDetailItem = openDetailItemGameTransaction(dataClicked)
         const btnCloseDetailItem = modalDetailItem.shadowRoot.querySelector('.btn-close')
         btnCloseDetailItem?.addEventListener('click', (event) => {
           modalDetailItem.hide()
@@ -323,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const index = this.getAttribute('key');
         const data = infoProfile?.items
         const dataClicked = data?.[index];
-        const modalDetailItem = dataClicked?.isItem && openDetailItem(dataClicked)
+        const modalDetailItem = openDetailItem(dataClicked)
         const btnCloseDetailItem = modalDetailItem?.shadowRoot?.querySelector('.btn-close')
         btnCloseDetailItem?.addEventListener('click', (event) => {
           modalDetailItem.hide()
@@ -354,6 +431,14 @@ const openDetailItem = (item) => {
   return toggleModalPopup({
     id: 'game-item-detail',
     content: getContentDetailItem(item),
+    footer: ''
+  });
+}
+
+const openDetailItemGameTransaction = (item) => {
+  return toggleModalPopup({
+    id: 'game-item-detail',
+    content: getContentDetailItemGameTransaction(item),
     footer: ''
   });
 }
@@ -443,9 +528,74 @@ const getContentMarket = () => {
   `
 }
 
+const openPurchaseGem = () => {
+  return toggleModalPopup({
+    id: 'purchase-gem-detail',
+    title: `
+          <svg id="btn-close" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke="#EEEEEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
+    `,
+    content: getContentPurchaseGem(),
+    footer: `
+      <button id="btn-ok" class="btn-ok btn-sell">
+      <svg class="normal" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 5H18.2768C19.0446 5 19.526 5.82948 19.1451 6.49614L16.5758 10.9923C16.2198 11.6154 15.5571 12 14.8394 12H8M8 12L6.45625 14.47C6.03997 15.136 6.51881 16 7.30425 16H18M8 12L4.05279 4.10557C3.714 3.428 3.02148 3 2.26393 3H2M8 20C8 20.5523 7.55228 21 7 21C6.44772 21 6 20.5523 6 20C6 19.4477 6.44772 19 7 19C7.55228 19 8 19.4477 8 20ZM18 20C18 20.5523 17.5523 21 17 21C16.4477 21 16 20.5523 16 20C16 19.4477 16.4477 19 17 19C17.5523 19 18 19.4477 18 20Z" stroke="#EEEEEE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg class="loading" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
+                  <g fill="#EEEEEE" fill-rule="evenodd" clip-rule="evenodd">
+                  <path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z" opacity=".2"/>
+                  <path d="M7.25.75A.75.75 0 018 0a8 8 0 018 8 .75.75 0 01-1.5 0A6.5 6.5 0 008 1.5a.75.75 0 01-.75-.75z"/>
+                  </g>
+                </svg>
+      Purchase
+      </button>
+    `
+  });
+}
+
 const getListMarket = () => {
   return `
-  <div id="market" class="list-item" >
+  <div id="market" class="container">
+    <div class="banner">
+      <div class="flex justify-between align-center">
+        <div class="flex gap-2">
+          <div class="img">
+            <img src="./assets/img/gem.png">
+          </div>
+          <div class="info">
+            <p class="name">Gem</p>
+          </div>
+        </div>
+        <div>
+          <div class="price">
+            <button id="btn-purchase-gem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 5H18.2768C19.0446 5 19.526 5.82948 19.1451 6.49614L16.5758 10.9923C16.2198 11.6154 15.5571 12 14.8394 12H8M8 12L6.45625 14.47C6.03997 15.136 6.51881 16 7.30425 16H18M8 12L4.05279 4.10557C3.714 3.428 3.02148 3 2.26393 3H2M8 20C8 20.5523 7.55228 21 7 21C6.44772 21 6 20.5523 6 20C6 19.4477 6.44772 19 7 19C7.55228 19 8 19.4477 8 20ZM18 20C18 20.5523 17.5523 21 17 21C16.4477 21 16 20.5523 16 20C16 19.4477 16.4477 19 17 19C17.5523 19 18 19.4477 18 20Z" stroke="#e86734" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              Purchase
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter">
+      <div class="field">
+        <div>Price:</div>
+        <select-input id="market-filter-price" options=${encodeURIComponent(JSON.stringify(priceFilterMarket))}></select-input>
+      </div>
+      <div class="field">
+        <div>Item:</div>
+        <select-input id="market-filter-type" options=${encodeURIComponent(JSON.stringify(typeFilterMarket))}></select-input>
+      </div>
+      <div class="field">
+        <div>Seller:</div>
+        <select-input id="market-filter-publisher" options=${encodeURIComponent(JSON.stringify(publisherFilterMarket))}></select-input>
+      </div>
+    </div>
+  <div class="list-item">
   ${marketsData?.map((item, index) => {
     return `
             <div class="item" key=${index}>
@@ -475,12 +625,13 @@ const getListMarket = () => {
           `
   }).join('')}
   </div>
+  </div>
   `
 }
 
 const getListOwner = () => {
   return `
-  <div id="owner" class="list-item hidden">
+  <div id="owner" class="container list-item hidden">
   ${ownersData?.map((item, index) => {
     return `
             <div class="item" key=${index}>
@@ -516,7 +667,7 @@ const getListOwner = () => {
 
 const getListTransaction = () => {
   return `
-  <div id="transaction" class="list-item hidden">
+  <div id="transaction" class="container list-item hidden">
   ${transactionsData?.map((item, index) => {
     return `
             <div class="item" key=${index}>
@@ -561,7 +712,7 @@ const getContentProfile = () => {
         <div class="name">
           <div>
             <div>ID: ${infoProfile?.userId}</div>
-            <div>${infoProfile?.name}</div>
+            <div class="flex gap-1">Coin: ${infoProfile?.gem}</div>
           </div>
           <div class="flex">
           <div class="reflink">${infoProfile?.reflink}</div>
@@ -591,11 +742,9 @@ const getContentProfile = () => {
               ${profileHistoryTabs[0]?.data ? 
                 profileHistoryTabs[0]?.data.map((item, idx) => {
                 return `
-                  <div class="item" key="${idx}">
-                    <img src="${item?.img}"/>
-                    <div class="name">${item?.name}</div>
+                  <div class="item-coin" key="${idx}">
                     <div>${item?.time}</div>
-                    <div class="amount-of-money ${item?.amountOfMoney > 0 ? 'text-success' : 'text-failed'}">${item?.amountOfMoney > 0 ? `+${formattedNumber(item?.amountOfMoney)}` : `-${formattedNumber(item?.amountOfMoney)}`}$</div>
+                    <div class="amount-of-money ${item?.amountOfMoney > 0 ? 'text-success' : 'text-failed'}">${item?.amountOfMoney > 0 ? `+${formattedNumber(item?.amountOfMoney)}` : `-${formattedNumber(item?.amountOfMoney)}`}</div>
                   </div>
                 `
               }).join(''): '<div class="item-empty">No data</div>'}
@@ -605,16 +754,64 @@ const getContentProfile = () => {
                 profileHistoryTabs[1]?.data?.map((item, idx) => {
                 return `
                   <div class="item" key="${idx}">
-                    <img src="${item?.img}"/>
+                  <div class="flex gap-2 align-center">
+                    <div class="img">
+                      <img src="${item?.img}"/>
+                      <span class="amount">5</span>
+                    </div>
                     <div class="name">${item?.name}</div>
+                  </div>
+                  <div>
                     <div>${item?.time}</div>
-                    <div class="amount-of-money ${item?.amountOfMoney > 0 ? 'text-success' : 'text-failed'}">${item?.amountOfMoney > 0 ? `+${formattedNumber(item?.amountOfMoney)}` : `-${formattedNumber(item?.amountOfMoney)}`}$</div>
+                    <div class="amount-of-money ${item?.amountOfMoney > 0 ? 'text-success' : 'text-failed'}">${item?.amountOfMoney > 0 ? `+${formattedNumber(item?.amountOfMoney)}` : `-${formattedNumber(item?.amountOfMoney)}`}<img src="./assets/img/gem.png"/></div>
+                  </div>
                   </div>
                 `
               }).join('') : '<div class="item-empty">No data</div>'
                 }
             </div>
           </div>
+      </div>
+    </div>
+  </div>
+  `
+}
+
+const getContentDetailItemGameTransaction = (item) => {
+  return `
+  <div class="detail-item">
+    <div class="title">
+      ${item?.name}
+      <img class="btn-close" src="./assets/img/btn_close.png"/>
+    </div>
+    <div class="body">
+      <div class="flex justify-center">
+        <div class="img-container">
+          <img src="${item?.img}"/>
+        </div>
+      </div>
+      <div class="price">${item?.price}<img src="./assets/img/gem.png"/></div>
+      <div class="description ${item?.time ? '' : 'max'}">
+        <p>${item?.description}</p>
+      </div>
+      <div class="info">
+        <div class="time ${item?.time ? '' : 'hidden'}">
+        <div>Time: </div>
+        <div>${item?.time}</div>
+      </div>
+      <div class="amount">
+        <div>Amount: </div>
+        <div>${formattedNumber(item?.amount)}</div>
+      </div>
+      <div class="total">
+        <div>Total: </div>
+        <div class="flex gap-1 align-center ${item?.amountOfMoney > 0 ? 'text-success' : 'text-failed'}">
+        ${item?.time ?
+          item?.amountOfMoney > 0 ? `+${formattedNumber(item?.amountOfMoney)}` : `-${formattedNumber(item?.amountOfMoney)}`
+        : formattedNumber(item?.amountOfMoney)}
+          <img src="./assets/img/gem.png"/>
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -630,15 +827,16 @@ const getContentDetailItem = (item) => {
     </div>
     <div class="body">
       <div class="flex justify-center">
-        <img src="${item?.img}"/>
+        <div class="img-container">
+          <img src="${item?.img}"/>
+        </div>
       </div>
-      <div class="price">${item?.price}$</div>
-      <div class="description">
-        <div class="label">Description</div>
+      <div class="description full">
         <p>${item?.description}</p>
       </div>
-      <div class="amount">${item?.amount}</div>
-      <div class="amount-of-money ${item?.amountOfMoney > 0 ? 'text-success' : 'text-failed'}">${item?.amountOfMoney > 0 ? `+${formattedNumber(item?.amountOfMoney)}` : `-${formattedNumber(item?.amountOfMoney)}`}$</div>
+      <div class="amount-input">
+        <div>${formattedNumber(item?.amount)}</div>
+      </div>
     </div>
   </div>
   `
@@ -729,6 +927,59 @@ const getContentDetailItemTransaction = (item) => {
         </div>
         </div>
       </div>
+    </div>
+  </div>
+  `
+}
+
+const getContentPurchaseGem = () => {
+  return `
+  <div class="detail-item">
+    <div class="body">
+      <div class="text-md mb-1">Select token to purchase</div>
+      <tab-slip id="tab-slip" options=${JSON.stringify(initPurchaseOptions)}></tab-slip>
+          <div class="balance w-full">
+            <div class="flex gap-2 flex-wrap">
+              <div class="flex items-center w-full gap-2">
+                <div class="balance-content__select items-center justify-between border-common rounded grow-0 show-modal-tokens">
+                  <div class="flex gap-2 items-center fz-16">
+                    <img width="24px" height="24px" src="${selectedToken.img}" class="img-icon">
+                    <div>${selectedToken.name}</div>
+                  </div>
+                </div>
+                <div class="balance-content border-common rounded flex-wrap gap-2 grow">
+                  <div class="w-full items-center relative">
+                    <input type="text" id="purchase-gem-input" ${purchaseGemInfo?.amountToken !=undefined ?
+                      `value=${formattedNumber(purchaseGemInfo?.amountToken)}` : '' } inputmode="decimal" lang="en-US"
+                      enterkeyhint="done" placeholder="0" class="balance-content__input background-input text-left w-full"
+                      autocapitalize="off" autocomplete="off" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between total">
+              <div class="flex gap-1">Balance: <div id="purchase-gem-balance">
+                  ${handleChangeInputNumber(purchaseGemInfo?.balance?.toLocaleString('en')) ?? 0}</div>
+              </div>
+              <div class="flex gap-1">~ <div id="purchase-gem-subtotal">${purchaseGemInfo?.subtotal ?? 0}</div> USD</div>
+            </div>
+            <div class="flex justify-between total">
+              <div>Price impact: </div>
+              <div class="flex gap-1">
+                <div id="purchase-gem-priceImpact">${purchaseGemInfo.priceImpact}</div> USD
+              </div>
+            </div>
+            <div class="flex justify-between total">
+              <div>Minium Received: </div>
+              <div class="flex gap-1">
+                <div id="purchase-gem-miniumReceived">${purchaseGemInfo.miniumReceived}</div> USD
+              </div>
+            </div>
+            <div class="flex justify-between total">
+              <div>Total: </div>
+              <div class="flex gap-1">~ <div id="purchase-gem-total">${purchaseGemInfo.total}</div> USD</div>
+            </div>
+          </div>
     </div>
   </div>
   `

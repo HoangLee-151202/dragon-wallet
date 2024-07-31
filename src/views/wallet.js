@@ -1096,21 +1096,6 @@ const handleOpenSetting = () => {
 
 }
 
-const handleChangeInputNumber = (value) => {
-  if (typeof value === 'string') {
-    let newValue = value.replace(/[^\d.]/g, '');
-
-    const parts = newValue.split('.');
-
-    if (parts.length > 1) {
-      return formattedNumber(parts[0]) + '.' + parts[1];
-    }
-    return formattedNumber(newValue);
-  }
-
-  return 0;
-}
-
 // ----------- Function Toggle ------------------ //
 function toggleBottomSheet({
   id,
