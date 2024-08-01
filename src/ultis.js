@@ -5,7 +5,7 @@ function capitalizeFirstLetter(string) {
 
 function formattedNumber (value) {
   newValue = value?.toString()?.replace(/[^\d]/g, '');
-  const formattedNumber = newValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const formattedNumber = newValue?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return formattedNumber;
 }
 

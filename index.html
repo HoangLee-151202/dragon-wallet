@@ -303,6 +303,81 @@
   </div>
   </div>
   <script>
+
+    const tokenSwapsData = [
+      {
+        img: './assets/img/coin-bnb.png',
+        name: 'WBNB',
+        exchangeRate: 525.39,
+        balance: 123
+      }, {
+        img: './assets/img/coin-usdt.png',
+        name: 'USDT',
+        exchangeRate: 0.978108,
+        balance: 24112
+      }, {
+        img: './assets/img/coin-busd.png',
+        name: 'BUSD',
+        exchangeRate: 0.994094,
+        balance: 2311
+      }, {
+        img: './assets/img/coin-trx.png',
+        name: 'TRX',
+        exchangeRate: 0.060463,
+        balance: 3141
+      }, {
+        img: './assets/img/coin-ton.png',
+        name: 'TON',
+        exchangeRate: 3107.52,
+        balance: 1222.2
+      }
+    ]
+
+    const itemSwapsData = [
+      {
+        img: './assets/img/gem.png',
+        name: 'DGEM',
+        exchangeRate: 1,
+        balance: 1202.2
+      }
+    ]
+
+    const initPurchaseGemInfo = {
+      swapTo: 'item', // item || token
+      from: {
+        balance: tokenSwapsData[0]?.balance ?? 0,
+        amountToken: undefined,
+        miniumReceived: 10,
+        token: tokenSwapsData[0]?.name,
+        priceImpact: 1,
+        total: 0,
+        subTotal: 0
+      },
+      to: {
+        balance: itemSwapsData[0]?.balance ?? 0,
+        amountToken: undefined,
+        miniumReceived: 10,
+        token: itemSwapsData[0]?.name,
+        priceImpact: 1,
+        total: 0,
+        subTotal: 0
+      },
+
+    }
+
+    const initMarketFilter = {
+      price: '', // '', asc, desc, 
+      seller: '', // '', owner
+      type: '', // '', egg, dragon-metal, dragon-wood, dragon-water, dragon-fire, dragon-earth, dragon-vip
+    }
+
+    const initPagination = {
+      market: 1,
+      owner: 1,
+      transactionItem: 1,
+      transactionSwap: 1
+    }
+
     var infoProfile = {
       level: 5,
       userId: '4b210648-87f7-4d40-b812-6028a91cec80',
@@ -323,42 +398,42 @@
         price: 99,
         amountOfMoney: 992,
         description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.',
-      },{
+      }, {
         name: 'Dragon Metal',
         img: './assets/img/dragon-metal-rotate.png',
         amount: 4,
         price: 99,
         amountOfMoney: 992,
         description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.',
-      },{
+      }, {
         name: 'Dragon Wood',
         img: './assets/img/dragon-wood-rotate.png',
         amount: 4,
         price: 99,
         amountOfMoney: 992,
         description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.',
-      },{
+      }, {
         name: 'Dragon Water',
         img: './assets/img/dragon-water-rotate.png',
         amount: 4,
         price: 99,
         amountOfMoney: 992,
         description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.',
-      },{
+      }, {
         name: 'Dragon Fire',
         img: './assets/img/dragon-fire-rotate.png',
         amount: 4,
         price: 99,
         amountOfMoney: 992,
         description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.',
-      },{
+      }, {
         name: 'Dragon Earth',
         img: './assets/img/dragon-earth-rotate.png',
         amount: 4,
         price: 99,
         amountOfMoney: 992,
         description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.',
-      },{
+      }, {
         name: 'Dragon Vip',
         img: './assets/img/dragon-vip-rotate.png',
         amount: 4,
@@ -370,10 +445,10 @@
 
     var historyCoins = [
       {
-      time: '20:27:33 11-07-2024',
-      amountOfMoney: 11
-    }
-  ]
+        time: '20:27:33 11-07-2024',
+        amountOfMoney: 11
+      }
+    ]
 
     var historyItems = [{
       name: 'Egg',
@@ -383,7 +458,7 @@
       amount: 5,
       amountOfMoney: 7.5,
       description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.'
-    },{
+    }, {
       name: 'Dragon',
       img: './assets/img/bottom-sheet-dragon.png',
       time: '20:27:33 11-07-2024',
@@ -391,7 +466,7 @@
       amount: 5,
       amountOfMoney: 25,
       description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.'
-    },{
+    }, {
       name: 'Dragon',
       img: './assets/img/bottom-sheet-dragon.png',
       time: '20:27:33 11-07-2024',
@@ -399,7 +474,7 @@
       amount: 5,
       amountOfMoney: -25,
       description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.'
-    },{
+    }, {
       name: 'Dragon',
       img: './assets/img/bottom-sheet-dragon.png',
       time: '20:27:33 11-07-2024',
@@ -408,7 +483,7 @@
       amountOfMoney: -25,
       description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.'
 
-    },{
+    }, {
       name: 'Dragon',
       img: './assets/img/bottom-sheet-dragon.png',
       time: '20:27:33 11-07-2024',
@@ -417,7 +492,7 @@
       amountOfMoney: 25,
       description: 'Khi ánh sáng của mặt trời bị che khuất bởi màn đêm, con Rồng Lửa Drakath bùng cháy lên từ những ngọn núi lửa đỏ rực. Với cơ thể khổng lồ được bao phủ bởi lớp vảy màu đỏ cam sáng bóng như dung nham, Drakath là hiện thân của sức mạnh và nhiệt huyết. Đôi cánh rộng lớn của nó phát ra ánh sáng chói lóa như ánh mặt trời, làm cho bầu trời bừng sáng với những tia lửa và khói.'
 
-    },{
+    }, {
       name: 'Dragon Vip',
       img: './assets/img/bottom-sheet-dragon.png',
       time: '20:27:33 11-07-2024',
@@ -429,274 +504,415 @@
     }]
 
     var marketsData = [
-  {
-    id: '723381',
-    name: 'Long Đản',
-    img: './assets/img/egg.png',
-    description: 'Quả trứng rồng là một vật phẩm huyền bí và đầy sức mạnh, chứa đựng trong mình tiềm năng của một con rồng con mạnh mẽ. Với vẻ ngoài lấp lánh và màu sắc đa dạng, mỗi quả trứng rồng mang một dấu ấn riêng biệt, biểu tượng cho chủng loại và đặc tính của con rồng sẽ nở ra từ nó.',
-    price: 520,
-    game: 'Dragon Gem'
-  },
-  {
-    id: '577235',
-    name: 'Thanh Long (Mộc Long)',
-    img: './assets/img/dragon-wood-rotate.png',
-    description: 'Thanh Long là con rồng của rừng xanh và tự nhiên. Vảy của nó có màu xanh lá cây tươi sáng, phản chiếu ánh sáng mặt trời qua từng lớp vảy như những chiếc lá trong rừng rậm. Thanh Long có thân hình uyển chuyển và đôi cánh rộng lớn giúp nó bay lượn dễ dàng qua các tán cây. Nó là biểu tượng của sự sống và sự phát triển, thường bảo vệ rừng và các sinh vật sống trong đó.',
-    price: 980,
-    game: 'Dragon Gem'
-  },
-  {
-    id: '293904',
-    name: 'Hồng Long (Hỏa Long)',
-    img: './assets/img/dragon-fire-rotate.png',
-    description: 'Hồng Long là con rồng của lửa và sức mạnh. Vảy của nó có màu đỏ rực, giống như những ngọn lửa cháy bập bùng. Đôi mắt của Hồng Long luôn lấp lánh và tỏa ra ánh sáng mãnh liệt. Nó có khả năng thở ra lửa và thường được coi là biểu tượng của sự nhiệt huyết và sự mạnh mẽ.',
-    price: 980,
-    game: 'Dragon Gem'
-  },
-  {
-    id: '280646',
-    name: 'Hoàng Long (Thổ Long)',
-    img: './assets/img/dragon-earth-rotate.png',
-    description: 'Hoàng Long là con rồng của đất và sự ổn định. Vảy của nó có màu vàng kim, giống như ánh sáng mặt trời chiếu xuống những cánh đồng lúa chín vàng. Hoàng Long có thân hình to lớn và mạnh mẽ, với đôi cánh rộng giúp nó bay lượn trên bầu trời. Nó thường được coi là biểu tượng của sự bền vững và sự thịnh vượng.',
-    price: 1980,
-    game: 'Dragon Gem'
-  },
-  {
-    id: '336382 ',
-    name: 'Bạch Long (Kim Long)',
-    img: './assets/img/dragon-metal-rotate.png',
-    description: 'Bạch Long là một sinh vật lộng lẫy với lớp vảy kim loại sáng bóng, phản chiếu ánh sáng như thép đánh bóng. Nó tượng trưng cho sự rõ ràng và chính xác, thường xuất hiện gần các mỏ quặng và hang động chứa đầy khoáng sản quý giá. Bạch Long biểu trưng cho sự giàu có và tinh tế.',
-    price: 980,
-    game: 'Dragon Gem'
-  },
-  {
-    id: '647285',
-    name: 'Hải Long (Thủy Long)',
-    img: './assets/img/dragon-water-rotate.png',
-    description: 'Hải Long là con rồng của nước và đại dương. Vảy của nó có màu xanh đậm đến đen, lấp lánh như bề mặt của đại dương sâu thẳm. Với thân hình linh hoạt và mềm mại, Hải Long di chuyển dễ dàng trong nước và có thể tạo ra sóng lớn và mưa bão. Nó tượng trưng cho sự bí ẩn và sức mạnh của đại dương, thường được coi là người bảo vệ của các vùng nước và các sinh vật sống dưới biển.',
-    price: 980,
-    game: 'Dragon Gem'
-},{
-  id: '606865',
-    name: 'Ngũ Hành Long',
-    img: './assets/img/dragon-vip-rotate.png',
-    description: 'Ngũ Hành Long là con rồng vĩ đại, kết hợp sức mạnh của tất cả năm hệ trong ngũ hành. Vảy của nó thay đổi màu sắc từ xanh lá cây tươi sáng của Mộc, đến đỏ rực của Hỏa, vàng kim của Thổ, trắng sáng của Kim, và xanh đậm của Thủy, tạo nên một hình ảnh đầy huyền bí và lôi cuốn. Thân hình của Ngũ Hành Long mạnh mẽ và uyển chuyển, với đôi cánh rộng lớn có khả năng biến hóa theo từng yếu tố của ngũ hành. Nó có khả năng điều khiển các yếu tố tự nhiên, từ việc thúc đẩy sự phát triển của cây cối, tạo ra lửa và nhiệt, điều chỉnh đất đai và khoáng sản, đến việc tạo ra sóng và mưa. Ngũ Hành Long là biểu tượng của sự hòa hợp và cân bằng, bảo vệ và duy trì sự cân bằng trong tự nhiên và vũ trụ.',
-    price: 1990,
-    game: 'Dragon Gem'
-}
-];
+      {
+        id: '723381',
+        name: 'Long Đản',
+        img: './assets/img/egg.png',
+        description: 'Quả trứng rồng là một vật phẩm huyền bí và đầy sức mạnh, chứa đựng trong mình tiềm năng của một con rồng con mạnh mẽ. Với vẻ ngoài lấp lánh và màu sắc đa dạng, mỗi quả trứng rồng mang một dấu ấn riêng biệt, biểu tượng cho chủng loại và đặc tính của con rồng sẽ nở ra từ nó.',
+        price: 5,
+        game: 'Dragon Gem',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59',
+        amount: 10
+      },
+      {
+        id: '577235',
+        name: 'Thanh Long (Mộc Long)',
+        img: './assets/img/dragon-wood-rotate.png',
+        description: 'Thanh Long là con rồng của rừng xanh và tự nhiên. Vảy của nó có màu xanh lá cây tươi sáng, phản chiếu ánh sáng mặt trời qua từng lớp vảy như những chiếc lá trong rừng rậm. Thanh Long có thân hình uyển chuyển và đôi cánh rộng lớn giúp nó bay lượn dễ dàng qua các tán cây. Nó là biểu tượng của sự sống và sự phát triển, thường bảo vệ rừng và các sinh vật sống trong đó.',
+        price: 5,
+        game: 'Dragon Gem',
+        userId: '5a3b7e2b-124e-409d-8a7a-9c4d29d6c5c2',
+        amount: 8
+      },
+      {
+        id: '293904',
+        name: 'Hồng Long (Hỏa Long)',
+        img: './assets/img/dragon-fire-rotate.png',
+        description: 'Hồng Long là con rồng của lửa và sức mạnh. Vảy của nó có màu đỏ rực, giống như những ngọn lửa cháy bập bùng. Đôi mắt của Hồng Long luôn lấp lánh và tỏa ra ánh sáng mãnh liệt. Nó có khả năng thở ra lửa và thường được coi là biểu tượng của sự nhiệt huyết và sự mạnh mẽ.',
+        price: 10,
+        game: 'Dragon Gem',
+        userId: '1e4a7c8d-6b1e-4b7e-bc3a-8a1e7b9c4d3f',
+        amount: 7
+      },
+      {
+        id: '280646',
+        name: 'Hoàng Long (Thổ Long)',
+        img: './assets/img/dragon-earth-rotate.png',
+        description: 'Hoàng Long là con rồng của đất và sự ổn định. Vảy của nó có màu vàng kim, giống như ánh sáng mặt trời chiếu xuống những cánh đồng lúa chín vàng. Hoàng Long có thân hình to lớn và mạnh mẽ, với đôi cánh rộng giúp nó bay lượn trên bầu trời. Nó thường được coi là biểu tượng của sự bền vững và sự thịnh vượng.',
+        price: 6,
+        game: 'Dragon Gem',
+        userId: '7d2f4a1e-8b2e-431a-97a9-4f1d6a7e3b9c',
+        amount: 9
+      },
+      {
+        id: '336382 ',
+        name: 'Bạch Long (Kim Long)',
+        img: './assets/img/dragon-metal-rotate.png',
+        description: 'Bạch Long là một sinh vật lộng lẫy với lớp vảy kim loại sáng bóng, phản chiếu ánh sáng như thép đánh bóng. Nó tượng trưng cho sự rõ ràng và chính xác, thường xuất hiện gần các mỏ quặng và hang động chứa đầy khoáng sản quý giá. Bạch Long biểu trưng cho sự giàu có và tinh tế.',
+        price: 5,
+        game: 'Dragon Gem',
+        userId: '3b8e1a4d-7c1e-4f2a-b9a1-8e4d3b7c2a9f',
+        amount: 88
+      },
+      {
+        id: '647285',
+        name: 'Hải Long (Thủy Long)',
+        img: './assets/img/dragon-water-rotate.png',
+        description: 'Hải Long là con rồng của nước và đại dương. Vảy của nó có màu xanh đậm đến đen, lấp lánh như bề mặt của đại dương sâu thẳm. Với thân hình linh hoạt và mềm mại, Hải Long di chuyển dễ dàng trong nước và có thể tạo ra sóng lớn và mưa bão. Nó tượng trưng cho sự bí ẩn và sức mạnh của đại dương, thường được coi là người bảo vệ của các vùng nước và các sinh vật sống dưới biển.',
+        price: 3,
+        game: 'Dragon Gem',
+        userId: '4d1e7b3a-8f2a-4319-8a1e-5c9d2a7e3b1f',
+        amount: 10
+      }, {
+        id: '606865',
+        name: 'Ngũ Hành Long',
+        img: './assets/img/dragon-vip-rotate.png',
+        description: 'Ngũ Hành Long là con rồng vĩ đại, kết hợp sức mạnh của tất cả năm hệ trong ngũ hành. Vảy của nó thay đổi màu sắc từ xanh lá cây tươi sáng của Mộc, đến đỏ rực của Hỏa, vàng kim của Thổ, trắng sáng của Kim, và xanh đậm của Thủy, tạo nên một hình ảnh đầy huyền bí và lôi cuốn. Thân hình của Ngũ Hành Long mạnh mẽ và uyển chuyển, với đôi cánh rộng lớn có khả năng biến hóa theo từng yếu tố của ngũ hành. Nó có khả năng điều khiển các yếu tố tự nhiên, từ việc thúc đẩy sự phát triển của cây cối, tạo ra lửa và nhiệt, điều chỉnh đất đai và khoáng sản, đến việc tạo ra sóng và mưa. Ngũ Hành Long là biểu tượng của sự hòa hợp và cân bằng, bảo vệ và duy trì sự cân bằng trong tự nhiên và vũ trụ.',
+        price: 88,
+        game: 'Dragon Gem',
+        userId: '9c2e1a7b-4d1e-8f3a-6b9a-2d7c3b1e4f8a',
+        amount: 99
+      }
+    ];
 
-var ownersData = [
-  {
-    name: 'Long Đản',
-    img: './assets/img/egg.png',
-    description: 'Quả trứng rồng là một vật phẩm huyền bí và đầy sức mạnh, chứa đựng trong mình tiềm năng của một con rồng con mạnh mẽ. Với vẻ ngoài lấp lánh và màu sắc đa dạng, mỗi quả trứng rồng mang một dấu ấn riêng biệt, biểu tượng cho chủng loại và đặc tính của con rồng sẽ nở ra từ nó.',
-    price: 520,
-    amount: 5,
-    game: 'Dragon Gem'
-  },
-  {
-    name: 'Thanh Long (Mộc Long)',
-    img: './assets/img/dragon-wood-rotate.png',
-    description: 'Thanh Long là con rồng của rừng xanh và tự nhiên. Vảy của nó có màu xanh lá cây tươi sáng, phản chiếu ánh sáng mặt trời qua từng lớp vảy như những chiếc lá trong rừng rậm. Thanh Long có thân hình uyển chuyển và đôi cánh rộng lớn giúp nó bay lượn dễ dàng qua các tán cây. Nó là biểu tượng của sự sống và sự phát triển, thường bảo vệ rừng và các sinh vật sống trong đó.',
-    price: 980,
-    amount: 5,
-    game: 'Dragon Gem'
-  },
-  {
-    name: 'Hồng Long (Hỏa Long)',
-    img: './assets/img/dragon-fire-rotate.png',
-    description: 'Hồng Long là con rồng của lửa và sức mạnh. Vảy của nó có màu đỏ rực, giống như những ngọn lửa cháy bập bùng. Đôi mắt của Hồng Long luôn lấp lánh và tỏa ra ánh sáng mãnh liệt. Nó có khả năng thở ra lửa và thường được coi là biểu tượng của sự nhiệt huyết và sự mạnh mẽ.',
-    price: 980,
-    amount: 5,
-    game: 'Dragon Gem'
-  },
-  {
-    name: 'Hoàng Long (Thổ Long)',
-    img: './assets/img/dragon-earth-rotate.png',
-    description: 'Hoàng Long là con rồng của đất và sự ổn định. Vảy của nó có màu vàng kim, giống như ánh sáng mặt trời chiếu xuống những cánh đồng lúa chín vàng. Hoàng Long có thân hình to lớn và mạnh mẽ, với đôi cánh rộng giúp nó bay lượn trên bầu trời. Nó thường được coi là biểu tượng của sự bền vững và sự thịnh vượng.',
-    price: 1980,
-    amount: 5,
-    game: 'Dragon Gem'
-  },
-  {
-    name: 'Bạch Long (Kim Long)',
-    img: './assets/img/dragon-metal-rotate.png',
-    description: 'Bạch Long là một sinh vật lộng lẫy với lớp vảy kim loại sáng bóng, phản chiếu ánh sáng như thép đánh bóng. Nó tượng trưng cho sự rõ ràng và chính xác, thường xuất hiện gần các mỏ quặng và hang động chứa đầy khoáng sản quý giá. Bạch Long biểu trưng cho sự giàu có và tinh tế.',
-    price: 980,
-    amount: 5,
-    game: 'Dragon Gem'
-  },
-  {
-    name: 'Hải Long (Thủy Long)',
-    img: './assets/img/dragon-water-rotate.png',
-    description: 'Hải Long là con rồng của nước và đại dương. Vảy của nó có màu xanh đậm đến đen, lấp lánh như bề mặt của đại dương sâu thẳm. Với thân hình linh hoạt và mềm mại, Hải Long di chuyển dễ dàng trong nước và có thể tạo ra sóng lớn và mưa bão. Nó tượng trưng cho sự bí ẩn và sức mạnh của đại dương, thường được coi là người bảo vệ của các vùng nước và các sinh vật sống dưới biển.',
-    price: 980,
-    amount: 5,
-    game: 'Dragon Gem'
-},{
-    name: 'Ngũ Hành Long',
-    img: './assets/img/dragon-vip-rotate.png',
-    description: 'Ngũ Hành Long là con rồng vĩ đại, kết hợp sức mạnh của tất cả năm hệ trong ngũ hành. Vảy của nó thay đổi màu sắc từ xanh lá cây tươi sáng của Mộc, đến đỏ rực của Hỏa, vàng kim của Thổ, trắng sáng của Kim, và xanh đậm của Thủy, tạo nên một hình ảnh đầy huyền bí và lôi cuốn. Thân hình của Ngũ Hành Long mạnh mẽ và uyển chuyển, với đôi cánh rộng lớn có khả năng biến hóa theo từng yếu tố của ngũ hành. Nó có khả năng điều khiển các yếu tố tự nhiên, từ việc thúc đẩy sự phát triển của cây cối, tạo ra lửa và nhiệt, điều chỉnh đất đai và khoáng sản, đến việc tạo ra sóng và mưa. Ngũ Hành Long là biểu tượng của sự hòa hợp và cân bằng, bảo vệ và duy trì sự cân bằng trong tự nhiên và vũ trụ.',
-    price: 1990,
-    amount: 5,
-    game: 'Dragon Gem'
-}
-]
-  
-var transactionsData = [
-  {
-    name: 'Long Đản',
-    img: './assets/img/egg.png',
-    description: 'Quả trứng rồng là một vật phẩm huyền bí và đầy sức mạnh, chứa đựng trong mình tiềm năng của một con rồng con mạnh mẽ. Với vẻ ngoài lấp lánh và màu sắc đa dạng, mỗi quả trứng rồng mang một dấu ấn riêng biệt, biểu tượng cho chủng loại và đặc tính của con rồng sẽ nở ra từ nó.',
-    price: 520,
-    amount: 5,
-    total: 2600,
-    game: 'Dragon Gem',
-    time: '20:27:33 11-07-2024'
-  },
-  {
-    name: 'Thanh Long (Mộc Long)',
-    img: './assets/img/dragon-wood-rotate.png',
-    description: 'Thanh Long là con rồng của rừng xanh và tự nhiên. Vảy của nó có màu xanh lá cây tươi sáng, phản chiếu ánh sáng mặt trời qua từng lớp vảy như những chiếc lá trong rừng rậm. Thanh Long có thân hình uyển chuyển và đôi cánh rộng lớn giúp nó bay lượn dễ dàng qua các tán cây. Nó là biểu tượng của sự sống và sự phát triển, thường bảo vệ rừng và các sinh vật sống trong đó.',
-    price: 980,
-    amount: 5,
-    total: 4900,
-    game: 'Dragon Gem',
-    time: '20:27:33 11-07-2024'
-  },
-  {
-    name: 'Hồng Long (Hỏa Long)',
-    img: './assets/img/dragon-fire-rotate.png',
-    description: 'Hồng Long là con rồng của lửa và sức mạnh. Vảy của nó có màu đỏ rực, giống như những ngọn lửa cháy bập bùng. Đôi mắt của Hồng Long luôn lấp lánh và tỏa ra ánh sáng mãnh liệt. Nó có khả năng thở ra lửa và thường được coi là biểu tượng của sự nhiệt huyết và sự mạnh mẽ.',
-    price: 980,
-    amount: 5,
-    total: 4900,
-    game: 'Dragon Gem',
-    time: '20:27:33 11-07-2024'
-  },
-  {
-    name: 'Hoàng Long (Thổ Long)',
-    img: './assets/img/dragon-earth-rotate.png',
-    description: 'Hoàng Long là con rồng của đất và sự ổn định. Vảy của nó có màu vàng kim, giống như ánh sáng mặt trời chiếu xuống những cánh đồng lúa chín vàng. Hoàng Long có thân hình to lớn và mạnh mẽ, với đôi cánh rộng giúp nó bay lượn trên bầu trời. Nó thường được coi là biểu tượng của sự bền vững và sự thịnh vượng.',
-    price: 1980,
-    amount: 5,
-    total: -4900,
-    game: 'Dragon Gem',
-    time: '20:27:33 11-07-2024'
-  },
-  {
-    name: 'Bạch Long (Kim Long)',
-    img: './assets/img/dragon-metal-rotate.png',
-    description: 'Bạch Long là một sinh vật lộng lẫy với lớp vảy kim loại sáng bóng, phản chiếu ánh sáng như thép đánh bóng. Nó tượng trưng cho sự rõ ràng và chính xác, thường xuất hiện gần các mỏ quặng và hang động chứa đầy khoáng sản quý giá. Bạch Long biểu trưng cho sự giàu có và tinh tế.',
-    price: 980,
-    amount: 5,
-    total: 4900,
-    game: 'Dragon Gem',
-    time: '20:27:33 11-07-2024'
-  },
-  {
-    name: 'Hải Long (Thủy Long)',
-    img: './assets/img/dragon-water-rotate.png',
-    description: 'Hải Long là con rồng của nước và đại dương. Vảy của nó có màu xanh đậm đến đen, lấp lánh như bề mặt của đại dương sâu thẳm. Với thân hình linh hoạt và mềm mại, Hải Long di chuyển dễ dàng trong nước và có thể tạo ra sóng lớn và mưa bão. Nó tượng trưng cho sự bí ẩn và sức mạnh của đại dương, thường được coi là người bảo vệ của các vùng nước và các sinh vật sống dưới biển.',
-    price: 980,
-    amount: 5,
-    total: -4900,
-    game: 'Dragon Gem',
-    time: '20:27:33 11-07-2024'
-},{
-    name: 'Ngũ Hành Long',
-    img: './assets/img/dragon-vip-rotate.png',
-    description: 'Ngũ Hành Long là con rồng vĩ đại, kết hợp sức mạnh của tất cả năm hệ trong ngũ hành. Vảy của nó thay đổi màu sắc từ xanh lá cây tươi sáng của Mộc, đến đỏ rực của Hỏa, vàng kim của Thổ, trắng sáng của Kim, và xanh đậm của Thủy, tạo nên một hình ảnh đầy huyền bí và lôi cuốn. Thân hình của Ngũ Hành Long mạnh mẽ và uyển chuyển, với đôi cánh rộng lớn có khả năng biến hóa theo từng yếu tố của ngũ hành. Nó có khả năng điều khiển các yếu tố tự nhiên, từ việc thúc đẩy sự phát triển của cây cối, tạo ra lửa và nhiệt, điều chỉnh đất đai và khoáng sản, đến việc tạo ra sóng và mưa. Ngũ Hành Long là biểu tượng của sự hòa hợp và cân bằng, bảo vệ và duy trì sự cân bằng trong tự nhiên và vũ trụ.',
-    price: 1990,
-    amount: 5,
-    total: 4900,
-    game: 'Dragon Gem',
-    time: '20:27:33 11-07-2024'
-}
-]
+    var marketOwnersData = [
+      {
+        id: '723381',
+        name: 'Long Đản',
+        img: './assets/img/egg.png',
+        description: 'Quả trứng rồng là một vật phẩm huyền bí và đầy sức mạnh, chứa đựng trong mình tiềm năng của một con rồng con mạnh mẽ. Với vẻ ngoài lấp lánh và màu sắc đa dạng, mỗi quả trứng rồng mang một dấu ấn riêng biệt, biểu tượng cho chủng loại và đặc tính của con rồng sẽ nở ra từ nó.',
+        price: 5,
+        game: 'Dragon Gem',
+        amount: 50,
+        currentAmount: 10
+      },
+      {
+        id: '577235',
+        name: 'Thanh Long (Mộc Long)',
+        img: './assets/img/dragon-wood-rotate.png',
+        description: 'Thanh Long là con rồng của rừng xanh và tự nhiên. Vảy của nó có màu xanh lá cây tươi sáng, phản chiếu ánh sáng mặt trời qua từng lớp vảy như những chiếc lá trong rừng rậm. Thanh Long có thân hình uyển chuyển và đôi cánh rộng lớn giúp nó bay lượn dễ dàng qua các tán cây. Nó là biểu tượng của sự sống và sự phát triển, thường bảo vệ rừng và các sinh vật sống trong đó.',
+        price: 5,
+        game: 'Dragon Gem',
+        amount: 20,
+        currentAmount: 5
+      },
+    ];
 
-const tokensData = [
-            {
-                img: './assets/img/gem.png',
-                name: 'DGEM',
-                exchangeRate: 1,
-                balance: 1202.2
+    var ownersData = [
+      {
+        name: 'Long Đản',
+        img: './assets/img/egg.png',
+        description: 'Quả trứng rồng là một vật phẩm huyền bí và đầy sức mạnh, chứa đựng trong mình tiềm năng của một con rồng con mạnh mẽ. Với vẻ ngoài lấp lánh và màu sắc đa dạng, mỗi quả trứng rồng mang một dấu ấn riêng biệt, biểu tượng cho chủng loại và đặc tính của con rồng sẽ nở ra từ nó.',
+        price: 520,
+        amount: 5,
+        game: 'Dragon Gem'
+      },
+      {
+        name: 'Thanh Long (Mộc Long)',
+        img: './assets/img/dragon-wood-rotate.png',
+        description: 'Thanh Long là con rồng của rừng xanh và tự nhiên. Vảy của nó có màu xanh lá cây tươi sáng, phản chiếu ánh sáng mặt trời qua từng lớp vảy như những chiếc lá trong rừng rậm. Thanh Long có thân hình uyển chuyển và đôi cánh rộng lớn giúp nó bay lượn dễ dàng qua các tán cây. Nó là biểu tượng của sự sống và sự phát triển, thường bảo vệ rừng và các sinh vật sống trong đó.',
+        price: 980,
+        amount: 5,
+        game: 'Dragon Gem'
+      },
+      {
+        name: 'Hồng Long (Hỏa Long)',
+        img: './assets/img/dragon-fire-rotate.png',
+        description: 'Hồng Long là con rồng của lửa và sức mạnh. Vảy của nó có màu đỏ rực, giống như những ngọn lửa cháy bập bùng. Đôi mắt của Hồng Long luôn lấp lánh và tỏa ra ánh sáng mãnh liệt. Nó có khả năng thở ra lửa và thường được coi là biểu tượng của sự nhiệt huyết và sự mạnh mẽ.',
+        price: 980,
+        amount: 5,
+        game: 'Dragon Gem'
+      },
+      {
+        name: 'Hoàng Long (Thổ Long)',
+        img: './assets/img/dragon-earth-rotate.png',
+        description: 'Hoàng Long là con rồng của đất và sự ổn định. Vảy của nó có màu vàng kim, giống như ánh sáng mặt trời chiếu xuống những cánh đồng lúa chín vàng. Hoàng Long có thân hình to lớn và mạnh mẽ, với đôi cánh rộng giúp nó bay lượn trên bầu trời. Nó thường được coi là biểu tượng của sự bền vững và sự thịnh vượng.',
+        price: 1980,
+        amount: 5,
+        game: 'Dragon Gem'
+      },
+      {
+        name: 'Bạch Long (Kim Long)',
+        img: './assets/img/dragon-metal-rotate.png',
+        description: 'Bạch Long là một sinh vật lộng lẫy với lớp vảy kim loại sáng bóng, phản chiếu ánh sáng như thép đánh bóng. Nó tượng trưng cho sự rõ ràng và chính xác, thường xuất hiện gần các mỏ quặng và hang động chứa đầy khoáng sản quý giá. Bạch Long biểu trưng cho sự giàu có và tinh tế.',
+        price: 980,
+        amount: 5,
+        game: 'Dragon Gem'
+      },
+      {
+        name: 'Hải Long (Thủy Long)',
+        img: './assets/img/dragon-water-rotate.png',
+        description: 'Hải Long là con rồng của nước và đại dương. Vảy của nó có màu xanh đậm đến đen, lấp lánh như bề mặt của đại dương sâu thẳm. Với thân hình linh hoạt và mềm mại, Hải Long di chuyển dễ dàng trong nước và có thể tạo ra sóng lớn và mưa bão. Nó tượng trưng cho sự bí ẩn và sức mạnh của đại dương, thường được coi là người bảo vệ của các vùng nước và các sinh vật sống dưới biển.',
+        price: 980,
+        amount: 5,
+        game: 'Dragon Gem'
+      }, {
+        name: 'Ngũ Hành Long',
+        img: './assets/img/dragon-vip-rotate.png',
+        description: 'Ngũ Hành Long là con rồng vĩ đại, kết hợp sức mạnh của tất cả năm hệ trong ngũ hành. Vảy của nó thay đổi màu sắc từ xanh lá cây tươi sáng của Mộc, đến đỏ rực của Hỏa, vàng kim của Thổ, trắng sáng của Kim, và xanh đậm của Thủy, tạo nên một hình ảnh đầy huyền bí và lôi cuốn. Thân hình của Ngũ Hành Long mạnh mẽ và uyển chuyển, với đôi cánh rộng lớn có khả năng biến hóa theo từng yếu tố của ngũ hành. Nó có khả năng điều khiển các yếu tố tự nhiên, từ việc thúc đẩy sự phát triển của cây cối, tạo ra lửa và nhiệt, điều chỉnh đất đai và khoáng sản, đến việc tạo ra sóng và mưa. Ngũ Hành Long là biểu tượng của sự hòa hợp và cân bằng, bảo vệ và duy trì sự cân bằng trong tự nhiên và vũ trụ.',
+        price: 1990,
+        amount: 5,
+        game: 'Dragon Gem'
+      }
+    ]
+
+    var transactionsItemData = [
+      {
+        name: 'Long Đản',
+        img: './assets/img/egg.png',
+        description: 'Quả trứng rồng là một vật phẩm huyền bí và đầy sức mạnh, chứa đựng trong mình tiềm năng của một con rồng con mạnh mẽ. Với vẻ ngoài lấp lánh và màu sắc đa dạng, mỗi quả trứng rồng mang một dấu ấn riêng biệt, biểu tượng cho chủng loại và đặc tính của con rồng sẽ nở ra từ nó.',
+        price: 520,
+        amount: 5,
+        total: 2600,
+        game: 'Dragon Gem',
+        time: '20:27:33 11-07-2024',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59'
+      },
+      {
+        name: 'Thanh Long (Mộc Long)',
+        img: './assets/img/dragon-wood-rotate.png',
+        description: 'Thanh Long là con rồng của rừng xanh và tự nhiên. Vảy của nó có màu xanh lá cây tươi sáng, phản chiếu ánh sáng mặt trời qua từng lớp vảy như những chiếc lá trong rừng rậm. Thanh Long có thân hình uyển chuyển và đôi cánh rộng lớn giúp nó bay lượn dễ dàng qua các tán cây. Nó là biểu tượng của sự sống và sự phát triển, thường bảo vệ rừng và các sinh vật sống trong đó.',
+        price: 980,
+        amount: 5,
+        total: 4900,
+        game: 'Dragon Gem',
+        time: '20:27:33 11-07-2024',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59'
+      },
+      {
+        name: 'Hồng Long (Hỏa Long)',
+        img: './assets/img/dragon-fire-rotate.png',
+        description: 'Hồng Long là con rồng của lửa và sức mạnh. Vảy của nó có màu đỏ rực, giống như những ngọn lửa cháy bập bùng. Đôi mắt của Hồng Long luôn lấp lánh và tỏa ra ánh sáng mãnh liệt. Nó có khả năng thở ra lửa và thường được coi là biểu tượng của sự nhiệt huyết và sự mạnh mẽ.',
+        price: 980,
+        amount: 5,
+        total: 4900,
+        game: 'Dragon Gem',
+        time: '20:27:33 11-07-2024',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59'
+      },
+      {
+        name: 'Hoàng Long (Thổ Long)',
+        img: './assets/img/dragon-earth-rotate.png',
+        description: 'Hoàng Long là con rồng của đất và sự ổn định. Vảy của nó có màu vàng kim, giống như ánh sáng mặt trời chiếu xuống những cánh đồng lúa chín vàng. Hoàng Long có thân hình to lớn và mạnh mẽ, với đôi cánh rộng giúp nó bay lượn trên bầu trời. Nó thường được coi là biểu tượng của sự bền vững và sự thịnh vượng.',
+        price: 1980,
+        amount: 5,
+        total: -4900,
+        game: 'Dragon Gem',
+        time: '20:27:33 11-07-2024',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59'
+      },
+      {
+        name: 'Bạch Long (Kim Long)',
+        img: './assets/img/dragon-metal-rotate.png',
+        description: 'Bạch Long là một sinh vật lộng lẫy với lớp vảy kim loại sáng bóng, phản chiếu ánh sáng như thép đánh bóng. Nó tượng trưng cho sự rõ ràng và chính xác, thường xuất hiện gần các mỏ quặng và hang động chứa đầy khoáng sản quý giá. Bạch Long biểu trưng cho sự giàu có và tinh tế.',
+        price: 980,
+        amount: 5,
+        total: 4900,
+        game: 'Dragon Gem',
+        time: '20:27:33 11-07-2024',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59'
+      },
+      {
+        name: 'Hải Long (Thủy Long)',
+        img: './assets/img/dragon-water-rotate.png',
+        description: 'Hải Long là con rồng của nước và đại dương. Vảy của nó có màu xanh đậm đến đen, lấp lánh như bề mặt của đại dương sâu thẳm. Với thân hình linh hoạt và mềm mại, Hải Long di chuyển dễ dàng trong nước và có thể tạo ra sóng lớn và mưa bão. Nó tượng trưng cho sự bí ẩn và sức mạnh của đại dương, thường được coi là người bảo vệ của các vùng nước và các sinh vật sống dưới biển.',
+        price: 980,
+        amount: 5,
+        total: -4900,
+        game: 'Dragon Gem',
+        time: '20:27:33 11-07-2024',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59'
+      }, {
+        name: 'Ngũ Hành Long',
+        img: './assets/img/dragon-vip-rotate.png',
+        description: 'Ngũ Hành Long là con rồng vĩ đại, kết hợp sức mạnh của tất cả năm hệ trong ngũ hành. Vảy của nó thay đổi màu sắc từ xanh lá cây tươi sáng của Mộc, đến đỏ rực của Hỏa, vàng kim của Thổ, trắng sáng của Kim, và xanh đậm của Thủy, tạo nên một hình ảnh đầy huyền bí và lôi cuốn. Thân hình của Ngũ Hành Long mạnh mẽ và uyển chuyển, với đôi cánh rộng lớn có khả năng biến hóa theo từng yếu tố của ngũ hành. Nó có khả năng điều khiển các yếu tố tự nhiên, từ việc thúc đẩy sự phát triển của cây cối, tạo ra lửa và nhiệt, điều chỉnh đất đai và khoáng sản, đến việc tạo ra sóng và mưa. Ngũ Hành Long là biểu tượng của sự hòa hợp và cân bằng, bảo vệ và duy trì sự cân bằng trong tự nhiên và vũ trụ.',
+        price: 1990,
+        amount: 5,
+        total: 4900,
+        game: 'Dragon Gem',
+        time: '20:27:33 11-07-2024',
+        userId: '2f38b9e1-4d1a-4317-b3a8-58e1a09d0c59'
+      }
+    ]
+
+    var transactionsSwapData = [
+      {
+        id: '123222',
+        time: '20:27:33 11-07-2024',
+        status: 'success',
+        fromToken: {
+          id: '1232323',
+          name: 'USDT',
+          img: './assets/img/coin-usdt.png',
+          amount: 1.2
+        },
+        toToken: {
+          id: '1232321',
+          name: 'GEM',
+          img: './assets/img/gem.png',
+          amount: 3.2
+        }
+      },
+      {
+        id: '1223222',
+        time: '20:27:33 11-07-2024',
+        status: 'failed',
+        fromToken: {
+          id: '1232323',
+          name: 'USDT',
+          img: './assets/img/coin-usdt.png',
+          amount: 1.2
+        },
+        toToken: {
+          id: '1232321',
+          name: 'GEM',
+          img: './assets/img/gem.png',
+          amount: 3.2
+        }
+      }
+    ]
+    var purchaseInfo = {
+      id: '',
+      price: 0,
+      amount: 1,
+      total: 0
+    }
+
+    var sellInfo = {
+      id: '',
+      price: 0,
+      amount: 1,
+      total: 0,
+      max: 0
+    }
+
+    var purchaseGemInfo = { ...initPurchaseGemInfo, from: {...initPurchaseGemInfo.from}, to: {...initPurchaseGemInfo.to} }
+    var marketFilter = { ...initMarketFilter }
+    
+    var pagination = {...initPagination}
+
+    const getMarketItems = () => {
+      // TODO CALL API
+      console.log("CALL API GET MARKET ITEM BY PARAMS", marketFilter, pagination.market)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 3000);
+      });
+    }
+
+    const getOwnerItems = () => {
+      // TODO CALL API
+      console.log("CALL API GET OWNER ITEM BY PARAMS", pagination.owner)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 3000);
+      });
+    }
+
+    const getTransactionItems = () => {
+      // TODO CALL API
+      console.log("CALL API GET OWNER ITEM BY PARAMS", pagination.transactionItem)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 3000);
+      });
+    }
+
+    const getTransactionSwaps = () => {
+      // TODO CALL API
+      console.log("CALL API GET TRANSACTION SWAP BY PARAMS", pagination.transactionSwap)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 3000);
+      });
+    }
+
+    const handleSubmitPurchase = () => {
+      // TODO CALL API
+      console.log("CALL API PURCHASE", purchaseInfo)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+    }
+
+    const handleSubmitSell = () => {
+      // TODO CALL API
+      console.log("CALL API SELL", sellInfo)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+    }
+
+    const handleSubmitEditItem = () => {
+      // TODO CALL API
+      console.log("CALL API EDIT", sellInfo)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+    }
+
+    const handleSubmitDeleteItem = (id) => {
+      // TODO CALL API
+      console.log("CALL API DELETE", id)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+    }
+
+    const handleCalculateSwap = (tokenChange) => {
+      console.log("CALL API HANDLE CALCULATE SWAP", {
+        token: {
+          from: purchaseGemInfo?.from?.token,
+          to: purchaseGemInfo?.to?.token
+        },
+        change: { ...tokenChange }
+      })
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            swapTo: purchaseGemInfo?.swapTo,
+            from: {
+              balance: 123, // Số balance hiện tại
+              amountToken: 3234, // Số lượng nhập vào
+              miniumReceived: 9, // Số rút tối thiểu
+              token: purchaseGemInfo?.from?.token, // Tên token
+              priceImpact: 1, // Phí rút
+              subTotal: 1231, // Tính ra tỉ giá $
             },
-            {
-                img: './assets/img/coin-bnb.png',
-                name: 'WBNB',
-                exchangeRate: 525.39,
-                balance: 123
-            }, {
-                img: './assets/img/coin-usdt.png',
-                name: 'USDT',
-                exchangeRate: 0.978108,
-                balance: 24112
-            }, {
-                img: './assets/img/coin-busd.png',
-                name: 'BUSD',
-                exchangeRate: 0.994094,
-                balance: 2311
-            }, {
-                img: './assets/img/coin-trx.png',
-                name: 'TRX',
-                exchangeRate: 0.060463,
-                balance: 3141
-            }, {
-                img: './assets/img/coin-ton.png',
-                name: 'TON',
-                exchangeRate: 3107.52,
-                balance: 1222.2
+            to: {
+              balance: 123, // Số balance hiện tại
+              amountToken: 46123, // Số lượng nhập vào
+              miniumReceived: 8, // Số rút tối thiểu
+              token: purchaseGemInfo?.to?.token, // Tên token
+              priceImpact: 2, // Phí rút
+              subTotal: 3231, // Tính ra tỉ giá $
             }
-        ]
+          });
+        }, 500);
+      });
+    }
 
-var purchaseInfo = {
-  id: '',
-  price: 0,
-  amount: 1,
-  total: 0
-}
-
-var sellInfo = {
-  id: '',
-  price: 0,
-  amount: 1,
-  total: 0,
-  max: 0
-}
-
-const initPurchaseGemInfo = {
-            balance: tokensData[0]?.balance ?? 0,
-            amountToken: undefined,
-            subtotal: 0,
-            priceImpact: 1,
-            miniumReceived: 10,
-            total: 0,
-            token: tokensData[0].name
-}
-var purchaseGemInfo = {...initPurchaseGemInfo}
-
-  const handleSubmitPurchase = () => {
-// TODO CALL API
-console.log("CALL API ADD MEMBER", purchaseInfo)
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve();
-                }, 2000);
-            });
-  }
-
-  const handleSubmitSell = () => {
-// TODO CALL API
-console.log("CALL API ADD MEMBER", sellInfo)
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    resolve();
-                }, 2000);
-            });
-  }
-  
+    const handleSubmitSwapGem = () => {
+      // TODO CALL API
+      console.log("CALL API SWAP GEM", purchaseGemInfo)
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+    }
   </script>
   <script type="text/javascript" src="index.js"></script>
   <script type="text/javascript" src="./src/views/market.js"></script>
