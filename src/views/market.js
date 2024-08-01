@@ -447,19 +447,19 @@ document.addEventListener('DOMContentLoaded', () => {
           btnPriceMinus.setAttribute('disabled', true)
           btnPricePlus.setAttribute('disabled', true)
           btnSell.setAttribute('disabled', true)
-          handleSubmitSell().then(() => {
+          handleSubmitEditItem().then(() => {
             modalDetailItem.hide()
             isLoading = false
             toggleNotification({
-              id: 'sell-item-success',
-              label: 'Sell successfull!',
+              id: 'edit-item-success',
+              label: 'Edit successfull!',
               status: 'success'
             })
           }).catch((error) => {
             isLoading = false
             toggleNotification({
-              id: 'sell-item-failed',
-              label: error?.responseJSON?.error ?? 'Sell failed',
+              id: 'edit-item-failed',
+              label: error?.responseJSON?.error ?? 'Edit failed',
               status: 'failed'
             })
             btnSell.removeAttribute('loading')
