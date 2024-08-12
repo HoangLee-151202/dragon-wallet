@@ -122,7 +122,7 @@ var otpSubmit = ''
 document.addEventListener('DOMContentLoaded', () => {
   renderButtons(buttonsData, document);
 
-  document.getElementById('wallet-balance').textContent = walletData?.balance?.toLocaleString("en");
+  document.getElementById('wallet-balance').textContent = `$${walletData?.balance?.toLocaleString("en")}`;
   document.getElementById('tab-slip').setAttribute('options', JSON.stringify(walletTabs));
 
   // Render List Token and Member
