@@ -1,6 +1,6 @@
 // ----------- Data --------------- //
 const svgBtn = {
-  'btn-deposit': `
+  "btn-deposit": `
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M11.9297 2V22" stroke="#EEEEEE" stroke-width="2.5" stroke-linecap="round"
 stroke-linejoin="round" />
@@ -9,7 +9,7 @@ d="M19 16L14 21.1599C13.7437 21.4336 13.434 21.6519 13.0899 21.801C12.7459 21.95
 stroke="#EEEEEE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
 `,
-  'btn-withdraw': `
+  "btn-withdraw": `
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
 <path d="M12.0703 22V2" stroke="#EEEEEE" stroke-width="2.5" stroke-linecap="round"
 stroke-linejoin="round" />
@@ -18,7 +18,7 @@ d="M5 8L10 2.84009C10.2571 2.5677 10.5671 2.35047 10.911 2.20215C11.2549 2.05383
 stroke="#EEEEEE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
 `,
-  'btn-history': `
+  "btn-history": `
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path
 d="M13.07 22H7C5.93913 22 4.92178 21.5785 4.17163 20.8284C3.42149 20.0782 3 19.0609 3 18V6C3 4.93913 3.42149 3.92165 4.17163 3.17151C4.92178 2.42136 5.93913 2 7 2H17C18.0609 2 19.0783 2.42136 19.8284 3.17151C20.5786 3.92165 21 4.93913 21 6V12.53"
@@ -33,7 +33,7 @@ stroke="#EEEEEE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="roun
 stroke-linejoin="round" />
 </svg>
 `,
-  'btn-order': `
+  "btn-order": `
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path
 d="M7.00001 4.10999C6.14022 4.33198 5.37874 4.83376 4.83558 5.53625C4.29241 6.23875 3.99845 7.10201 4.00001 7.98999V17.99C4.00001 19.0509 4.42149 20.0682 5.17164 20.8184C5.92178 21.5685 6.93914 21.99 8.00001 21.99H16C17.0609 21.99 18.0783 21.5685 18.8284 20.8184C19.5786 20.0682 20 19.0509 20 17.99V7.98999C19.9993 7.10372 19.7044 6.24269 19.1614 5.54224C18.6184 4.84178 17.8581 4.34156 17 4.12"
@@ -47,7 +47,7 @@ stroke-linejoin="round" />
 stroke-linejoin="round" />
 </svg>
 `,
-'btn-approved': `
+  "btn-approved": `
 <svg width="20" height="20" viewBox="0 0 512 512" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <style type="text/css">
 	.st0{fill:#EEEEEE;}
@@ -60,211 +60,242 @@ stroke-linejoin="round" />
 </g>
 </g>
 </svg>
-`
-}
+`,
+};
 const buttonsData = [
   {
-    id: 'btn-deposit',
-    icon: svgBtn['btn-deposit'],
-    text: 'Deposit',
-    role: ['owner']
+    id: "btn-deposit",
+    icon: svgBtn["btn-deposit"],
+    text: "Deposit",
+    role: ["owner"],
   },
   {
-    id: 'btn-withdraw',
-    icon: svgBtn['btn-withdraw'],
-    text: 'Withdraw',
-    role: ['owner']
+    id: "btn-withdraw",
+    icon: svgBtn["btn-withdraw"],
+    text: "Withdraw",
+    role: ["owner"],
   },
   {
-    id: 'btn-history',
-    icon: svgBtn['btn-history'],
-    text: 'History',
-    role: ['owner']
+    id: "btn-history",
+    icon: svgBtn["btn-history"],
+    text: "History",
+    role: ["owner"],
   },
   {
-    id: 'btn-order-wait',
-    icon: svgBtn['btn-order'],
-    text: 'Order',
-    role: ['owner']
+    id: "btn-order-wait",
+    icon: svgBtn["btn-order"],
+    text: "Order",
+    role: ["owner"],
   },
   {
-    id: 'btn-order-approved',
-    icon: svgBtn['btn-approved'],
-    text: 'Approved',
-    role: ['owner']
-  }
+    id: "btn-order-approved",
+    icon: svgBtn["btn-approved"],
+    text: "Approved",
+    role: ["owner"],
+  },
 ];
 
-var walletTabs = [{
-  label: 'Tokens',
-  value: 'token',
-  selected: true
-}, {
-  label: 'Members',
-  value: 'member',
-  selected: false
-}]
+var walletTabs = [
+  {
+    label: "Tokens",
+    value: "token",
+    selected: true,
+  },
+  {
+    label: "Members",
+    value: "member",
+    selected: false,
+  },
+];
 
-const initWithdrawToTabs = [{
-  label: 'User',
-  value: 'user',
-  selected: true
-}, {
-  label: 'Wallet',
-  value: 'wallet',
-  selected: false
-}]
-var withdrawToTabs = [...initWithdrawToTabs]
+const initWithdrawToTabs = [
+  {
+    label: "User",
+    value: "user",
+    selected: true,
+  },
+  {
+    label: "Wallet",
+    value: "wallet",
+    selected: false,
+  },
+];
+var withdrawToTabs = [...initWithdrawToTabs];
 
-var otpSubmit = ''
+var otpSubmit = "";
 
 // ---------------------------- Handle Click ---------------------------------
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   renderButtons(buttonsData, document);
 
-  document.getElementById('wallet-balance').textContent = `$${walletData?.balance?.toLocaleString("en")}`;
-  document.getElementById('tab-slip').setAttribute('options', JSON.stringify(walletTabs));
+  document.getElementById(
+    "wallet-balance"
+  ).textContent = `$${walletData?.balance?.toLocaleString("en")}`;
+  document
+    .getElementById("tab-slip")
+    .setAttribute("options", JSON.stringify(walletTabs));
 
   // Render List Token and Member
-  const walletList = document.querySelector('#wallet-list')
-  walletList.innerHTML = getContentWalletList()
+  const walletList = document.querySelector("#wallet-list");
+  walletList.innerHTML = getContentWalletList();
 
   // Handle Change Wallet Tab
-  const walletTab = document.querySelector('#tab-slip')
-  walletTab.addEventListener('option-changed', (event) => {
-    walletTabs = event.detail.options
-    walletList.innerHTML = getContentWalletList()
-    if (event.detail.value == 'member') {
-      document.querySelectorAll('.btn-delete').forEach(item => {
-        item.addEventListener('click', function () {
-          const index = this.getAttribute('index');
+  const walletTab = document.querySelector("#tab-slip");
+  walletTab.addEventListener("option-changed", (event) => {
+    walletTabs = event.detail.options;
+    walletList.innerHTML = getContentWalletList();
+    if (event.detail.value == "member") {
+      document.querySelectorAll(".btn-delete").forEach((item) => {
+        item.addEventListener("click", function () {
+          const index = this.getAttribute("index");
           const memberClicked = membersData[index];
           toggleConfirmPopup({
-            id: 'member-delete-confirm',
-            title: 'Confirm delete member',
+            id: "member-delete-confirm",
+            title: "Confirm delete member",
             content: `Do you want to delete member ID is ${memberClicked?.id}?`,
-            textOk: 'Delete',
-            textCancel: 'Cancel',
-            callback: (e, callback) => handleDeleteMember(memberClicked, e, callback)
+            textOk: "Delete",
+            textCancel: "Cancel",
+            callback: (e, callback) =>
+              handleDeleteMember(memberClicked, e, callback),
           });
         });
       });
 
       // Handle Click Button Add Member
-      const btnAdd = document.querySelector('.btn-add')
-      btnAdd.addEventListener('click', function () {
+      const btnAdd = document.querySelector(".btn-add");
+      btnAdd.addEventListener("click", function () {
         const bottomSheetAddMember = toggleBottomSheet({
-          id: 'add-member',
+          id: "add-member",
           content: getContentAddMember(),
           footer: getFooterAddMember(),
           attrs: {
-            maxHeight: 35
+            maxHeight: 35,
+          },
+        });
+
+        const btnSubmitAddMember =
+          bottomSheetAddMember.shadowRoot.querySelector("#btn-submit");
+        const inputAddMember =
+          bottomSheetAddMember.shadowRoot.querySelector("#member-id-input");
+
+        // Handle Change Input User Id
+        inputAddMember.addEventListener("input", (event) => {
+          const value = event.target.value;
+          if (value?.length) {
+            btnSubmitAddMember.removeAttribute("disabled");
+          } else {
+            btnSubmitAddMember.setAttribute("disabled", true);
           }
         });
-        
-        const btnSubmitAddMember = bottomSheetAddMember.shadowRoot.querySelector('#btn-submit')
-        const inputAddMember = bottomSheetAddMember.shadowRoot.querySelector('#member-id-input')
-        
-        // Handle Change Input User Id
-        inputAddMember.addEventListener('input', (event) => {
-          const value = event.target.value
-          if (value?.length) {
-            btnSubmitAddMember.removeAttribute('disabled')
-          } else {
-            btnSubmitAddMember.setAttribute('disabled', true)
-          }
-        })
 
         // Handle Click Submit Add Member
-        btnSubmitAddMember.addEventListener('click', function () {
-          const value = inputAddMember.value
-          const callback = bottomSheetAddMember.hide
-          handleAddMember(value, callback)
-        })
-      })
+        btnSubmitAddMember.addEventListener("click", function () {
+          const value = inputAddMember.value;
+          const callback = bottomSheetAddMember.hide;
+          handleAddMember(value, callback);
+        });
+      });
     }
   });
 
   // Handle Click Deposit Button
-  const buttonDeposit = document.querySelector('#btn-deposit');
-  buttonDeposit?.addEventListener('click', (event) => {
+  const buttonDeposit = document.querySelector("#btn-deposit");
+  buttonDeposit?.addEventListener("click", (event) => {
     const bottomSheet = toggleBottomSheet({
-      id: 'section-deposit',
+      id: "section-deposit",
       content: getContentDeposit(),
       footer: getFooterDeposit(),
       attrs: {
-        maxHeight: 70
-      }
-    });
-    
-    var qrcodeWithdraw = new QRCode(bottomSheet.shadowRoot.getElementById("qrcode-withdraw"), {
-      text: getQrSelected()?.address,
-      width: 160,
-      height: 160,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel : QRCode.CorrectLevel.H
+        maxHeight: 70,
+      },
     });
 
-    const tabSlip = bottomSheet.shadowRoot.querySelector('#tab-slip');
+    var qrcodeWithdraw = new QRCode(
+      bottomSheet.shadowRoot.getElementById("qrcode-withdraw"),
+      {
+        text: getQrSelected()?.address,
+        width: 160,
+        height: 160,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H,
+      }
+    );
+
+    const tabSlip = bottomSheet.shadowRoot.querySelector("#tab-slip");
     if (tabSlip) {
       tabSlip.options = qrOptions;
 
-      tabSlip.addEventListener('option-changed', (event) => {
-        qrOptions = event.detail.options
-        const walletAddress = bottomSheet.shadowRoot.querySelector('#wallet-address');
-        walletAddress.textContent = formatStringWalletAddress(getQrSelected().address)
-        qrcodeWithdraw.clear()
-        qrcodeWithdraw.makeCode(getQrSelected()?.address)
+      tabSlip.addEventListener("option-changed", (event) => {
+        qrOptions = event.detail.options;
+        const walletAddress =
+          bottomSheet.shadowRoot.querySelector("#wallet-address");
+        walletAddress.textContent = formatStringWalletAddress(
+          getQrSelected().address
+        );
+        qrcodeWithdraw.clear();
+        qrcodeWithdraw.makeCode(getQrSelected()?.address);
       });
     }
 
-    const copyButton = bottomSheet.shadowRoot.querySelector('.btn-copy');
-    copyButton.addEventListener('click', (event) => {
+    const copyButton = bottomSheet.shadowRoot.querySelector(".btn-copy");
+    copyButton.addEventListener("click", (event) => {
       navigator.clipboard.writeText(getQrSelected().address);
       toggleNotification({
-        id: 'copy-wallet',
-        label: 'Copy successfull!',
-        status: 'success'
-      })
+        id: "copy-wallet",
+        label: "Copy successfull!",
+        status: "success",
+      });
     });
   });
 
   // Handle Click Withdraw Button
-  const buttonWithdraw = document.querySelector('#btn-withdraw');
-  buttonWithdraw?.addEventListener('click', (event) => {
+  const buttonWithdraw = document.querySelector("#btn-withdraw");
+  buttonWithdraw?.addEventListener("click", (event) => {
     const drawer = toggleDrawer({
-      id: 'section-withdraw',
-      title: 'Withdraw',
+      id: "section-withdraw",
+      title: "Withdraw",
       content: getContentWithdraw(),
       footer: `
             <button class="btn-withdraw disabled">Withdraw</button>
             <button class="btn-cancel">Cancel</button>
           `,
-      backCallback: resetInfoWithdraw
+      backCallback: resetInfoWithdraw,
     });
 
-    const tabSlip = drawer.shadowRoot.querySelector('#tab-slip');
+    const tabSlip = drawer.shadowRoot.querySelector("#tab-slip");
     if (tabSlip) {
-      tabSlip.addEventListener('option-changed', (event) => {
-        withdrawPercentOptions = event.detail.options
-        handleChangeWithdrawInput(infoWithdraw?.balance * event.detail.value / 100, drawer.shadowRoot)
+      tabSlip.addEventListener("option-changed", (event) => {
+        withdrawPercentOptions = event.detail.options;
+        handleChangeWithdrawInput(
+          (infoWithdraw?.balance * event.detail.value) / 100,
+          drawer.shadowRoot
+        );
       });
     }
 
-    const input = drawer.shadowRoot.querySelector('#withdraw-input');
-    input.addEventListener('input', (event) => {
-      const parts = event.target.value?.split('.')
-      const value = parts?.length > 2 ? [parts[0]?.replace(/,/g, ''), parts[1]?.replace(/,/g, '')]?.join('.') : event.target.value?.replace(/,/g, '')
-      handleChangeWithdrawInput(value, drawer.shadowRoot)
-    })
+    const input = drawer.shadowRoot.querySelector("#withdraw-input");
+    input.addEventListener("input", (event) => {
+      const parts = event.target.value?.split(".");
+      const value =
+        parts?.length > 2
+          ? [parts[0]?.replace(/,/g, ""), parts[1]?.replace(/,/g, "")]?.join(
+              "."
+            )
+          : event.target.value?.replace(/,/g, "");
+      handleChangeWithdrawInput(value, drawer.shadowRoot);
+    });
 
-    const withdrawToSlip = drawer.shadowRoot.querySelector('#tab-slip.tab-slip-withdraw-to');
-    const withdrawInput = drawer.shadowRoot.querySelector('#withdraw-to-container')
+    const withdrawToSlip = drawer.shadowRoot.querySelector(
+      "#tab-slip.tab-slip-withdraw-to"
+    );
+    const withdrawInput = drawer.shadowRoot.querySelector(
+      "#withdraw-to-container"
+    );
     if (withdrawToSlip) {
-      withdrawToSlip.addEventListener('option-changed', (event) => {
-        withdrawToTabs = event.detail.options
-        infoWithdraw.type = event.detail.value
+      withdrawToSlip.addEventListener("option-changed", (event) => {
+        withdrawToTabs = event.detail.options;
+        infoWithdraw.type = event.detail.value;
         withdrawInput.innerHTML = `
           <input 
             type="text"
@@ -278,38 +309,39 @@ document.addEventListener('DOMContentLoaded', () => {
             autocapitalize="off"
             autocomplete="off"
           />
-        `
+        `;
       });
     }
 
-    withdrawInput.addEventListener('input', (event) => {
-      infoWithdraw.toId = event.target.value
-    })
+    withdrawInput.addEventListener("input", (event) => {
+      infoWithdraw.toId = event.target.value;
+    });
 
-    const buttonOk = drawer.shadowRoot.querySelector('.btn-withdraw');
-    buttonOk.addEventListener('click', () => {
+    const buttonOk = drawer.shadowRoot.querySelector(".btn-withdraw");
+    buttonOk.addEventListener("click", () => {
       if (infoWithdraw.total >= infoWithdraw.miniumReceived) {
         const confirmPopup = toggleConfirmPopup({
-          id: 'withdraw-confirm',
-          title: 'Confirm withdraw',
+          id: "withdraw-confirm",
+          title: "Confirm withdraw",
           content: getContentConfirmWithdraw(input.value),
-          textOk: 'Withdraw',
-          textCancel: 'Cancel',
-          callback: (result, callback) => handleWithdraw(result, callback, drawer.shadowRoot)
+          textOk: "Withdraw",
+          textCancel: "Cancel",
+          callback: (result, callback) =>
+            handleWithdraw(result, callback, drawer.shadowRoot),
         });
-        const buttonOk = confirmPopup.shadowRoot.querySelector('.btn-ok')
-        buttonOk.classList.add('disabled')
+        const buttonOk = confirmPopup.shadowRoot.querySelector(".btn-ok");
+        buttonOk.classList.add("disabled");
 
         const observer = new MutationObserver((mutationsList) => {
           for (let mutation of mutationsList) {
-            if (mutation.type === 'attributes') {
-              if (mutation.attributeName === 'value') {
+            if (mutation.type === "attributes") {
+              if (mutation.attributeName === "value") {
                 const element = mutation.target;
-				otpSubmit = element.getAttribute('value')
-                if (element.getAttribute('value')?.length == 6) {
-                  buttonOk.classList.remove('disabled')
+                otpSubmit = element.getAttribute("value");
+                if (element.getAttribute("value")?.length == 6) {
+                  buttonOk.classList.remove("disabled");
                 } else {
-                  buttonOk.classList.add('disabled')
+                  buttonOk.classList.add("disabled");
                 }
               }
             }
@@ -317,81 +349,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const config = { attributes: true };
-        const otpInput = confirmPopup.shadowRoot.querySelector('otp-input')
-        const otpField = otpInput.shadowRoot.querySelector('.otp-field')
-        otpSubmit = otpField.getAttribute('value')
+        const otpInput = confirmPopup.shadowRoot.querySelector("otp-input");
+        const otpField = otpInput.shadowRoot.querySelector(".otp-field");
+        otpSubmit = otpField.getAttribute("value");
         observer.observe(otpField, config);
       }
-    })
+    });
 
-    const buttonCancel = drawer.shadowRoot.querySelector('.btn-cancel');
-    buttonCancel.addEventListener('click', () => {
+    const buttonCancel = drawer.shadowRoot.querySelector(".btn-cancel");
+    buttonCancel.addEventListener("click", () => {
       drawer.hide();
-      resetInfoWithdraw()
-    })
+      resetInfoWithdraw();
+    });
 
-    const buttonSelectToken = drawer.shadowRoot.querySelector('.balance-content__select');
-    buttonSelectToken.addEventListener('click', (event) => {
-      handleClickSelectToken(drawer)
+    const buttonSelectToken = drawer.shadowRoot.querySelector(
+      ".balance-content__select"
+    );
+    buttonSelectToken.addEventListener("click", (event) => {
+      handleClickSelectToken(drawer);
     });
   });
 
   // Handle Click History Button
-  const buttonHistory = document.querySelector('#btn-history');
-  buttonHistory?.addEventListener('click', (event) => {
+  const buttonHistory = document.querySelector("#btn-history");
+  buttonHistory?.addEventListener("click", (event) => {
     toggleDrawer({
-      id: 'section-history',
-      title: 'History',
-      content: getContentHistory(historiesData)
+      id: "section-history",
+      title: "History",
+      content: getContentHistory(historiesData),
     });
-  })
+  });
 
   // Handle Click Order Approve Button
-  const buttonOrderApproved = document.querySelector('#btn-order-approved');
-  buttonOrderApproved?.addEventListener('click', (event) => {
+  const buttonOrderApproved = document.querySelector("#btn-order-approved");
+  buttonOrderApproved?.addEventListener("click", (event) => {
     const drawer = toggleDrawer({
-      id: 'section-order-approved',
-      title: 'Approved',
-      content: getContentOrderAppoved(ordersApproveData)
+      id: "section-order-approved",
+      title: "Approved",
+      content: getContentOrderAppoved(ordersApproveData),
     });
-    drawer.shadowRoot.querySelectorAll('.list-item__content').forEach(item => {
-      item.addEventListener('click', function () {
-        const index = this.getAttribute('index');
-        const orderClicked = ordersApproveData[index];
-        toggleConfirmPopup({
-          id: 'order-approved-confirm',
-          title: 'Confirm approve',
-          content: `Do you want to approve withdrawal at ${orderClicked.createdTime} order?`,
-          textOk: 'Approve',
-          textCancel: 'Refuse',
-          callback: (e, callback) => handleApproveOrder(orderClicked, e, callback)
+    drawer.shadowRoot
+      .querySelectorAll(".list-item__content")
+      .forEach((item) => {
+        item.addEventListener("click", function () {
+          const index = this.getAttribute("index");
+          const orderClicked = ordersApproveData[index];
+          toggleConfirmPopup({
+            id: "order-approved-confirm",
+            title: "Confirm approve",
+            content: `Do you want to approve withdrawal at ${orderClicked.createdTime} order?`,
+            textOk: "Approve",
+            textCancel: "Refuse",
+            callback: (e, callback) =>
+              handleApproveOrder(orderClicked, e, callback),
+          });
         });
       });
-    });
-  })
+  });
 
   // Handle Click Order Wait Button
-  const buttonOrderWait = document.querySelector('#btn-order-wait');
-  buttonOrderWait?.addEventListener('click', (event) => {
+  const buttonOrderWait = document.querySelector("#btn-order-wait");
+  buttonOrderWait?.addEventListener("click", (event) => {
     toggleDrawer({
-      id: 'section-order-wait',
-      title: 'Order',
-      content: getContentOrderWait(ordersWaitData)
+      id: "section-order-wait",
+      title: "Order",
+      content: getContentOrderWait(ordersWaitData),
     });
-  })
+  });
 
-  const buttonSetting = document.querySelector('#btn-setting');
-  buttonSetting?.addEventListener('click', (event) => {
-    handleOpenSetting()
-  })
+  const buttonSetting = document.querySelector("#btn-setting");
+  buttonSetting?.addEventListener("click", (event) => {
+    handleOpenSetting();
+  });
 });
 
 // --------------------------------- Render Component ----------------------------------
 function renderButtons(data, element) {
-  const container = element.getElementById('buttons-action');
-  data.forEach(item => {
+  const container = element.getElementById("buttons-action");
+  data.forEach((item) => {
     if (item.role.includes(walletData.role)) {
-      const button = document.createElement('button-action');
+      const button = document.createElement("button-action");
       button.id = item.id;
 
       button.innerHTML = `
@@ -401,37 +438,33 @@ function renderButtons(data, element) {
 
       container.appendChild(button);
     }
-
   });
 }
 
 function renderList(items, element) {
-  var list = element.querySelector('#listKey');
-  list.innerHTML = ''; // Xóa nội dung cũ nếu có
+  var list = element.querySelector("#listKey");
+  list.innerHTML = ""; // Xóa nội dung cũ nếu có
 
   for (var i = 0; i < items.length; i++) {
-    var listItem = document.createElement('li');
+    var listItem = document.createElement("li");
     listItem.textContent = `${i + 1}. ${items[i]}`;
     list.appendChild(listItem);
   }
 }
 
-function createOtpInput({
-  id,
-  callback
-}) {
-  const otpInput = document.createElement('otp-input');
+function createOtpInput({ id, callback }) {
+  const otpInput = document.createElement("otp-input");
   otpInput.id = id;
-  callback && otpInput.setCallback(callback)
-  document.body.appendChild(otpInput)
-  return otpInput
+  callback && otpInput.setCallback(callback);
+  document.body.appendChild(otpInput);
+  return otpInput;
 }
 
 // ------------------- Get Content ------------------ //
 const getContentWalletList = () => {
-  let innerHtml = ''
+  let innerHtml = "";
   walletTabs?.find((tab) => {
-    if (tab.selected && tab.value == 'member') {
+    if (tab.selected && tab.value == "member") {
       innerHtml = `
   <div class="block-tab-menu block_balance mb-4">
             <div class="pt-1 px-3 portfolio_block">
@@ -446,67 +479,96 @@ const getContentWalletList = () => {
 </svg>
               Add member</button>
             </div>
-            <div class="${walletData?.role == 'shared' ? 'member-grid-2' : 'member-grid'}">
+            <div class="${
+              walletData?.role == "shared" ? "member-grid-2" : "member-grid"
+            }">
               <div class="grid-1">ID</div>
               <div class="grid-2 flex justify-center">Join at</div>
-              ${walletData?.role === 'owner' ? `<div class="grid-3 flex justify-center">Action</div>` : ''}
+              ${
+                walletData?.role === "owner"
+                  ? `<div class="grid-3 flex justify-center">Action</div>`
+                  : ""
+              }
             </div>
-            ${membersData?.map((member, index) => {
-        return `
+            ${membersData
+              ?.map((member, index) => {
+                return `
                 <div class="wave">
-                  <div class="flex flex-row justify-between items-center flex-1 ${walletData?.role == 'shared' ? 'member-grid-2' : 'member-grid'}">
-                      <div class="member-text label_wave font-bold flex grid-1"><p class="member-id">${member?.id}</p> ${member?.isAdmin ?
-            `
+                  <div class="flex flex-row justify-between items-center flex-1 ${
+                    walletData?.role == "shared"
+                      ? "member-grid-2"
+                      : "member-grid"
+                  }">
+                      <div class="member-text label_wave font-bold flex grid-1"><p class="member-id">${
+                        member?.id
+                      }</p> ${
+                  member?.isAdmin
+                    ? `
                       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19.6872 14.0931L19.8706 12.3884C19.9684 11.4789 20.033 10.8783 19.9823 10.4999L20 10.5C20.8284 10.5 21.5 9.82843 21.5 9C21.5 8.17157 20.8284 7.5 20 7.5C19.1716 7.5 18.5 8.17157 18.5 9C18.5 9.37466 18.6374 9.71724 18.8645 9.98013C18.5384 10.1814 18.1122 10.606 17.4705 11.2451L17.4705 11.2451C16.9762 11.7375 16.729 11.9837 16.4533 12.0219C16.3005 12.043 16.1449 12.0213 16.0038 11.9592C15.7492 11.847 15.5794 11.5427 15.2399 10.934L13.4505 7.7254C13.241 7.34987 13.0657 7.03557 12.9077 6.78265C13.556 6.45187 14 5.77778 14 5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5C10 5.77778 10.444 6.45187 11.0923 6.78265C10.9343 7.03559 10.759 7.34984 10.5495 7.7254L8.76006 10.934C8.42056 11.5427 8.25081 11.847 7.99621 11.9592C7.85514 12.0213 7.69947 12.043 7.5467 12.0219C7.27097 11.9837 7.02381 11.7375 6.5295 11.2451C5.88787 10.606 5.46156 10.1814 5.13553 9.98012C5.36264 9.71724 5.5 9.37466 5.5 9C5.5 8.17157 4.82843 7.5 4 7.5C3.17157 7.5 2.5 8.17157 2.5 9C2.5 9.82843 3.17157 10.5 4 10.5L4.01771 10.4999C3.96702 10.8783 4.03162 11.4789 4.12945 12.3884L4.3128 14.0931C4.41458 15.0393 4.49921 15.9396 4.60287 16.75H19.3971C19.5008 15.9396 19.5854 15.0393 19.6872 14.0931Z" fill="#FFD700"/>
 <path d="M10.9121 21H13.0879C15.9239 21 17.3418 21 18.2879 20.1532C18.7009 19.7835 18.9623 19.1172 19.151 18.25H4.84896C5.03765 19.1172 5.29913 19.7835 5.71208 20.1532C6.65817 21 8.07613 21 10.9121 21Z" fill="#FFD700"/>
 </svg>
                       `
-            : ''
-          }</div>
-                      <p class="wave_number grid-2 flex justify-center">${member?.joinAt}</p>
-                      ${(member?.isAdmin || walletData?.role == 'shared') ? '' : `<button class="grid-3 btn-delete" index="${index}">
+                    : ""
+                }</div>
+                      <p class="wave_number grid-2 flex justify-center">${
+                        member?.joinAt
+                      }</p>
+                      ${
+                        member?.isAdmin || walletData?.role == "shared"
+                          ? ""
+                          : `<button class="grid-3 btn-delete" index="${index}">
                       <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16" stroke="#f44336" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-                      </button>`}
+                      </button>`
+                      }
                   </div>
                 </div>
-              `
-      }).join('')}
+              `;
+              })
+              .join("")}
             </div>
           </div>
-  `
+  `;
     } else {
       innerHtml = `
   <div class="block-tab-menu block_balance mb-4">
             <div class="portfolio_block">
-            ${tokensData?.map((token) => {
-        return `
+            ${tokensData
+              ?.map((token) => {
+                return `
                 <div class="wave">
-                  <img width="36px" height="36px" src="${token?.img}" class="mr-2 icon-wave" alt="">
+                  <img width="36px" height="36px" src="${
+                    token?.img
+                  }" class="mr-2 icon-wave" alt="">
                   <div class="flex flex-row justify-between items-center flex-1">
                     <div class="">
                       <p class="label_wave font-bold">${token?.name}</p>
-                      <p class="wave_number">${token?.balance?.toLocaleString("en")} - $${token?.exchangeRate?.toLocaleString("en")}</p>
+                      <p class="wave_number">${token?.balance?.toLocaleString(
+                        "en"
+                      )} - $${token?.exchangeRate?.toLocaleString("en")}</p>
                     </div>
                   </div>
                 </div>
-              `
-      }).join('')}
+              `;
+              })
+              .join("")}
             </div>
           </div>
-  `
+  `;
     }
-  })
-  return innerHtml
-}
+  });
+  return innerHtml;
+};
 
 const getContentWallet = (balance) => {
   return `
             <div class="w-full flex flex-col items-center justify-between gap-2">
               <div class="flex w-full justify-between items-center mt-10">
-                <p class="total-balance text-center">$${balance?.toLocaleString("en")}</p>
+                <p class="total-balance text-center">$${balance?.toLocaleString(
+                  "en"
+                )}</p>
               </div>
             </div>
             <div class="block_balance mb-4">
@@ -516,20 +578,24 @@ const getContentWallet = (balance) => {
                 </div>
               </div>
             </div>
-            <tab-slip id="tab-slip" options=${JSON.stringify(walletTabs)}></tab-slip>
+            <tab-slip id="tab-slip" options=${JSON.stringify(
+              walletTabs
+            )}></tab-slip>
             <div id="wallet-list"></div>
-      `
-}
+      `;
+};
 
 const getContentDeposit = () => {
   return `
-              <tab-slip id="tab-slip" options=${JSON.stringify(qrOptions)}></tab-slip>
+              <tab-slip id="tab-slip" options=${JSON.stringify(
+                qrOptions
+              )}></tab-slip>
               <div class="mb-1 text-sm">Scan the QR code to deposit</div>
               <div class="background">
                 <div id="qrcode-withdraw"></div>
               </div>
-          `
-}
+          `;
+};
 
 const getContentAddMember = () => {
   return `
@@ -547,23 +613,25 @@ const getContentAddMember = () => {
         autocomplete="off"
       />
     </div>
-  `
-}
+  `;
+};
 
 const getFooterAddMember = () => {
   return `
             <button id="btn-submit" class="px-8 btn-add btn-common no-underline mt-auto mb-1" disabled>
               Add
             </button>
-        `
-}
+        `;
+};
 
 const getFooterDeposit = () => {
   return `
           <div class="flex justify-between mt-6 w-full">
             <div>
               <div style="font-size: 12px;">Wallet address</div>
-              <div id="wallet-address" class="font-size: 16px">${formatStringWalletAddress(getQrSelected().address)}</div>
+              <div id="wallet-address" class="font-size: 16px">${formatStringWalletAddress(
+                getQrSelected().address
+              )}</div>
             </div>
             <button class="px-8 btn-copy btn-common no-underline mt-auto mb-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -581,26 +649,33 @@ const getFooterDeposit = () => {
               Copy
             </button>
           </div>
-        `
-}
+        `;
+};
 
 const getContentWithdraw = () => {
   return `
           <div class="text-md mb-1">Select token to withdraw</div>
-          <tab-slip id="tab-slip" options=${JSON.stringify(withdrawPercentOptions)}></tab-slip>
+          <tab-slip id="tab-slip" options=${JSON.stringify(
+            withdrawPercentOptions
+          )}></tab-slip>
           <div class="balance w-full">
             <div class="flex gap-2 flex-wrap">
               <div class="flex items-center w-full gap-2">
                 <div class="balance-content__select items-center justify-between border-common rounded grow-0 show-modal-tokens">
                   <div class="flex gap-2 items-center fz-16">
-                    <img width="24px" height="24px" src="${selectedToken.img}" class="img-icon">
+                    <img width="24px" height="24px" src="${
+                      selectedToken.img
+                    }" class="img-icon">
                     <div>${selectedToken.name}</div>
                   </div>
                 </div>
                 <div class="balance-content border-common rounded flex-wrap gap-2 grow">
                   <div class="w-full items-center relative">
-                    <input type="text" id="withdraw-input" ${infoWithdraw?.amountToken !=undefined ?
-                      `value=${formattedNumber(infoWithdraw?.amountToken)}` : '' } inputmode="decimal" lang="en-US"
+                    <input type="text" id="withdraw-input" ${
+                      infoWithdraw?.amountToken != undefined
+                        ? `value=${formattedNumber(infoWithdraw?.amountToken)}`
+                        : ""
+                    } inputmode="decimal" lang="en-US"
                       enterkeyhint="done" placeholder="0" class="balance-content__input background-input text-left w-full"
                       autocapitalize="off" autocomplete="off" />
                   </div>
@@ -610,40 +685,57 @@ const getContentWithdraw = () => {
             <div class="flex justify-between total mt-8">
               <div class="flex align-center">To: </div>
               <div class="flex gap-1">
-                <tab-slip id="tab-slip" class="tab-slip-withdraw-to" options=${JSON.stringify(withdrawToTabs)}></tab-slip>
+                <tab-slip id="tab-slip" class="tab-slip-withdraw-to" options=${JSON.stringify(
+                  withdrawToTabs
+                )}></tab-slip>
               </div>
             </div>
             <div id="withdraw-to-container" class="flex justify-between mb-8">
-              <input type="text" id="withdraw-to-input" ${infoWithdraw?.amountToken !=undefined ?
-                      `value=${formattedNumber(infoWithdraw?.amountToken)}` : '' } inputmode="decimal" lang="en-US"
+              <input type="text" id="withdraw-to-input" ${
+                infoWithdraw?.amountToken != undefined
+                  ? `value=${formattedNumber(infoWithdraw?.amountToken)}`
+                  : ""
+              } inputmode="decimal" lang="en-US"
                       enterkeyhint="done" placeholder="Enter user id..." class="balance-content__input background-input text-left w-full"
                       autocapitalize="off" autocomplete="off" />
             </div>
             <div class="flex justify-between total">
               <div class="flex gap-1">Balance: <div id="withdraw-balance">
-                  ${handleChangeInputNumber(infoWithdraw?.balance?.toLocaleString('en')) ?? 0}</div>
+                  ${
+                    handleChangeInputNumber(
+                      infoWithdraw?.balance?.toLocaleString("en")
+                    ) ?? 0
+                  }</div>
               </div>
-              <div class="flex gap-1">~ <div id="withdraw-subtotal">${infoWithdraw?.subtotal ?? 0}</div> USD</div>
+              <div class="flex gap-1">~ <div id="withdraw-subtotal">${
+                infoWithdraw?.subtotal ?? 0
+              }</div> USD</div>
             </div>
             <div class="flex justify-between total">
               <div>Price impact: </div>
               <div class="flex gap-1">
-                <div id="withdraw-priceImpact">${infoWithdraw.priceImpact}</div> USD
+                <div id="withdraw-priceImpact">${
+                  infoWithdraw.priceImpact
+                }</div> USD
               </div>
             </div>
             <div class="flex justify-between total">
               <div>Minium Received: </div>
               <div class="flex gap-1">
-                <div id="withdraw-miniumReceived">${infoWithdraw.miniumReceived}</div> USD
+                <div id="withdraw-miniumReceived">${
+                  infoWithdraw.miniumReceived
+                }</div> USD
               </div>
             </div>
             <div class="flex justify-between total">
               <div>Total: </div>
-              <div class="flex gap-1">~ <div id="withdraw-total">${infoWithdraw.total}</div> USD</div>
+              <div class="flex gap-1">~ <div id="withdraw-total">${
+                infoWithdraw.total
+              }</div> USD</div>
             </div>
           </div>
-          `
-}
+          `;
+};
 
 const getContentToken = (tokens) => {
   return `
@@ -651,8 +743,9 @@ const getContentToken = (tokens) => {
                     <div class="flex flex-col items-center gap-2">
                     <div class="select-container">
                       <div class="w-full flex-wrap select-option">
-                      ${tokens.map((token, index) => {
-    return `
+                      ${tokens
+                        .map((token, index) => {
+                          return `
                           <div class="select-option__content" index="${index}">
                             <div class="flex items-center gap-2"><img width="24px" height="24px" src="${token.img}" class="img-icon"
                                 alt="">${token.name}</div>
@@ -660,121 +753,150 @@ const getContentToken = (tokens) => {
                               <div>~${token.exchangeRate} USD</div>
                             </div>
                           </div>
-                        `
-  }).join('')}
+                        `;
+                        })
+                        .join("")}
                       </div>
                       </div>
                     </div>
                   </div>
-          `
-}
+          `;
+};
 
 const getContentHistory = (histories) => {
   return `
           <div class="w-full flex-wrap list-item">
-          ${histories.map((history) => {
-    return `
+          ${histories
+            .map((history) => {
+              return `
               <div class="list-item__content w-full justify-between">
                 <div class="flex align-center justify-between">
                   <div>${history.createdTime}</div>
                   <div class="flex items-center gap-1">
-                    <img height="20px" width="20px" src="${history.img}" class="img-icon" alt="">
+                    <img height="20px" width="20px" src="${
+                      history.img
+                    }" class="img-icon" alt="">
                     WBNB
                   </div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Status</div>
-                  <div class="${history.status === 'success' ? 'text-success' : history.status === 'refused' ? 'text-failed' : ''}">${capitalizeFirstLetter(history.status)}</div>
+                  <div class="${
+                    history.status === "success"
+                      ? "text-success"
+                      : history.status === "refused"
+                      ? "text-failed"
+                      : ""
+                  }">${capitalizeFirstLetter(history.status)}</div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Balance</div>
-                  <div class="${history.balance >= 0 ? 'text-success' : 'text-failed'}">${history.balance?.toLocaleString('en')} USD</div>
+                  <div class="${
+                    history.balance >= 0 ? "text-success" : "text-failed"
+                  }">${history.balance?.toLocaleString("en")} USD</div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Approved</div>
-                  <div>${history.approved?.toLocaleString('en')}/${history.totalMember?.toLocaleString('en')}</div>
+                  <div>${history.approved?.toLocaleString(
+                    "en"
+                  )}/${history.totalMember?.toLocaleString("en")}</div>
                 </div>
               </div>
-            `
-  }).join('')}
+            `;
+            })
+            .join("")}
           </div>
-          `
-}
+          `;
+};
 
 const getContentOrderAppoved = (orders) => {
   return `
           <div class="w-full flex-wrap list-item">
-          ${orders.map((order, index) => {
-    return `
+          ${orders
+            .map((order, index) => {
+              return `
               <div id="approved-order" class="list-item__content w-full justify-between" index="${index}">
                 <div class="flex align-center justify-between">
                   <div>${order.createdTime}</div>
                   <div class="flex items-center gap-1">
-                    <img width="20px" height="20px" src="${order.img}" class="img-icon" alt="">
+                    <img width="20px" height="20px" src="${
+                      order.img
+                    }" class="img-icon" alt="">
                     WBNB
                   </div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Balance</div>
-                  <div class="text-failed">${order.balance?.toLocaleString('en')} USD</div>
+                  <div class="text-failed">${order.balance?.toLocaleString(
+                    "en"
+                  )} USD</div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Expried</div>
                   <div>${order.expriedTime}</div>
                 </div>
               </div>
-            `
-  }).join('')}
+            `;
+            })
+            .join("")}
           </div>
-        `
-}
+        `;
+};
 
 const getContentOrderWait = (orders) => {
   return `
           <div class="w-full flex-wrap list-item">
-          ${orders.map((order, index) => {
-    return `
+          ${orders
+            .map((order, index) => {
+              return `
               <div id="approved-order" class="list-item__content w-full justify-between" index="${index}">
                 <div class="flex align-center justify-between">
                   <div>${order.createdTime}</div>
                   <div class="flex items-center gap-1">
-                    <img width="20px" height="20px" src="${order.img}" class="img-icon" alt="">
+                    <img width="20px" height="20px" src="${
+                      order.img
+                    }" class="img-icon" alt="">
                     WBNB
                   </div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Balance</div>
-                  <div class="text-failed">${order.balance?.toLocaleString('en')} USD</div>
+                  <div class="text-failed">${order.balance?.toLocaleString(
+                    "en"
+                  )} USD</div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Approved</div>
-                  <div>${order.approved?.toLocaleString('en')}/${order.total?.toLocaleString('en')}</div>
+                  <div>${order.approved?.toLocaleString(
+                    "en"
+                  )}/${order.total?.toLocaleString("en")}</div>
                 </div>
                 <div class="flex align-center justify-between">
                   <div>Expried</div>
                   <div>${order.expriedTime}</div>
                 </div>
               </div>
-            `
-  }).join('')}
+            `;
+            })
+            .join("")}
           </div>
-        `
-}
+        `;
+};
 
 const getContentConfirmWithdraw = (value) => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   container.innerHTML = `
     <div>Want to place a withdrawal order of ${value} USD?</div>
     <otp-input/>
-  `
-  const otpInput = container.querySelector('otp-input');
-  otpInput.id = 'otp-withdraw';
+  `;
+  const otpInput = container.querySelector("otp-input");
+  otpInput.id = "otp-withdraw";
 
-  return container.innerHTML
-}
+  return container.innerHTML;
+};
 
 const getContentSetting = () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   container.innerHTML = `
                 <div class="text-sm mb-1">You can save your private key</div>
                 <div class="private-key-bg mb-4">
@@ -820,85 +942,91 @@ const getContentSetting = () => {
                 </div>
                 <ul id="listKey"></ul>
               </div>
-  `
+  `;
 
   renderList(walletKey.phaseKey, container);
-  return container.innerHTML
-}
+  return container.innerHTML;
+};
 // ----------------- Function Call API ----------------- //
 const handleAddMember = (id, callback) => {
-  handleSubmitAddMember(id).then(() => {
-    callback()
-    toggleNotification({
-      id: 'member-add-success',
-      label: 'Add successfull!',
-      status: 'success'
+  handleSubmitAddMember(id)
+    .then(() => {
+      callback();
+      toggleNotification({
+        id: "member-add-success",
+        label: "Add successfull!",
+        status: "success",
+      });
+      getMembers();
     })
-	getMembers()
-  }).catch((error) => {
-    toggleNotification({
-      id: 'member-add-failed',
-      label: error?.responseJSON?.error,
-      status: 'failed'
-    })
-  });
-}
+    .catch((error) => {
+      toggleNotification({
+        id: "member-add-failed",
+        label: error?.responseJSON?.error,
+        status: "failed",
+      });
+    });
+};
 
 const handleDeleteMember = (orderClicked, value, callback) => {
   if (!value) {
-    callback()
-    return
+    callback();
+    return;
   }
 
-  handleSubmitDeleteMember(orderClicked, value).then(() => {
-    callback()
-    getMembers()
-    toggleNotification({
-      id: 'member-delete-success',
-      label: 'Delete successfull!',
-      status: 'success'
+  handleSubmitDeleteMember(orderClicked, value)
+    .then(() => {
+      callback();
+      getMembers();
+      toggleNotification({
+        id: "member-delete-success",
+        label: "Delete successfull!",
+        status: "success",
+      });
     })
-  }).catch(() => {
-    toggleNotification({
-      id: 'member-delete-failed',
-      label: 'Delete failed!',
-      status: 'failed'
-    })
-  })
-}
+    .catch(() => {
+      toggleNotification({
+        id: "member-delete-failed",
+        label: "Delete failed!",
+        status: "failed",
+      });
+    });
+};
 
 const handleApproveOrder = (orderClicked, value, callback) => {
-  handleSubmitApproveOrder(orderClicked, value).then(() => {
-    callback()
-    if (value) {
-      toggleNotification({
-        id: 'order-approved-success',
-        label: 'Approved successfull!',
-        status: 'success'
-      })
-    } else {
-      toggleNotification({
-        id: 'order-refused-success',
-        label: 'Refused successfull!',
-        status: 'success'
-      })
-    }
-  }).catch(() => {
-    if (value) {
-      toggleNotification({
-        id: 'order-approved-failed',
-        label: 'Approved failed!',
-        status: 'failed'
-      })
-    } else {
-      toggleNotification({
-        id: 'order-refused-failed',
-        label: 'Refused failed!',
-        status: 'failed'
-      })
-    }
-  })
-}
+  handleSubmitApproveOrder(orderClicked, value)
+    .then(() => {
+      callback();
+      if (value) {
+        toggleNotification({
+          id: "order-approved-success",
+          label: "Approved successfull!",
+          status: "success",
+        });
+      } else {
+        toggleNotification({
+          id: "order-refused-success",
+          label: "Refused successfull!",
+          status: "success",
+        });
+      }
+    })
+    .catch(() => {
+      if (value) {
+        toggleNotification({
+          id: "order-approved-failed",
+          label: "Approved failed!",
+          status: "failed",
+        });
+      } else {
+        toggleNotification({
+          id: "order-refused-failed",
+          label: "Refused failed!",
+          status: "failed",
+        });
+      }
+    });
+};
 // ----------------- Function Wallet ----------------- //
 const formatStringWalletAddress = (string) => {
   if (string.length <= 10) {
@@ -909,192 +1037,214 @@ const formatStringWalletAddress = (string) => {
   let end = string.slice(-5);
 
   return `${start}...${end}`;
-}
+};
 
 const getQrSelected = () => {
-  return qrOptions?.find((item) => item.selected)
-}
+  return qrOptions?.find((item) => item.selected);
+};
 
 const resetInfoWithdraw = () => {
-  infoWithdraw = {...initInfoWithdraw}
-  withdrawPercentOptions = initWithdrawOptions
-  withdrawToTabs = initWithdrawToTabs
-  selectedToken = tokensData[0]
-}
+  infoWithdraw = { ...initInfoWithdraw };
+  withdrawPercentOptions = initWithdrawOptions;
+  withdrawToTabs = initWithdrawToTabs;
+  selectedToken = tokensData[0];
+};
 
 const handleChangeWithdrawInput = (value, element) => {
-  infoWithdraw.amountToken = value
-  infoWithdraw.subtotal = selectedToken?.exchangeRate * (value == '' ? 0 : value)
-  infoWithdraw.total = infoWithdraw.subtotal - infoWithdraw.priceImpact < 0 ? 0 : infoWithdraw.subtotal - infoWithdraw.priceImpact
+  infoWithdraw.amountToken = value;
+  infoWithdraw.subtotal =
+    selectedToken?.exchangeRate * (value == "" ? 0 : value);
+  infoWithdraw.total =
+    infoWithdraw.subtotal - infoWithdraw.priceImpact < 0
+      ? 0
+      : infoWithdraw.subtotal - infoWithdraw.priceImpact;
 
-  const input = element.querySelector('#withdraw-input');
-  const subtotal = element.querySelector('#withdraw-subtotal');
-  const total = element.querySelector('#withdraw-total');
+  const input = element.querySelector("#withdraw-input");
+  const subtotal = element.querySelector("#withdraw-subtotal");
+  const total = element.querySelector("#withdraw-total");
 
-  input.value = infoWithdraw.amountToken == '' ? '' : handleChangeInputNumber(value?.toLocaleString('en'))
-  subtotal.textContent = infoWithdraw.subtotal?.toLocaleString('en') ?? 0
-  total.textContent = infoWithdraw.total?.toLocaleString('en') ?? 0
+  input.value =
+    infoWithdraw.amountToken == ""
+      ? ""
+      : handleChangeInputNumber(value?.toLocaleString("en"));
+  subtotal.textContent = infoWithdraw.subtotal?.toLocaleString("en") ?? 0;
+  total.textContent = infoWithdraw.total?.toLocaleString("en") ?? 0;
 
-  const tabSlip = element.querySelector('#tab-slip');
-  const options = tabSlip.shadowRoot.querySelectorAll('.option');
+  const tabSlip = element.querySelector("#tab-slip");
+  const options = tabSlip.shadowRoot.querySelectorAll(".option");
   const optionsArray = Array.from(options);
 
-  if (value == infoWithdraw.balance * 25 / 100) {
+  if (value == (infoWithdraw.balance * 25) / 100) {
     optionsArray?.map((option) => {
-      option.classList.remove('selected')
-    })
-    const targetOption = optionsArray.find(option => option.getAttribute('value') == 25);
-    targetOption.classList.add('selected')
-  } else if (value == infoWithdraw.balance * 50 / 100) {
+      option.classList.remove("selected");
+    });
+    const targetOption = optionsArray.find(
+      (option) => option.getAttribute("value") == 25
+    );
+    targetOption.classList.add("selected");
+  } else if (value == (infoWithdraw.balance * 50) / 100) {
     optionsArray?.map((option) => {
-      option.classList.remove('selected')
-    })
-    const targetOption = optionsArray.find(option => option.getAttribute('value') == 50);
-    targetOption.classList.add('selected')
-  } else if (value == infoWithdraw.balance * 75 / 100) {
+      option.classList.remove("selected");
+    });
+    const targetOption = optionsArray.find(
+      (option) => option.getAttribute("value") == 50
+    );
+    targetOption.classList.add("selected");
+  } else if (value == (infoWithdraw.balance * 75) / 100) {
     optionsArray?.map((option) => {
-      option.classList.remove('selected')
-    })
-    const targetOption = optionsArray.find(option => option.getAttribute('value') == 75);
-    targetOption.classList.add('selected')
+      option.classList.remove("selected");
+    });
+    const targetOption = optionsArray.find(
+      (option) => option.getAttribute("value") == 75
+    );
+    targetOption.classList.add("selected");
   } else if (value == infoWithdraw.balance) {
     optionsArray?.map((option) => {
-      option.classList.remove('selected')
-    })
-    const targetOption = optionsArray.find(option => option.getAttribute('value') == 100);
-    targetOption.classList.add('selected')
+      option.classList.remove("selected");
+    });
+    const targetOption = optionsArray.find(
+      (option) => option.getAttribute("value") == 100
+    );
+    targetOption.classList.add("selected");
   } else {
-    const optionSelected = tabSlip.shadowRoot.querySelector('.option.selected');
+    const optionSelected = tabSlip.shadowRoot.querySelector(".option.selected");
     optionSelected?.classList.remove("selected");
   }
 
-  const btnWithdraw = element.querySelector('.btn-withdraw')
+  const btnWithdraw = element.querySelector(".btn-withdraw");
   if (infoWithdraw.total >= infoWithdraw.miniumReceived) {
-    btnWithdraw.classList.remove('disabled')
+    btnWithdraw.classList.remove("disabled");
   } else {
-    btnWithdraw.classList.add('disabled')
+    btnWithdraw.classList.add("disabled");
   }
-}
+};
 
 const downloadPhaseKey = (arrWords) => {
+  const textContent = arrWords.join(" ");
 
-  const textContent = arrWords.join(' ');
-
-  const blob = new Blob([textContent], { type: 'text/plain' });
+  const blob = new Blob([textContent], { type: "text/plain" });
 
   const url = URL.createObjectURL(blob);
 
-  const a = document.createElement('a');
+  const a = document.createElement("a");
   a.href = url;
-  a.download = 'words.txt';
+  a.download = "words.txt";
   document.body.appendChild(a);
   a.click();
 
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-}
+};
 
 const handleWithdraw = (result, callback, element) => {
   if (result) {
-    handleSubmitWithdraw(otpSubmit).then(() => {
-      callback()
-      handleChangeWithdrawInput('', element)
-      toggleNotification({
-        id: 'withdraw-submit-success',
-        label: 'Submit successfull!',
-        status: 'success'
+    handleSubmitWithdraw(otpSubmit)
+      .then(() => {
+        callback();
+        handleChangeWithdrawInput("", element);
+        toggleNotification({
+          id: "withdraw-submit-success",
+          label: "Submit successfull!",
+          status: "success",
+        });
       })
-    }).catch(() => {
-      toggleNotification({
-        id: 'withdraw-submit-error',
-        label: 'Submit failed!',
-        status: 'failed'
-      })
-    })
+      .catch(() => {
+        toggleNotification({
+          id: "withdraw-submit-error",
+          label: "Submit failed!",
+          status: "failed",
+        });
+      });
   } else {
-    callback()
-  };
-}
+    callback();
+  }
+};
 
 const handleClickSelectToken = (drawer) => {
   const bottomSheet = toggleBottomSheet({
-    id: 'section-tokens',
-    title: 'Tokens',
+    id: "section-tokens",
+    title: "Tokens",
     content: getContentToken(tokensData),
     footer: `<button class="btn-cancel">Cancel</button>`,
     attrs: {
-      maxHeight: 90
-    }
+      maxHeight: 90,
+    },
   });
 
-  bottomSheet.shadowRoot.querySelectorAll('.select-option__content').forEach(item => {
-    item.addEventListener('click', function () {
-      const index = this.getAttribute('index');
-      selectedToken = tokensData[index];
-      const imgToken = drawer.shadowRoot.querySelector('.balance-content__select img')
-      if (imgToken) {
-        imgToken.src = selectedToken.img
-        imgToken.nextElementSibling.textContent = selectedToken.name
-        infoWithdraw.token = selectedToken.name
-      }
+  bottomSheet.shadowRoot
+    .querySelectorAll(".select-option__content")
+    .forEach((item) => {
+      item.addEventListener("click", function () {
+        const index = this.getAttribute("index");
+        selectedToken = tokensData[index];
+        const imgToken = drawer.shadowRoot.querySelector(
+          ".balance-content__select img"
+        );
+        if (imgToken) {
+          imgToken.src = selectedToken.img;
+          imgToken.nextElementSibling.textContent = selectedToken.name;
+          infoWithdraw.token = selectedToken.name;
+        }
 
-      bottomSheet.hide();
+        bottomSheet.hide();
 
-      infoWithdraw.balance = selectedToken?.balance
-      const balance = drawer.shadowRoot.querySelector('#withdraw-balance');
-      balance.textContent = handleChangeInputNumber(infoWithdraw.balance?.toLocaleString('en'))
-      handleChangeWithdrawInput('', drawer.shadowRoot)
-      const tabSlip = drawer.shadowRoot.querySelector('#tab-slip');
-      const optionSelected = tabSlip.shadowRoot.querySelector('.option.selected');
-      optionSelected?.classList.remove("selected");
+        infoWithdraw.balance = selectedToken?.balance;
+        const balance = drawer.shadowRoot.querySelector("#withdraw-balance");
+        balance.textContent = handleChangeInputNumber(
+          infoWithdraw.balance?.toLocaleString("en")
+        );
+        handleChangeWithdrawInput("", drawer.shadowRoot);
+        const tabSlip = drawer.shadowRoot.querySelector("#tab-slip");
+        const optionSelected =
+          tabSlip.shadowRoot.querySelector(".option.selected");
+        optionSelected?.classList.remove("selected");
+      });
     });
-  });
 
-  const buttonCancel = bottomSheet.shadowRoot.querySelector('.btn-cancel');
-  buttonCancel.addEventListener('click', () => {
+  const buttonCancel = bottomSheet.shadowRoot.querySelector(".btn-cancel");
+  buttonCancel.addEventListener("click", () => {
     bottomSheet.hide();
-  })
-}
+  });
+};
 
 const handleOpenSetting = () => {
   const drawer = toggleDrawer({
-    id: 'section-setting',
-    title: 'Setting',
+    id: "section-setting",
+    title: "Setting",
     content: getContentSetting(),
-    footer: `<button class="btn-withdraw">I recorded it</button>`
+    footer: `<button class="btn-withdraw">I recorded it</button>`,
   });
 
-  const buttonOk = drawer.shadowRoot.querySelector('.btn-withdraw');
-  buttonOk.addEventListener('click', () => {
+  const buttonOk = drawer.shadowRoot.querySelector(".btn-withdraw");
+  buttonOk.addEventListener("click", () => {
     drawer.hide();
-  })
+  });
 
-  const copyPrivate = drawer.shadowRoot.querySelector('#copy-private');
-  copyPrivate.addEventListener('click', (event) => {
+  const copyPrivate = drawer.shadowRoot.querySelector("#copy-private");
+  copyPrivate.addEventListener("click", (event) => {
     navigator.clipboard.writeText(walletKey?.privateKey);
     toggleNotification({
-      id: 'copy-private-key',
-      label: 'Copy successfull!',
-      status: 'success'
-    })
+      id: "copy-private-key",
+      label: "Copy successfull!",
+      status: "success",
+    });
   });
 
-  const copyPhase = drawer.shadowRoot.querySelector('#copy-phase');
-  copyPhase.addEventListener('click', (event) => {
-    navigator.clipboard.writeText(walletKey?.phaseKey?.join(' '));
+  const copyPhase = drawer.shadowRoot.querySelector("#copy-phase");
+  copyPhase.addEventListener("click", (event) => {
+    navigator.clipboard.writeText(walletKey?.phaseKey?.join(" "));
     toggleNotification({
-      id: 'copy-phase-key',
-      label: 'Copy successfull!',
-      status: 'success'
-    })
+      id: "copy-phase-key",
+      label: "Copy successfull!",
+      status: "success",
+    });
   });
 
-  const downloadPhase = drawer.shadowRoot.querySelector('#download-phase');
-  downloadPhase.addEventListener('click', (event) => {
-    downloadPhaseKey(walletKey.phaseKey)
+  const downloadPhase = drawer.shadowRoot.querySelector("#download-phase");
+  downloadPhase.addEventListener("click", (event) => {
+    downloadPhaseKey(walletKey.phaseKey);
   });
-
-}
+};
 
 // ----------- Function Toggle ------------------ //
 function toggleBottomSheet({
@@ -1102,18 +1252,16 @@ function toggleBottomSheet({
   title,
   content,
   footer,
-  attrs: {
-    maxHeight
-  }
+  attrs: { maxHeight },
 }) {
-  const bottomSheet = document.createElement('bottom-sheet');
+  const bottomSheet = document.createElement("bottom-sheet");
   bottomSheet.id = id;
-  bottomSheet.setAttribute('max-height', maxHeight);
-  title && bottomSheet.setTitle(title)
-  content && bottomSheet.setBody(content)
-  footer && bottomSheet.setFooter(footer)
-  document.body.appendChild(bottomSheet)
-  return bottomSheet
+  bottomSheet.setAttribute("max-height", maxHeight);
+  title && bottomSheet.setTitle(title);
+  content && bottomSheet.setBody(content);
+  footer && bottomSheet.setFooter(footer);
+  document.body.appendChild(bottomSheet);
+  return bottomSheet;
 }
 
 function toggleConfirmPopup({
@@ -1122,17 +1270,17 @@ function toggleConfirmPopup({
   content,
   textOk,
   textCancel,
-  callback
+  callback,
 }) {
-  const confirmPopup = document.createElement('confirm-popup');
+  const confirmPopup = document.createElement("confirm-popup");
   confirmPopup.id = id;
-  title && confirmPopup.setTitle(title)
-  content && confirmPopup.setBody(content)
-  textOk && confirmPopup.setTextOk(textOk)
-  textCancel && confirmPopup.setTextCancel(textCancel)
-  callback && confirmPopup.setCallback(callback)
-  document.body.appendChild(confirmPopup)
-  return confirmPopup
+  title && confirmPopup.setTitle(title);
+  content && confirmPopup.setBody(content);
+  textOk && confirmPopup.setTextOk(textOk);
+  textCancel && confirmPopup.setTextCancel(textCancel);
+  callback && confirmPopup.setCallback(callback);
+  document.body.appendChild(confirmPopup);
+  return confirmPopup;
 }
 
 function toggleDrawer({
@@ -1142,31 +1290,27 @@ function toggleDrawer({
   footer,
   btnRight,
   nextCallback,
-  backCallback
+  backCallback,
 }) {
-  let drawer = document.createElement('drawer-modal');
+  let drawer = document.createElement("drawer-modal");
   drawer.id = id;
-  title && drawer.setTitle(title)
-  content && drawer.setBody(content)
-  footer && drawer.setFooter(footer)
-  btnRight && drawer.setBtnRight(btnRight)
-  nextCallback && drawer.setCallBack(nextCallback)
-  backCallback && drawer.setBackCallBack(backCallback)
+  title && drawer.setTitle(title);
+  content && drawer.setBody(content);
+  footer && drawer.setFooter(footer);
+  btnRight && drawer.setBtnRight(btnRight);
+  nextCallback && drawer.setCallBack(nextCallback);
+  backCallback && drawer.setBackCallBack(backCallback);
   document.body.appendChild(drawer);
-  return drawer
+  return drawer;
 }
 
-function toggleNotification({
-  id,
-  label = 'Notification',
-  status
-}) {
-  const notification = document.createElement('notification-popup');
+function toggleNotification({ id, label = "Notification", status }) {
+  const notification = document.createElement("notification-popup");
   notification.id = id;
   notification.status = status;
-  notification.setLabel(label)
-  document.body.appendChild(notification)
-  return notification
+  notification.setLabel(label);
+  document.body.appendChild(notification);
+  return notification;
 }
 
 function capitalizeFirstLetter(string) {
